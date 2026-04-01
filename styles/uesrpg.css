@@ -1,0 +1,169 @@
+:root {
+  --uesrpg-border-color: #4b4a44;
+  --uesrpg-panel-background: rgba(248, 243, 233, 0.9);
+  --uesrpg-panel-shadow: rgba(55, 42, 24, 0.12);
+  --uesrpg-accent: #856044;
+  --uesrpg-heading: #2d241d;
+  --uesrpg-muted: #65584b;
+  --uesrpg-surface: linear-gradient(180deg, #f5efe3 0%, #ede2d1 100%);
+}
+
+.uesrpg.sheet.actor,
+.uesrpg.sheet.item {
+  background: var(--uesrpg-surface);
+  color: var(--uesrpg-heading);
+}
+
+.uesrpg .window-content {
+  background: transparent;
+  overflow-y: auto;
+}
+
+.uesrpg-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.uesrpg-sheet__header {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.uesrpg-sheet__portrait {
+  width: 96px;
+  height: 96px;
+  border: 2px solid var(--uesrpg-border-color);
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 10px 24px var(--uesrpg-panel-shadow);
+}
+
+.uesrpg-sheet__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.uesrpg-sheet__name {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-bottom: 2px solid var(--uesrpg-accent);
+  border-radius: 0;
+  background: transparent;
+  color: var(--uesrpg-heading);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.uesrpg-sheet__type {
+  color: var(--uesrpg-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uesrpg-sheet__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.uesrpg-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid
+    color-mix(in srgb, var(--uesrpg-border-color) 70%, white 30%);
+  border-radius: 14px;
+  background: var(--uesrpg-panel-background);
+  box-shadow: 0 8px 22px var(--uesrpg-panel-shadow);
+}
+
+.uesrpg-card__heading {
+  margin: 0;
+  color: var(--uesrpg-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.uesrpg-field-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.uesrpg-field-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.uesrpg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.uesrpg-field--checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.uesrpg-field label,
+.uesrpg-field__label {
+  color: var(--uesrpg-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.uesrpg-field input,
+.uesrpg-field textarea {
+  border: 1px solid
+    color-mix(in srgb, var(--uesrpg-border-color) 60%, white 40%);
+  border-radius: 10px;
+  background: rgba(255, 252, 247, 0.9);
+  color: var(--uesrpg-heading);
+}
+
+.uesrpg-field input {
+  min-height: 2.25rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.uesrpg-field textarea {
+  min-height: 7rem;
+  padding: 0.65rem;
+  resize: vertical;
+}
+
+.uesrpg-field__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .uesrpg-sheet {
+    padding: 0.75rem;
+  }
+
+  .uesrpg-sheet__header {
+    grid-template-columns: 1fr;
+  }
+
+  .uesrpg-sheet__portrait {
+    width: 72px;
+    height: 72px;
+  }
+}

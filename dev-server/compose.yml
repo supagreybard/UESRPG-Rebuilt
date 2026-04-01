@@ -1,0 +1,14 @@
+name: uesrpg
+services:
+  foundry-devserver:
+    image: node:alpine
+    working_dir: /home/node/foundryvtt
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./foundryvtt:/app/foundryvtt
+      - ./foundrydata:/data/foundry
+      - ../dist:/data/foundry/Data/systems/uesrpg
+    ports:
+      - "30001:30000"
+    command: node main.js --dataPath=/data/foundry
