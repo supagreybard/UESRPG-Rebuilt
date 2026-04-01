@@ -1,6 +1,6 @@
-export const SYSTEM_ID = 'uesrpg';
-export const SYSTEM_TITLE = 'UESRPG';
-export const SYSTEM_PATH = 'systems/uesrpg';
+export const SYSTEM_ID = 'uesrpg-rebuilt';
+export const SYSTEM_TITLE = 'UESRPG Rebuilt';
+export const SYSTEM_PATH = 'systems/uesrpg-rebuilt';
 
 export const ACTOR_TYPES = {
   character: 'character',

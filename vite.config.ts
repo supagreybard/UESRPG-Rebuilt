@@ -6,14 +6,14 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     lib: {
-      entry: resolve(__dirname, 'src/uesrpg.ts'),
-      fileName: () => 'uesrpg.js',
+      entry: resolve(__dirname, 'src/uesrpg-rebuilt.ts'),
+      fileName: () => 'uesrpg-rebuilt.js',
       formats: ['es'],
     },
     outDir: 'dist',
     rollupOptions: {
       output: {
-        entryFileNames: 'uesrpg.js',
+        entryFileNames: 'uesrpg-rebuilt.js',
       },
     },
     sourcemap: true,
