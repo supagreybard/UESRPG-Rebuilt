@@ -4,11 +4,18 @@ UESRPG Rebuilt is a Foundry Virtual Tabletop system for running the Unofficial E
 
 Project Status: In Development - not ready for user testing
 
+## Contributing
+
+### Useful Resources
+- Foundry VTT (API Docs)(https://foundryvtt.com/api/)
+- Foundry VTT (Knowledge Base)(https://foundryvtt.com/kb/)
+- Docker [Getting Started](https://docs.docker.com/get-started/) (for working with the Local Development Server)
+
 ### Running the Local Development Server
 
 For developer convenience, I've set up a docker compose project in the project's `dev-server/` directory which is intended to run a clean, UESRPG Rebuilt-only instance of Foundry for local development purposes.
 
-If you're new to docker, visit Docker's [Getting Started](https://docs.docker.com/get-started/) page for more info.
+If you're new to docker, visit Docker's  page for more info.
 
 #### Requirements
 
