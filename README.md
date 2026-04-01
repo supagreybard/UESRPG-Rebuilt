@@ -1,14 +1,14 @@
 # UESRPG Rebuilt
 
-UESRPG Rebuilt is a Foundry Virtual Tabletop system for running the Unofficial Elder Scrolls RPG system on Foundry VTT.
+UESRPG Rebuilt is a Foundry Virtual Tabletop system for running the 3rd Edition of the Unofficial Elder Scrolls RPG system on Foundry VTT.
 
 Project Status: In Development - not ready for user testing
 
 ## Contributing
 
 ### Useful Resources
-- Foundry VTT (API Docs)(https://foundryvtt.com/api/)
-- Foundry VTT (Knowledge Base)(https://foundryvtt.com/kb/)
+- Foundry VTT [API Docs](https://foundryvtt.com/api/)
+- Foundry VTT [Knowledge Base](https://foundryvtt.com/kb/)
 - Docker [Getting Started](https://docs.docker.com/get-started/) (for working with the Local Development Server)
 
 ### Running the Local Development Server
