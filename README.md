@@ -13,7 +13,7 @@ Project Status: In Development - not ready for user testing
 
 ### Running the Local Development Server
 
-For developer convenience, I've set up a docker compose project in the project's `dev-server/` directory which is intended to run a clean, UESRPG Rebuilt-only instance of Foundry for local development purposes.
+For developer convenience, I've set up a docker compose project in the `dev-server/` directory which is intended to run a clean, UESRPG Rebuilt-only instance of Foundry for local development purposes.
 
 If you're new to docker, visit Docker's  page for more info.
 
