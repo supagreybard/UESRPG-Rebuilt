@@ -7,6 +7,10 @@ export function registerDocumentClasses(): void {
 
   Object.assign(Actor.prototype, {
     buildTest: UesrpgActor.prototype.buildTest,
+    getResolvedTraits: UesrpgActor.prototype.getResolvedTraits,
+    getTraitInstances: UesrpgActor.prototype.getTraitInstances,
+    getTraitValue: UesrpgActor.prototype.getTraitValue,
+    hasTrait: UesrpgActor.prototype.hasTrait,
     test: UesrpgActor.prototype.test,
   });
 
