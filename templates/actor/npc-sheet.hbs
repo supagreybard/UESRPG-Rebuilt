@@ -1,25 +1,25 @@
-<form class="uesrpg-sheet" autocomplete="off">
-  <header class="uesrpg-sheet__header">
-    <img class="uesrpg-sheet__portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+<form class="uesrpg-rebuilt-sheet" autocomplete="off">
+  <header class="uesrpg-rebuilt-sheet__header">
+    <img class="uesrpg-rebuilt-sheet__portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
 
     <div>
-      <div class="uesrpg-sheet__title-row">
-        <div class="uesrpg-sheet__type">{{typeLabel}} - {{sheetTitle}}</div>
+      <div class="uesrpg-rebuilt-sheet__title-row">
+        <div class="uesrpg-rebuilt-sheet__type">{{typeLabel}} - {{sheetTitle}}</div>
       </div>
 
-      <input class="uesrpg-sheet__name" name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'UESRPG.Fields.name'}}" />
+      <input class="uesrpg-rebuilt-sheet__name" name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'UESRPG.Fields.name'}}" />
     </div>
   </header>
 
-  <section class="uesrpg-sheet__grid">
-    <article class="uesrpg-card">
-      <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.resources'}}</h2>
+  <section class="uesrpg-rebuilt-sheet__grid">
+    <article class="uesrpg-rebuilt-card">
+      <h2 class="uesrpg-rebuilt-card__heading">{{localize 'UESRPG.Sections.resources'}}</h2>
 
-      <div class="uesrpg-field-grid">
+      <div class="uesrpg-rebuilt-field-grid">
         {{#each resourceFields as |resource|}}
-          <div class="uesrpg-field">
-            <span class="uesrpg-field__label">{{resource.label}}</span>
-            <div class="uesrpg-field__pair">
+          <div class="uesrpg-rebuilt-field">
+            <span class="uesrpg-rebuilt-field__label">{{resource.label}}</span>
+            <div class="uesrpg-rebuilt-field__pair">
               <input name="system.resources.{{resource.key}}.value" type="number" value="{{resource.value}}" />
               <input name="system.resources.{{resource.key}}.max" type="number" value="{{resource.max}}" />
             </div>
@@ -28,12 +28,12 @@
       </div>
     </article>
 
-    <article class="uesrpg-card">
-      <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.attributes'}}</h2>
+    <article class="uesrpg-rebuilt-card">
+      <h2 class="uesrpg-rebuilt-card__heading">{{localize 'UESRPG.Sections.attributes'}}</h2>
 
-      <div class="uesrpg-field-grid">
+      <div class="uesrpg-rebuilt-field-grid">
         {{#each characteristicFields as |characteristic|}}
-          <label class="uesrpg-field">
+          <label class="uesrpg-rebuilt-field">
             <span>{{characteristic.label}}</span>
             <input name="system.characteristics.{{characteristic.key}}" type="number" value="{{characteristic.value}}" />
           </label>
@@ -41,10 +41,10 @@
       </div>
     </article>
 
-    <article class="uesrpg-card">
-      <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.details'}}</h2>
+    <article class="uesrpg-rebuilt-card">
+      <h2 class="uesrpg-rebuilt-card__heading">{{localize 'UESRPG.Sections.details'}}</h2>
 
-      <label class="uesrpg-field">
+      <label class="uesrpg-rebuilt-field">
         <span>{{localize 'UESRPG.Fields.notes'}}</span>
         <textarea name="system.prose.notes">{{system.prose.notes}}</textarea>
       </label>

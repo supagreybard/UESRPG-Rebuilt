@@ -1,29 +1,29 @@
-<form class="uesrpg-sheet" autocomplete="off">
-  <header class="uesrpg-sheet__header">
-    <img class="uesrpg-sheet__portrait" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+<form class="uesrpg-rebuilt-sheet" autocomplete="off">
+  <header class="uesrpg-rebuilt-sheet__header">
+    <img class="uesrpg-rebuilt-sheet__portrait" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
 
     <div>
-      <div class="uesrpg-sheet__title-row">
-        <div class="uesrpg-sheet__type">{{typeLabel}} - {{sheetTitle}}</div>
+      <div class="uesrpg-rebuilt-sheet__title-row">
+        <div class="uesrpg-rebuilt-sheet__type">{{typeLabel}} - {{sheetTitle}}</div>
       </div>
 
-      <input class="uesrpg-sheet__name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'UESRPG.Fields.name'}}" />
+      <input class="uesrpg-rebuilt-sheet__name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'UESRPG.Fields.name'}}" />
 
       {{#if isTrait}}
         {{#if headerFlavorText}}
-          <div class="uesrpg-sheet__flavor-text">{{headerFlavorText}}</div>
+          <div class="uesrpg-rebuilt-sheet__flavor-text">{{headerFlavorText}}</div>
         {{/if}}
       {{/if}}
     </div>
   </header>
 
-  <section class="uesrpg-sheet__grid">
-    <article class="uesrpg-card">
-      <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.details'}}</h2>
+  <section class="uesrpg-rebuilt-sheet__grid">
+    <article class="uesrpg-rebuilt-card">
+      <h2 class="uesrpg-rebuilt-card__heading">{{localize 'UESRPG.Sections.details'}}</h2>
 
-      <div class="uesrpg-field-grid uesrpg-field-grid--two">
+      <div class="uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two">
         {{#each inventoryFields as |field|}}
-          <label class="uesrpg-field">
+          <label class="uesrpg-rebuilt-field">
             <span>{{field.label}}</span>
             <input name="system.{{field.key}}" type="{{field.inputType}}" value="{{field.value}}" min="0" step="any" />
           </label>
@@ -31,12 +31,12 @@
 
         {{#each ruleFields as |field|}}
           {{#if field.isCheckbox}}
-            <label class="uesrpg-field uesrpg-field--checkbox">
+            <label class="uesrpg-rebuilt-field uesrpg-rebuilt-field--checkbox">
               <input name="system.{{field.key}}" type="checkbox" {{checked field.value}} />
               <span>{{field.label}}</span>
             </label>
           {{else}}
-            <label class="uesrpg-field">
+            <label class="uesrpg-rebuilt-field">
               <span>{{field.label}}</span>
               <input name="system.{{field.key}}" type="{{field.inputType}}" value="{{field.value}}" min="{{field.min}}" step="{{field.step}}" />
             </label>
@@ -46,12 +46,12 @@
 
       {{#each subtypeFields as |field|}}
         {{#if field.isCheckbox}}
-          <label class="uesrpg-field uesrpg-field--checkbox">
+          <label class="uesrpg-rebuilt-field uesrpg-rebuilt-field--checkbox">
             <input name="system.{{field.key}}" type="checkbox" {{checked field.value}} />
             <span>{{field.label}}</span>
           </label>
         {{else}}
-          <label class="uesrpg-field">
+          <label class="uesrpg-rebuilt-field">
             <span>{{field.label}}</span>
             <input name="system.{{field.key}}" type="{{field.inputType}}" value="{{field.value}}" />
           </label>
@@ -59,22 +59,22 @@
       {{/each}}
     </article>
 
-    <article class="uesrpg-card">
-      <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.description'}}</h2>
+    <article class="uesrpg-rebuilt-card">
+      <h2 class="uesrpg-rebuilt-card__heading">{{localize 'UESRPG.Sections.description'}}</h2>
 
       {{#if flavorTextField}}
-        <label class="uesrpg-field">
+        <label class="uesrpg-rebuilt-field">
           <span>{{flavorTextField.label}}</span>
           <textarea name="system.{{flavorTextField.key}}">{{flavorTextField.value}}</textarea>
         </label>
       {{/if}}
 
-      <label class="uesrpg-field">
+      <label class="uesrpg-rebuilt-field">
         <span>{{localize 'UESRPG.Fields.description'}}</span>
         <textarea name="system.prose.description">{{system.prose.description}}</textarea>
       </label>
 
-      <label class="uesrpg-field">
+      <label class="uesrpg-rebuilt-field">
         <span>{{localize 'UESRPG.Fields.notes'}}</span>
         <textarea name="system.prose.notes">{{system.prose.notes}}</textarea>
       </label>
