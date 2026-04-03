@@ -1,8 +1,8 @@
 import { SYSTEM_PATH } from '../../config/constants';
 import { localize } from '../../utils/localization';
-import { BaseItemSheet } from './base-item-sheet';
+import { BaseItemSheet } from './BaseItemSheet';
 
-export class UESRPGItemSheet extends BaseItemSheet {
+export class UesrpgItemSheet extends BaseItemSheet {
   static PARTS = {
     sheet: {
       template: `${SYSTEM_PATH}/templates/item/item-sheet.hbs`,

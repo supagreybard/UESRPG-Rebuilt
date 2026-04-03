@@ -1,6 +1,10 @@
-import type { ACTOR_TYPES, ITEM_TYPES, SYSTEM_ID } from './module/config/constants';
-import type { UESRPGActor } from './module/documents/actor';
-import type { UESRPGItem } from './module/documents/item';
+import type {
+  ACTOR_TYPES,
+  ITEM_TYPES,
+  SYSTEM_ID,
+} from './module/config/constants';
+import type { UesrpgActor } from './module/documents/UesrpgActor';
+import type { UesrpgItem } from './module/documents/UesrpgItem';
 
 declare global {
   interface Game {
@@ -9,8 +13,8 @@ declare global {
       itemTypes: typeof ITEM_TYPES;
       systemId: typeof SYSTEM_ID;
       documents: {
-        Actor: typeof UESRPGActor;
-        Item: typeof UESRPGItem;
+        Actor: typeof UesrpgActor;
+        Item: typeof UesrpgItem;
       };
     };
   }

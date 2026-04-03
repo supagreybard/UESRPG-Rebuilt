@@ -1,16 +1,16 @@
-import { UESRPGActor } from './actor';
-import { UESRPGItem } from './item';
+import { UesrpgActor } from './UesrpgActor';
+import { UesrpgItem } from './UesrpgItem';
 
 export function registerDocumentClasses(): void {
-  CONFIG.Actor.documentClass = UESRPGActor as typeof Actor;
-  CONFIG.Item.documentClass = UESRPGItem as typeof Item;
+  CONFIG.Actor.documentClass = UesrpgActor as typeof Actor;
+  CONFIG.Item.documentClass = UesrpgItem as typeof Item;
 
   Object.assign(Actor.prototype, {
-    buildTest: UESRPGActor.prototype.buildTest,
-    test: UESRPGActor.prototype.test,
+    buildTest: UesrpgActor.prototype.buildTest,
+    test: UesrpgActor.prototype.test,
   });
 
   Object.assign(Item.prototype, {
-    buildTest: UESRPGItem.prototype.buildTest,
+    buildTest: UesrpgItem.prototype.buildTest,
   });
 }

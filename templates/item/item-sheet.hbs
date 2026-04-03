@@ -8,6 +8,12 @@
       </div>
 
       <input class="uesrpg-sheet__name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'UESRPG.Fields.name'}}" />
+
+      {{#if isTrait}}
+        {{#if headerFlavorText}}
+          <div class="uesrpg-sheet__flavor-text">{{headerFlavorText}}</div>
+        {{/if}}
+      {{/if}}
     </div>
   </header>
 
@@ -16,15 +22,19 @@
       <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.details'}}</h2>
 
       <div class="uesrpg-field-grid uesrpg-field-grid--two">
-        <label class="uesrpg-field">
-          <span>{{localize 'UESRPG.Fields.quantity'}}</span>
-          <input name="system.quantity" type="number" value="{{system.quantity}}" min="0" />
-        </label>
+        {{#each inventoryFields as |field|}}
+          <label class="uesrpg-field">
+            <span>{{field.label}}</span>
+            <input name="system.{{field.key}}" type="{{field.inputType}}" value="{{field.value}}" min="0" step="any" />
+          </label>
+        {{/each}}
 
-        <label class="uesrpg-field">
-          <span>{{localize 'UESRPG.Fields.weight'}}</span>
-          <input name="system.weight" type="number" value="{{system.weight}}" min="0" step="any" />
-        </label>
+        {{#each ruleFields as |field|}}
+          <label class="uesrpg-field">
+            <span>{{field.label}}</span>
+            <input name="system.{{field.key}}" type="{{field.inputType}}" value="{{field.value}}" min="0" max="5" />
+          </label>
+        {{/each}}
       </div>
 
       {{#each subtypeFields as |field|}}
@@ -45,9 +55,21 @@
     <article class="uesrpg-card">
       <h2 class="uesrpg-card__heading">{{localize 'UESRPG.Sections.description'}}</h2>
 
+      {{#if flavorTextField}}
+        <label class="uesrpg-field">
+          <span>{{flavorTextField.label}}</span>
+          <textarea name="system.{{flavorTextField.key}}">{{flavorTextField.value}}</textarea>
+        </label>
+      {{/if}}
+
       <label class="uesrpg-field">
         <span>{{localize 'UESRPG.Fields.description'}}</span>
-        <textarea name="system.description">{{system.description}}</textarea>
+        <textarea name="system.prose.description">{{system.prose.description}}</textarea>
+      </label>
+
+      <label class="uesrpg-field">
+        <span>{{localize 'UESRPG.Fields.notes'}}</span>
+        <textarea name="system.prose.notes">{{system.prose.notes}}</textarea>
       </label>
     </article>
   </section>

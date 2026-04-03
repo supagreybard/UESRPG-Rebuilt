@@ -1,4 +1,4 @@
-import { BaseActorData } from './base-actor-data';
+import { BaseActorData } from './BaseActorData';
 
 const fields = foundry.data.fields;
 
@@ -15,10 +15,6 @@ export class NPCData extends BaseActorData {
         perception: new fields.NumberField({ initial: 0, integer: true }),
         personality: new fields.NumberField({ initial: 0, integer: true }),
         luck: new fields.NumberField({ initial: 0, integer: true }),
-      }),
-      details: new fields.SchemaField({
-        notes: new fields.HTMLField({ initial: '' }),
-        role: new fields.StringField({ initial: 'minion', blank: false }),
       }),
     };
   }

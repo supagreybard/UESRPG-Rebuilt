@@ -71,6 +71,13 @@
   text-transform: uppercase;
 }
 
+.uesrpg-sheet__flavor-text {
+  margin-top: 0.35rem;
+  color: var(--uesrpg-muted);
+  font-size: 1rem;
+  font-style: italic;
+}
+
 .uesrpg-sheet__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

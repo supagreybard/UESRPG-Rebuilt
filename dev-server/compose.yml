@@ -2,7 +2,7 @@ name: uesrpg-rebuilt
 services:
   foundry-devserver:
     image: node:alpine
-    working_dir: /home/node/foundryvtt
+    working_dir: /app/foundryvtt
     environment:
       - NODE_ENV=production
     volumes:

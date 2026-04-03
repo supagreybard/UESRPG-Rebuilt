@@ -1,6 +1,6 @@
 import { SYSTEM_PATH } from '../../config/constants';
 import { localize } from '../../utils/localization';
-import { BaseActorSheet } from './base-actor-sheet';
+import { BaseActorSheet } from './BaseActorSheet';
 
 export class CharacterSheet extends BaseActorSheet {
   static PARTS = {

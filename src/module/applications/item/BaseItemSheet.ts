@@ -35,8 +35,11 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       unknown
     >;
     const system = this.item.system as Record<string, any>;
+    const prose = (system.prose ?? {}) as Record<string, any>;
     const itemType = String(this.item.type) as keyof typeof LABELS.itemTypes;
     const rawItemType = String(this.item.type);
+    const isInventoryItem = rawItemType === 'weapon' || rawItemType === 'gear';
+    const isTrait = rawItemType === 'trait';
 
     return {
       ...context,
@@ -44,10 +47,66 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       editable: this.isEditable,
       system,
       typeLabel: localize(LABELS.itemTypes[itemType]),
+      inventoryFields: this.#prepareInventoryFields(system, isInventoryItem),
+      ruleFields: this.#prepareRuleFields(system, isTrait),
       subtypeFields: this.#prepareSubtypeFields(system),
-      isWeapon: rawItemType === 'weapon',
-      isGear: rawItemType === 'gear',
-      isAbility: rawItemType === 'ability',
+      isTrait,
+      headerFlavorText: String(prose.flavorText ?? '').trim(),
+      flavorTextField: this.#prepareFlavorTextField(prose, isTrait),
+    };
+  }
+
+  #prepareInventoryFields(
+    system: Record<string, any>,
+    isInventoryItem: boolean,
+  ): ItemField[] {
+    if (!isInventoryItem) {
+      return [];
+    }
+
+    return [
+      {
+        key: 'quantity',
+        label: localize('UESRPG.Fields.quantity'),
+        inputType: 'number',
+        isCheckbox: false,
+        value: Number(system.quantity ?? 1),
+      },
+      {
+        key: 'encumbrance',
+        label: localize('UESRPG.Fields.encumbrance'),
+        inputType: 'number',
+        isCheckbox: false,
+        value: Number(system.encumbrance ?? 0),
+      },
+    ];
+  }
+
+  #prepareRuleFields(
+    system: Record<string, any>,
+    isTrait: boolean,
+  ): ItemField[] {
+    if (!isTrait) {
+      return [];
+    }
+
+    return [];
+  }
+
+  #prepareFlavorTextField(
+    prose: Record<string, any>,
+    isTrait: boolean,
+  ): ItemField | null {
+    if (!isTrait) {
+      return null;
+    }
+
+    return {
+      key: 'prose.flavorText',
+      label: localize('UESRPG.Fields.flavorText'),
+      inputType: 'text',
+      isCheckbox: false,
+      value: String(prose.flavorText ?? ''),
     };
   }
 
@@ -81,25 +140,6 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
           inputType: 'checkbox',
           isCheckbox: true,
           value: Boolean(system.equipped),
-        },
-      ];
-    }
-
-    if (itemType === 'ability') {
-      return [
-        {
-          key: 'cost',
-          label: localize('UESRPG.Fields.cost'),
-          inputType: 'number',
-          isCheckbox: false,
-          value: Number(system.cost ?? 0),
-        },
-        {
-          key: 'cooldown',
-          label: localize('UESRPG.Fields.cooldown'),
-          inputType: 'number',
-          isCheckbox: false,
-          value: Number(system.cooldown ?? 0),
         },
       ];
     }

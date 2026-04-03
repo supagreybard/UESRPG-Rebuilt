@@ -1,6 +1,6 @@
 import { ACTOR_TYPES, ITEM_TYPES } from '../config/constants';
 import { CharacterData, NPCData } from './actor';
-import { AbilityData, GearData, WeaponData } from './item';
+import { GearData, TraitData, WeaponData } from './item';
 
 export function registerDataModels(): void {
   Object.assign(CONFIG.Actor.dataModels, {
@@ -11,6 +11,6 @@ export function registerDataModels(): void {
   Object.assign(CONFIG.Item.dataModels, {
     [ITEM_TYPES.weapon]: WeaponData,
     [ITEM_TYPES.gear]: GearData,
-    [ITEM_TYPES.ability]: AbilityData,
+    [ITEM_TYPES.trait]: TraitData,
   });
 }

@@ -1,8 +1,8 @@
-import { BaseItemData } from './base-item-data';
+import { BaseInventoryItem } from './BaseInventoryItem';
 
 const fields = foundry.data.fields;
 
-export class WeaponData extends BaseItemData {
+export class WeaponData extends BaseInventoryItem {
   static defineSchema() {
     return {
       ...super.defineSchema(),

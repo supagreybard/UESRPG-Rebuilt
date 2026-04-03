@@ -3,9 +3,9 @@ import {
   ITEM_DOCUMENT_TYPES,
 } from '../config/document-types';
 import { SYSTEM_ID } from '../config/constants';
-import { CharacterSheet } from './actor/character-sheet';
-import { NPCSheet } from './actor/npc-sheet';
-import { UESRPGItemSheet } from './item/item-sheet';
+import { CharacterSheet } from './actor/CharacterSheet';
+import { NPCSheet } from './actor/NPCSheet';
+import { UesrpgItemSheet } from './item/UesrpgItemSheet';
 
 export function registerApplicationClasses(): void {
   Actors.unregisterSheet('core', ActorSheet);
@@ -23,7 +23,7 @@ export function registerApplicationClasses(): void {
     label: 'UESRPG.Sheets.npc',
   });
 
-  Items.registerSheet(SYSTEM_ID, UESRPGItemSheet as any, {
+  Items.registerSheet(SYSTEM_ID, UesrpgItemSheet as any, {
     types: [...ITEM_DOCUMENT_TYPES],
     makeDefault: true,
     label: 'UESRPG.Sheets.item',

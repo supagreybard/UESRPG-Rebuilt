@@ -1,4 +1,4 @@
-import { BaseActorData } from './base-actor-data';
+import { BaseActorData } from './BaseActorData';
 
 const fields = foundry.data.fields;
 

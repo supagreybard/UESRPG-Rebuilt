@@ -1,7 +1,7 @@
 import { createStandardTestMessage } from '../chat';
 import { buildStandardTest, performStandardTest } from '../dice';
 
-export class UESRPGActor extends Actor {
+export class UesrpgActor extends Actor {
   buildTest(): Roll {
     return buildStandardTest();
   }

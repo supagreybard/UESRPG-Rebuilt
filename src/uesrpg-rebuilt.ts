@@ -5,8 +5,8 @@ import {
   SYSTEM_TITLE,
 } from './module/config/constants';
 import { registerDocumentClasses } from './module/documents';
-import { UESRPGActor } from './module/documents/actor';
-import { UESRPGItem } from './module/documents/item';
+import { UesrpgActor } from './module/documents/UesrpgActor';
+import { UesrpgItem } from './module/documents/UesrpgItem';
 import { registerDataModels } from './module/data';
 import { registerTrackableAttributes } from './module/config/trackable-attributes';
 import { registerApplicationClasses } from './module/applications';
@@ -19,8 +19,8 @@ Hooks.once('init', () => {
     itemTypes: ITEM_TYPES,
     systemId: SYSTEM_ID,
     documents: {
-      Actor: UESRPGActor,
-      Item: UESRPGItem,
+      Actor: UesrpgActor,
+      Item: UesrpgItem,
     },
   };
 

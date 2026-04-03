@@ -20,7 +20,9 @@ export class BaseActorData extends foundry.abstract.TypeDataModel<
           max: new fields.NumberField({ initial: 5, integer: true, min: 0 }),
         }),
       }),
-      details: new fields.SchemaField({
+      prose: new fields.SchemaField({
+        description: new fields.HTMLField({ initial: '' }),
+        flavorText: new fields.StringField({ initial: '' }),
         notes: new fields.HTMLField({ initial: '' }),
       }),
     };

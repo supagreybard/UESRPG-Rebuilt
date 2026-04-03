@@ -1,4 +1,6 @@
-export { AbilityData } from './ability-data';
-export { BaseItemData } from './base-item-data';
-export { GearData } from './gear-data';
-export { WeaponData } from './weapon-data';
+export { BaseItemData } from './BaseItemData';
+export { BaseInventoryItem } from './BaseInventoryItem';
+export { BaseRuleItem } from './BaseRuleItem';
+export { GearData } from './GearData';
+export { TraitData } from './TraitData';
+export { WeaponData } from './WeaponData';
