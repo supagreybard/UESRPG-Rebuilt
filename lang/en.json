@@ -12,7 +12,7 @@
   "UESRPG.Sections.attributes": "Attributes",
   "UESRPG.Sections.experience": "Experience",
   "UESRPG.Sections.details": "Details",
-  "UESRPG.Sections.description": "Description",
+  "UESRPG.Sections.prose": "Prose",
   "UESRPG.Fields.name": "Name",
   "UESRPG.Fields.health": "Health",
   "UESRPG.Fields.stamina": "Stamina",

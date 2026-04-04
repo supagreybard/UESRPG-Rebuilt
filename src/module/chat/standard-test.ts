@@ -15,6 +15,7 @@ export async function createStandardTestMessage({
 }: CreateStandardTestMessageOptions): Promise<
   ChatMessage.Implementation | undefined
 > {
+  const outcomeState = result.success ? 'success' : 'failure';
   const outcomeKey = result.success
     ? 'UESRPG.Chat.success'
     : 'UESRPG.Chat.failure';
@@ -24,6 +25,7 @@ export async function createStandardTestMessage({
       title: localize('UESRPG.Chat.standardTest'),
       documentName: document.name,
       result,
+      outcomeState,
       outcomeLabel: localize(outcomeKey),
     },
   );

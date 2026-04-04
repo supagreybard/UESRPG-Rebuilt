@@ -1,13 +1,47 @@
-<article class="uesrpg-rebuilt-chat-card">
-  <header class="uesrpg-rebuilt-chat-card__header">
-    <strong>{{title}}</strong>
-    <div>{{documentName}}</div>
+<article
+  class='uesrpg-rebuilt-chat-card uesrpg-rebuilt-chat-card--{{outcomeState}}'
+>
+  <header class='uesrpg-rebuilt-chat-card__header'>
+    <div class='uesrpg-rebuilt-chat-card__heading-group'>
+      <strong class='uesrpg-rebuilt-chat-card__title'>{{title}}</strong>
+      <div
+        class='uesrpg-rebuilt-chat-card__document-name'
+      >{{documentName}}</div>
+    </div>
+
+    <div class='uesrpg-rebuilt-chat-card__outcome'>
+      <span class='uesrpg-rebuilt-chat-card__outcome-label'>{{localize
+          'UESRPG.Chat.result'
+        }}</span>
+      <strong
+        class='uesrpg-rebuilt-chat-card__outcome-value'
+      >{{outcomeLabel}}</strong>
+    </div>
   </header>
 
-  <div class="uesrpg-rebuilt-chat-card__body">
-    <div><strong>{{localize 'UESRPG.Chat.roll'}}:</strong> {{result.total}} ({{result.formula}})</div>
-    <div><strong>{{localize 'UESRPG.Chat.targetNumber'}}:</strong> {{result.targetNumber}}</div>
-    <div><strong>{{localize 'UESRPG.Chat.result'}}:</strong> {{outcomeLabel}}</div>
-    <div><strong>{{localize 'UESRPG.Chat.degrees'}}:</strong> {{result.degrees}}</div>
+  <div class='uesrpg-rebuilt-chat-card__body'>
+    <div class='uesrpg-rebuilt-chat-card__primary-result'>
+      <span class='uesrpg-rebuilt-chat-card__metric-label'>{{localize
+          'UESRPG.Chat.roll'
+        }}</span>
+      <div class='uesrpg-rebuilt-chat-card__roll-total'>{{result.total}}</div>
+      <div class='uesrpg-rebuilt-chat-card__formula'>{{result.formula}}</div>
+    </div>
+
+    <div class='uesrpg-rebuilt-chat-card__stats'>
+      <div class='uesrpg-rebuilt-chat-card__stat'>
+        <span class='uesrpg-rebuilt-chat-card__metric-label'>{{localize
+            'UESRPG.Chat.targetNumber'
+          }}</span>
+        <strong>{{result.targetNumber}}</strong>
+      </div>
+
+      <div class='uesrpg-rebuilt-chat-card__stat'>
+        <span class='uesrpg-rebuilt-chat-card__metric-label'>{{localize
+            'UESRPG.Chat.degrees'
+          }}</span>
+        <strong>{{result.degrees}}</strong>
+      </div>
+    </div>
   </div>
 </article>

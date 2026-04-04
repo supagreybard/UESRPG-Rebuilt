@@ -47,6 +47,7 @@ export class BaseActorSheet extends ActorHandlebarsSheet {
       actor: this.actor,
       editable: this.isEditable,
       system,
+      experience: Number(system.experience ?? 0),
       typeLabel: localize(LABELS.actorTypes[actorType]),
       resourceFields: this.#prepareResources(system),
       characteristicFields: this.#prepareCharacteristics(system),
