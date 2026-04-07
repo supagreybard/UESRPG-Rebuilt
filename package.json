@@ -4,13 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch",
+    "clean": "node -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\"",
+    "build": "npm run clean && vite build && npm run packs:compile",
+    "dev": "npm run clean && npm run packs:compile && vite build --watch",
+    "packs:clean": "node automation/compendium-packager.mjs clean",
+    "packs:compile": "node automation/compendium-packager.mjs compile",
+    "packs:extract": "node automation/compendium-packager.mjs extract",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.3",
     "@eslint/js": "^9.23.0",
     "eslint": "^9.23.0",
     "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#main",

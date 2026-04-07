@@ -1,0 +1,13 @@
+_id: battlepwr0001cd
+name: Battle Trance
+type: power
+img: icons/magic/control/buff-strength-muscle-damage.webp
+system:
+  slug: battle-trance
+  source: Core Rules
+  prose:
+    description: >-
+      <p>You enter a disciplined combat focus that narrows your world to the
+      rhythm of movement, steel, and breath.</p>
+    flavorText: Calm at the heart of violence.
+    notes: ''

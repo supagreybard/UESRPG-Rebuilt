@@ -1,0 +1,24 @@
+_id: arcanefn01trait
+name: Arcane Affinity
+type: trait
+img: icons/magic/symbols/runes-star-blue.webp
+system:
+  slug: arcane-affinity
+  source: Core Rules
+  prose:
+    description: >-
+      <p>You are naturally attuned to magicka and instinctively grasp arcane
+      techniques that others must study laboriously.</p>
+    flavorText: Innate magical sensitivity.
+    notes: ''
+  active: true
+  qualifier: null
+  value: 5
+  secondaryValue: null
+  formula: null
+  weaponProfile:
+    type: null
+    damage: null
+    range: null
+  temporary: false
+  durationText: null

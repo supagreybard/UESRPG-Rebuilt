@@ -1,0 +1,22 @@
+_id: nordrace00001a
+name: Nord
+type: race
+img: icons/environment/wilderness/cave-entrance-snow-blue.webp
+system:
+  slug: nord
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Nords endure cold, hardship, and battle with grim resolve forged in
+      the harsh climates of Skyrim.</p>
+    flavorText: Hardy folk of the north.
+    notes: ''
+  characteristics:
+    strength: 1
+    endurance: 1
+    agility: 0
+    intelligence: 0
+    willpower: 0
+    perception: 0
+    personality: 0
+  grants: []

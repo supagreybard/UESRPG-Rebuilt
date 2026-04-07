@@ -21,6 +21,32 @@
       "path": "lang/en.json"
     }
   ],
+  "packs": [
+    {
+      "name": "traits",
+      "label": "Traits",
+      "type": "Item",
+      "path": "packs/traits",
+      "system": "uesrpg-rebuilt",
+      "private": false
+    },
+    {
+      "name": "powers",
+      "label": "Powers",
+      "type": "Item",
+      "path": "packs/powers",
+      "system": "uesrpg-rebuilt",
+      "private": false
+    },
+    {
+      "name": "races",
+      "label": "Races",
+      "type": "Item",
+      "path": "packs/races",
+      "system": "uesrpg-rebuilt",
+      "private": false
+    }
+  ],
   "documentTypes": {
     "Actor": {
       "character": {},

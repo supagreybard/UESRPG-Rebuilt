@@ -4,7 +4,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   build: {
-    emptyOutDir: true,
+    emptyOutDir: false,
     lib: {
       entry: resolve(__dirname, 'src/uesrpg-rebuilt.ts'),
       fileName: () => 'uesrpg-rebuilt.js',
@@ -28,7 +28,6 @@ export default defineConfig({
         { src: 'styles/*.css', dest: 'styles' },
         { src: 'lang/*.json', dest: 'lang' },
         { src: 'icons/**/*', dest: 'icons' },
-        { src: 'packs/**/*', dest: 'packs' },
       ],
     }),
   ],
