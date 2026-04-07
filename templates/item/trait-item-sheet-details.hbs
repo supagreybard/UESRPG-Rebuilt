@@ -1,0 +1,52 @@
+<article
+  class='tab {{#if tabs.details.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-item-sheet__card--details'
+  data-group='primary'
+  data-tab='details'
+>
+  <h2 class='uesrpg-rebuilt-card__heading'>{{localize 'UESRPG.Sections.details'}}</h2>
+
+  <div class='uesrpg-rebuilt-trait-sheet__details-layout'>
+    <div class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two'>
+      {{#each textFields as |field|}}
+        <label class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__field'>
+          <span>{{field.label}}</span>
+          <input
+            name='system.{{field.key}}'
+            type='text'
+            value='{{field.value}}'
+          />
+        </label>
+      {{/each}}
+
+      <label class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__field'>
+        <span>{{eventField.label}}</span>
+        <input
+          name='system.{{eventField.key}}'
+          type='text'
+          value='{{eventField.value}}'
+        />
+      </label>
+
+      <label class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__field'>
+        <span>{{stackModeField.label}}</span>
+        <select name='system.{{stackModeField.key}}'>
+          {{#each stackModeField.options as |option|}}
+            <option value='{{option.value}}' {{#if option.selected}}selected{{/if}}>
+              {{option.label}}
+            </option>
+          {{/each}}
+        </select>
+      </label>
+
+      <label
+        class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__field uesrpg-rebuilt-trait-sheet__field--logic'
+      >
+        <span>{{logicField.label}}</span>
+        <textarea
+          class='uesrpg-rebuilt-trait-sheet__logic-input'
+          name='system.{{logicField.key}}'
+        >{{logicField.value}}</textarea>
+      </label>
+    </div>
+  </div>
+</article>

@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && npm run packs:compile",
-    "dev": "npm run packs:compile && vite build --watch",
+    "build": "node automation/prepare-dist-build.mjs && vite build && npm run packs:compile",
+    "dev": "node automation/prepare-dist-build.mjs && npm run packs:compile && vite build --watch",
     "packs:clean": "node automation/compendium-packager.mjs clean",
     "packs:compile": "node automation/compendium-packager.mjs compile",
     "packs:extract": "node automation/compendium-packager.mjs extract",

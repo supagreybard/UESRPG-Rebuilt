@@ -4,8 +4,8 @@
   "description": "A system package to run and play the Unofficial Elder Scrolls RPG in Foundry VTT",
   "version": "0.1.0",
   "compatibility": {
-    "minimum": "13",
-    "verified": "13"
+    "minimum": "14",
+    "verified": "14"
   },
   "authors": [
     {

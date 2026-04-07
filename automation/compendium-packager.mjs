@@ -2,11 +2,13 @@
 
 import {
   cpSync,
+  existsSync,
   mkdtempSync,
   mkdirSync,
   readFileSync,
   readdirSync,
   rmSync,
+  renameSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -17,6 +19,7 @@ import YAML from 'js-yaml';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = resolve(__dirname, '..');
+const BUILD_CACHE_ROOT = join(ROOT_DIR, '.build-cache');
 const SOURCE_ROOT = join(ROOT_DIR, 'packs-src');
 const OUTPUT_ROOT = join(ROOT_DIR, 'dist', 'packs');
 const PACK_NAMES = ['traits', 'powers', 'races'];
@@ -28,12 +31,20 @@ function ensureOutputRoot() {
   mkdirSync(OUTPUT_ROOT, { recursive: true });
 }
 
-function cleanOutputRoot() {
-  mkdirSync(OUTPUT_ROOT, { recursive: true });
-
-  for (const entry of readdirSync(OUTPUT_ROOT, { withFileTypes: true })) {
-    rmSync(join(OUTPUT_ROOT, entry.name), { recursive: true, force: true });
+function rotateDirectory(path, label) {
+  if (!existsSync(path)) {
+    return;
   }
+
+  mkdirSync(BUILD_CACHE_ROOT, { recursive: true });
+  const archivedPath = join(BUILD_CACHE_ROOT, `${label}-${Date.now()}`);
+
+  renameSync(path, archivedPath);
+}
+
+function cleanOutputRoot() {
+  rotateDirectory(OUTPUT_ROOT, 'dist-packs');
+  mkdirSync(OUTPUT_ROOT, { recursive: true });
 }
 
 async function compilePacks() {

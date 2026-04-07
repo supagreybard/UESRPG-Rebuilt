@@ -21,6 +21,14 @@ type TraitSelectOption = {
   selected: boolean;
 };
 
+type TraitSheetTab = {
+  id: string;
+  group: string;
+  cssClass: string;
+  active: boolean;
+  label: string;
+};
+
 export class TraitItemSheet extends BaseItemSheet {
   static override DEFAULT_OPTIONS = foundry.utils.mergeObject(
     super.DEFAULT_OPTIONS,
@@ -33,14 +41,33 @@ export class TraitItemSheet extends BaseItemSheet {
     },
   );
 
+  static TABS = {
+    primary: {
+      initial: 'prose',
+      labelPrefix: 'UESRPG.Tabs',
+      tabs: [{ id: 'prose' }, { id: 'details' }, { id: 'parameters' }],
+    },
+  };
+
   static PARTS = {
     sheet: {
       template: `${SYSTEM_PATH}/templates/item/trait-item-sheet.hbs`,
       root: true,
       templates: [
+        `${SYSTEM_PATH}/templates/item/trait-item-sheet-tabs.hbs`,
+        `${SYSTEM_PATH}/templates/item/trait-item-sheet-details.hbs`,
         `${SYSTEM_PATH}/templates/item/trait-item-sheet-parameters.hbs`,
         `${SYSTEM_PATH}/templates/item/trait-item-sheet-prose.hbs`,
       ],
+    },
+    tabs: {
+      template: `${SYSTEM_PATH}/templates/item/trait-item-sheet-tabs.hbs`,
+      id: 'tabs',
+    },
+    details: {
+      template: `${SYSTEM_PATH}/templates/item/trait-item-sheet-details.hbs`,
+      id: 'details',
+      classes: ['uesrpg-rebuilt-trait-sheet__part'],
     },
     parameters: {
       template: `${SYSTEM_PATH}/templates/item/trait-item-sheet-parameters.hbs`,
@@ -63,9 +90,15 @@ export class TraitItemSheet extends BaseItemSheet {
     >;
     const system = this.item.system as Record<string, any>;
     const prose = (system.prose ?? {}) as Record<string, any>;
+    const tabs = (context.tabs ?? this._prepareTabs('primary')) as Record<
+      string,
+      any
+    >;
 
     return {
       ...context,
+      tabs,
+      sheetTabs: this.#prepareSheetTabs(tabs),
       item: this.item,
       editable: this.isEditable,
       system,
@@ -97,10 +130,22 @@ export class TraitItemSheet extends BaseItemSheet {
         value: String(prose.flavorText ?? ''),
       },
       partIds: {
+        tabs: `${this.id}-tabs`,
+        details: `${this.id}-details`,
         parameters: `${this.id}-parameters`,
         prose: `${this.id}-prose`,
       },
     };
+  }
+
+  async _onRender(context: any, options: any): Promise<void> {
+    await super._onRender(context, options);
+    this.#syncTabPanelVisibility();
+  }
+
+  changeTab(tab: string, group: string, options?: any): void {
+    super.changeTab(tab, group, options);
+    this.#syncTabPanelVisibility();
   }
 
   protected _processFormData(
@@ -227,6 +272,44 @@ export class TraitItemSheet extends BaseItemSheet {
       label: localize(this.#getStackModeLabel(value)),
       selected: value === normalizedMode,
     }));
+  }
+
+  #prepareSheetTabs(tabs: Record<string, any>): TraitSheetTab[] {
+    return ['prose', 'details', 'parameters'].map((id) => {
+      const tab = (tabs[id] ?? {}) as Record<string, any>;
+
+      return {
+        id,
+        group: String(tab.group ?? 'primary'),
+        cssClass: String(tab.cssClass ?? ''),
+        active: Boolean(tab.active),
+        label: localize(`UESRPG.Tabs.${id}`),
+      };
+    });
+  }
+
+  #syncTabPanelVisibility(): void {
+    const element = this.element;
+
+    if (!element) {
+      return;
+    }
+
+    const activeTab = this.tabGroups.primary ?? 'prose';
+    const panels = element.querySelectorAll(
+      '.tab[data-group="primary"][data-tab]',
+    );
+
+    for (const panel of panels) {
+      if (!(panel instanceof HTMLElement)) {
+        continue;
+      }
+
+      const isActive = panel.dataset.tab === activeTab;
+      panel.hidden = !isActive;
+      panel.setAttribute('aria-hidden', String(!isActive));
+      panel.classList.toggle('active', isActive);
+    }
   }
 
   #normalizeParameterEntry(

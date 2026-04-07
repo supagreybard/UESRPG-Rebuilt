@@ -7,3 +7,4 @@ coverage/
 plans/
 rules/
 AGENTS.md
+.build-cache/
