@@ -40,3 +40,16 @@ export const LABELS = {
     [ITEM_TYPES.power]: 'UESRPG.Item.power',
   },
 } as const;
+
+export const PARAMETER_TYPES = {
+  number: 'number',
+  text: 'text',
+  roll_formula: 'roll_formula',
+} as const;
+
+export const TRAIT_STACK_MODES = {
+  single: 'single',
+  highest: 'highest',
+  sum: 'sum',
+  distinct: 'distinct',
+} as const;

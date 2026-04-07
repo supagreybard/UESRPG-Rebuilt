@@ -1,0 +1,60 @@
+<section
+  id='{{partIds.parameters}}'
+  class='uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-trait-sheet__parameters-card'
+>
+  <div class='uesrpg-rebuilt-trait-sheet__parameters-header'>
+    <h2 class='uesrpg-rebuilt-card__heading'>{{localize
+        'UESRPG.Fields.parameters'
+      }}</h2>
+    <button
+      class='uesrpg-rebuilt-trait-sheet__parameter-action'
+      type='button'
+      data-action='addParameter'
+    >{{localize 'UESRPG.Actions.addParameter'}}</button>
+  </div>
+
+  {{#if hasParameters}}
+    <div class='uesrpg-rebuilt-trait-sheet__parameters-list'>
+      {{#each parameterFields as |parameter|}}
+        <div class='uesrpg-rebuilt-trait-sheet__parameter-row'>
+          <div class='uesrpg-rebuilt-trait-sheet__parameter-index'>#{{parameter.index}}</div>
+
+          <label
+            class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__parameter-field uesrpg-rebuilt-trait-sheet__parameter-field--type'
+          >
+            <span>{{localize 'UESRPG.Fields.type'}}</span>
+            <select name='system.parameters.{{parameter.index}}.type'>
+              {{#each parameter.typeOptions as |option|}}
+                <option value='{{option.value}}' {{#if option.selected}}selected{{/if}}>
+                  {{option.label}}
+                </option>
+              {{/each}}
+            </select>
+          </label>
+
+          <label
+            class='uesrpg-rebuilt-field uesrpg-rebuilt-trait-sheet__parameter-field'
+          >
+            <span>{{localize 'UESRPG.Fields.value'}}</span>
+            <input
+              name='system.parameters.{{parameter.index}}.value'
+              type='text'
+              value='{{parameter.value}}'
+            />
+          </label>
+
+          <button
+            class='uesrpg-rebuilt-trait-sheet__parameter-action uesrpg-rebuilt-trait-sheet__parameter-action--remove'
+            type='button'
+            data-action='removeParameter'
+            data-index='{{parameter.index}}'
+          >{{localize 'UESRPG.Actions.removeParameter'}}</button>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class='uesrpg-rebuilt-trait-sheet__empty'>{{localize
+        'UESRPG.Empty.parameters'
+      }}</p>
+  {{/if}}
+</section>

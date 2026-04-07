@@ -259,6 +259,94 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
     color-mix(in srgb, var(--uesrpg-rebuilt-accent) 58%, transparent);
 }
 
+.uesrpg-rebuilt-trait-sheet__details-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uesrpg-rebuilt-space-4);
+}
+
+.uesrpg-rebuilt-trait-sheet__field--logic {
+  grid-column: 1 / -1;
+}
+
+.uesrpg-rebuilt-trait-sheet__logic-input {
+  min-height: 12rem;
+  resize: vertical;
+  font-family: var(--font-monospace);
+}
+
+.uesrpg-rebuilt-trait-sheet__parameters-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uesrpg-rebuilt-space-3);
+}
+
+.uesrpg-rebuilt-trait-sheet__parameters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uesrpg-rebuilt-space-3);
+}
+
+.uesrpg-rebuilt-trait-sheet__parameters-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uesrpg-rebuilt-space-3);
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-row {
+  display: grid;
+  grid-template-columns: auto minmax(8rem, 12rem) minmax(0, 1fr) auto;
+  gap: var(--uesrpg-rebuilt-space-3);
+  align-items: end;
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-index {
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding-bottom: 0.7rem;
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-field {
+  margin: 0;
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-field--type {
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-action {
+  appearance: none;
+  border: 1px solid
+    color-mix(in srgb, var(--uesrpg-rebuilt-border) 70%, transparent);
+  border-radius: var(--uesrpg-rebuilt-radius-sm);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-panel-surface-strong) 88%,
+    transparent
+  );
+  color: var(--uesrpg-rebuilt-text-heading);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-action:hover,
+.uesrpg-rebuilt-trait-sheet__parameter-action:focus-visible {
+  border-color: var(--uesrpg-rebuilt-accent);
+}
+
+.uesrpg-rebuilt-trait-sheet__parameter-action--remove {
+  align-self: stretch;
+}
+
+.uesrpg-rebuilt-trait-sheet__empty {
+  margin: 0;
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-style: italic;
+}
+
 .uesrpg-rebuilt-sheet__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

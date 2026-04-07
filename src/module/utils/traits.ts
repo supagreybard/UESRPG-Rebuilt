@@ -1,172 +1,237 @@
-import {
-  getSupportedTraitDefinition,
-  isSupportedTraitSlug,
-  type SupportedTraitDefinition,
-} from '../config/trait-registry';
+import { PARAMETER_TYPES, TRAIT_STACK_MODES } from '../config/constants';
+
+type TraitParameterType =
+  (typeof PARAMETER_TYPES)[keyof typeof PARAMETER_TYPES];
+type TraitStackMode =
+  (typeof TRAIT_STACK_MODES)[keyof typeof TRAIT_STACK_MODES];
+
+type TraitParameterData = {
+  type?: string | null;
+  value?: string | null;
+};
 
 type TraitLike = Item & {
   system: {
     slug?: string | null;
-    active?: boolean;
-    qualifier?: string | null;
-    value?: number | null;
-    weaponProfile?: {
-      type?: string | null;
-      damage?: string | null;
-      range?: string | null;
-    } | null;
+    event?: string | null;
+    logic?: string | null;
+    stackMode?: string | null;
+    parameters?: TraitParameterData[] | null;
   };
+};
+
+export type ResolvedTraitParameter = {
+  index: number;
+  type: TraitParameterType;
+  raw: string;
+};
+
+export type TraitEventDispatch<TContext extends Record<string, unknown>> = {
+  actor: Actor;
+  context: TContext;
+  event: string;
+  traits: TraitInstance[];
 };
 
 export type TraitInstance = {
   item: TraitLike;
   slug: string;
-  qualifier: string | null;
-  value: number | null;
-  weaponProfile: {
-    type: string | null;
-    damage: string | null;
-    range: string | null;
-  } | null;
-  definition: SupportedTraitDefinition;
+  event: string | null;
+  logic: string | null;
+  stackMode: TraitStackMode;
+  parameters: ResolvedTraitParameter[];
+  getParameter: (index: number) => ResolvedTraitParameter | null;
+  getTextParameter: (index: number) => string | null;
+  getNumberParameter: (index: number) => number | null;
+  getRollFormulaParameter: (index: number) => string | null;
 };
 
-export function getTraitInstances(actor: Actor, slug: string): TraitInstance[] {
-  const normalizedSlug = normalizeSlug(slug);
+export function getTraitInstances(
+  actor: Actor,
+  slug?: string,
+): TraitInstance[] {
+  const normalizedSlug = normalizeSlug(slug ?? null);
 
-  if (!normalizedSlug) {
+  return getTraitItems(actor)
+    .map((item) => toTraitInstance(item))
+    .filter((instance): instance is TraitInstance => instance !== null)
+    .filter((instance) => {
+      if (normalizedSlug === null) {
+        return true;
+      }
+
+      return instance.slug === normalizedSlug;
+    });
+}
+
+export function hasTrait(actor: Actor, slug: string): boolean {
+  return getTraitInstances(actor, slug).length > 0;
+}
+
+export function getTraitsForEvent(
+  actor: Actor,
+  event: string,
+): TraitInstance[] {
+  const normalizedEvent = normalizeEvent(event);
+
+  if (normalizedEvent === null) {
     return [];
   }
 
-  return getSupportedTraitItems(actor)
-    .map((item) => toTraitInstance(item))
-    .filter((instance): instance is TraitInstance => instance !== null)
-    .filter((instance) => instance.slug === normalizedSlug);
+  return getTraitInstances(actor).filter(
+    (instance) => instance.event === normalizedEvent,
+  );
 }
 
-export function hasTrait(
-  actor: Actor,
-  slug: string,
-  qualifier?: string,
-): boolean {
-  const normalizedQualifier = normalizeQualifier(qualifier ?? null);
-
-  return getTraitInstances(actor, slug).some((instance) => {
-    if (normalizedQualifier === null) {
-      return true;
-    }
-
-    return instance.qualifier === normalizedQualifier;
-  });
-}
-
-export function getTraitValue(
-  actor: Actor,
-  slug: string,
-  qualifier?: string,
-): number | null {
-  const instances = getTraitInstances(actor, slug);
-  const normalizedQualifier = normalizeQualifier(qualifier ?? null);
-
-  if (instances.length === 0) {
-    return null;
-  }
-
-  const relevantInstances =
-    normalizedQualifier === null
-      ? instances
-      : instances.filter(
-          (instance) => instance.qualifier === normalizedQualifier,
-        );
-
-  if (relevantInstances.length === 0) {
-    return null;
-  }
-
-  switch (relevantInstances[0].definition.stackMode) {
-    case 'sum':
-      return relevantInstances.reduce(
-        (total, instance) => total + (instance.value ?? 0),
-        0,
-      );
-
-    case 'highest':
-      return relevantInstances.reduce<number | null>((highest, instance) => {
-        if (instance.value === null) {
-          return highest;
-        }
-
-        if (highest === null || instance.value > highest) {
-          return instance.value;
-        }
-
-        return highest;
-      }, null);
-
-    case 'single':
-    case 'distinctQualifier':
-      return relevantInstances[0].value ?? null;
-  }
+export function hasTraitForEvent(actor: Actor, event: string): boolean {
+  return getTraitsForEvent(actor, event).length > 0;
 }
 
 export function getResolvedTraits(actor: Actor): Map<string, TraitInstance[]> {
-  const resolvedTraits = new Map<string, TraitInstance[]>();
-
-  for (const item of getSupportedTraitItems(actor)) {
-    const instance = toTraitInstance(item);
-
-    if (!instance) {
-      continue;
-    }
-
-    const existingInstances = resolvedTraits.get(instance.slug) ?? [];
-    existingInstances.push(instance);
-    resolvedTraits.set(instance.slug, existingInstances);
-  }
-
-  return resolvedTraits;
+  return groupTraitInstances(
+    getTraitInstances(actor),
+    (instance) => instance.slug,
+  );
 }
 
-export { isSupportedTraitSlug };
+export function getResolvedTraitEvents(
+  actor: Actor,
+): Map<string, TraitInstance[]> {
+  return groupTraitInstances(
+    getTraitInstances(actor).filter((instance) => instance.event !== null),
+    (instance) => instance.event,
+  );
+}
 
-function getSupportedTraitItems(actor: Actor): TraitLike[] {
-  return actor.items.filter((item) => {
-    if (String(item.type) !== 'trait') {
-      return false;
-    }
+export function dispatchTraitEvent<TContext extends Record<string, unknown>>(
+  actor: Actor,
+  event: string,
+  context: TContext,
+): TraitEventDispatch<TContext> {
+  const normalizedEvent = normalizeEvent(event);
 
-    const trait = item as TraitLike;
-    const slug = normalizeSlug(trait.system.slug ?? null);
+  return {
+    actor,
+    context,
+    event: normalizedEvent ?? '',
+    traits:
+      normalizedEvent === null ? [] : getTraitsForEvent(actor, normalizedEvent),
+  };
+}
 
-    return (
-      Boolean(trait.system.active) &&
-      slug !== null &&
-      isSupportedTraitSlug(slug)
-    );
-  }) as TraitLike[];
+function getTraitItems(actor: Actor): TraitLike[] {
+  return actor.items.filter(
+    (item) => String(item.type) === 'trait',
+  ) as TraitLike[];
 }
 
 function toTraitInstance(item: TraitLike): TraitInstance | null {
   const slug = normalizeSlug(item.system.slug ?? null);
 
-  if (!slug) {
+  if (slug === null) {
     return null;
   }
 
-  const definition = getSupportedTraitDefinition(slug);
-
-  if (!definition) {
-    return null;
-  }
+  const parameters = normalizeParameters(item.system.parameters);
 
   return {
     item,
     slug,
-    qualifier: normalizeQualifier(item.system.qualifier ?? null),
-    value: typeof item.system.value === 'number' ? item.system.value : null,
-    weaponProfile: normalizeWeaponProfile(item.system.weaponProfile ?? null),
-    definition,
+    event: normalizeEvent(item.system.event ?? null),
+    logic: normalizeText(item.system.logic ?? null),
+    stackMode: normalizeStackMode(item.system.stackMode ?? null),
+    parameters,
+    getParameter: (index) => getParameter(parameters, index),
+    getTextParameter: (index) => getTextParameter(parameters, index),
+    getNumberParameter: (index) => getNumberParameter(parameters, index),
+    getRollFormulaParameter: (index) =>
+      getRollFormulaParameter(parameters, index),
   };
+}
+
+function groupTraitInstances(
+  instances: TraitInstance[],
+  getKey: (instance: TraitInstance) => string | null,
+): Map<string, TraitInstance[]> {
+  const groupedInstances = new Map<string, TraitInstance[]>();
+
+  for (const instance of instances) {
+    const key = getKey(instance);
+
+    if (key === null) {
+      continue;
+    }
+
+    const existingInstances = groupedInstances.get(key) ?? [];
+    existingInstances.push(instance);
+    groupedInstances.set(key, existingInstances);
+  }
+
+  return groupedInstances;
+}
+
+function normalizeParameters(parameters: TraitLike['system']['parameters']) {
+  if (!Array.isArray(parameters)) {
+    return [];
+  }
+
+  return parameters.map((parameter, index) => ({
+    index,
+    type: normalizeParameterType(parameter?.type ?? null),
+    raw: normalizeRawValue(parameter?.value ?? null),
+  }));
+}
+
+function getParameter(
+  parameters: ResolvedTraitParameter[],
+  index: number,
+): ResolvedTraitParameter | null {
+  if (!Number.isInteger(index) || index < 0) {
+    return null;
+  }
+
+  return parameters[index] ?? null;
+}
+
+function getTextParameter(
+  parameters: ResolvedTraitParameter[],
+  index: number,
+): string | null {
+  const parameter = getParameter(parameters, index);
+
+  if (!parameter || parameter.type !== PARAMETER_TYPES.text) {
+    return null;
+  }
+
+  return parameter.raw.length > 0 ? parameter.raw : null;
+}
+
+function getNumberParameter(
+  parameters: ResolvedTraitParameter[],
+  index: number,
+): number | null {
+  const parameter = getParameter(parameters, index);
+
+  if (!parameter || parameter.type !== PARAMETER_TYPES.number) {
+    return null;
+  }
+
+  const numericValue = Number(parameter.raw);
+
+  return Number.isFinite(numericValue) ? numericValue : null;
+}
+
+function getRollFormulaParameter(
+  parameters: ResolvedTraitParameter[],
+  index: number,
+): string | null {
+  const parameter = getParameter(parameters, index);
+
+  if (!parameter || parameter.type !== PARAMETER_TYPES.roll_formula) {
+    return null;
+  }
+
+  return parameter.raw.length > 0 ? parameter.raw : null;
 }
 
 function normalizeSlug(value: string | null): string | null {
@@ -175,10 +240,8 @@ function normalizeSlug(value: string | null): string | null {
   return normalizedValue === null ? null : normalizedValue.toLowerCase();
 }
 
-function normalizeQualifier(value: string | null): string | null {
-  const normalizedValue = normalizeText(value);
-
-  return normalizedValue === null ? null : normalizedValue.toLowerCase();
+function normalizeEvent(value: string | null): string | null {
+  return normalizeText(value);
 }
 
 function normalizeText(value: string | null): string | null {
@@ -191,16 +254,18 @@ function normalizeText(value: string | null): string | null {
   return trimmedValue.length > 0 ? trimmedValue : null;
 }
 
-function normalizeWeaponProfile(
-  weaponProfile: TraitLike['system']['weaponProfile'],
-): TraitInstance['weaponProfile'] {
-  if (!weaponProfile) {
-    return null;
-  }
+function normalizeRawValue(value: string | null): string {
+  return typeof value === 'string' ? value.trim() : '';
+}
 
-  return {
-    type: normalizeText(weaponProfile.type ?? null),
-    damage: normalizeText(weaponProfile.damage ?? null),
-    range: normalizeText(weaponProfile.range ?? null),
-  };
+function normalizeParameterType(value: string | null): TraitParameterType {
+  return Object.values(PARAMETER_TYPES).includes(value as TraitParameterType)
+    ? (value as TraitParameterType)
+    : PARAMETER_TYPES.text;
+}
+
+function normalizeStackMode(value: string | null): TraitStackMode {
+  return Object.values(TRAIT_STACK_MODES).includes(value as TraitStackMode)
+    ? (value as TraitStackMode)
+    : TRAIT_STACK_MODES.single;
 }

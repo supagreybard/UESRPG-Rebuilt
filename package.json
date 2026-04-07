@@ -4,9 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "node -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\"",
-    "build": "npm run clean && vite build && npm run packs:compile",
-    "dev": "npm run clean && npm run packs:compile && vite build --watch",
+    "build": "vite build && npm run packs:compile",
+    "dev": "npm run packs:compile && vite build --watch",
     "packs:clean": "node automation/compendium-packager.mjs clean",
     "packs:compile": "node automation/compendium-packager.mjs compile",
     "packs:extract": "node automation/compendium-packager.mjs extract",

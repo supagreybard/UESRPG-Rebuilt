@@ -1,0 +1,29 @@
+<article
+  id='{{partIds.prose}}'
+  class='uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-item-sheet__card--prose'
+>
+  <h2 class='uesrpg-rebuilt-card__heading'>{{localize 'UESRPG.Sections.prose'}}</h2>
+
+  <div class='uesrpg-rebuilt-item-sheet__prose-layout'>
+    <label
+      class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field uesrpg-rebuilt-item-sheet__prose-field--flavor'
+    >
+      <span>{{flavorTextField.label}}</span>
+      <textarea name='system.{{flavorTextField.key}}'>{{flavorTextField.value}}</textarea>
+    </label>
+
+    <label
+      class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'
+    >
+      <span>{{localize 'UESRPG.Fields.description'}}</span>
+      <textarea name='system.prose.description'>{{system.prose.description}}</textarea>
+    </label>
+
+    <label
+      class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'
+    >
+      <span>{{localize 'UESRPG.Fields.notes'}}</span>
+      <textarea name='system.prose.notes'>{{system.prose.notes}}</textarea>
+    </label>
+  </div>
+</article>

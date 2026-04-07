@@ -41,10 +41,7 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
     const itemType = String(this.item.type) as keyof typeof LABELS.itemTypes;
     const rawItemType = String(this.item.type);
     const isInventoryItem = rawItemType === 'weapon';
-    const isRuleItem =
-      rawItemType === 'trait' ||
-      rawItemType === 'race' ||
-      rawItemType === 'power';
+    const isRuleItem = rawItemType === 'race' || rawItemType === 'power';
 
     return {
       ...context,
@@ -95,96 +92,7 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       return [];
     }
 
-    const weaponProfile = (system.weaponProfile ?? {}) as Record<string, any>;
-
-    return [
-      {
-        key: 'slug',
-        label: localize('UESRPG.Fields.slug'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(system.slug ?? ''),
-      },
-      {
-        key: 'active',
-        label: localize('UESRPG.Fields.active'),
-        inputType: 'checkbox',
-        isCheckbox: true,
-        value: Boolean(system.active ?? true),
-      },
-      {
-        key: 'qualifier',
-        label: localize('UESRPG.Fields.qualifier'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(system.qualifier ?? ''),
-      },
-      {
-        key: 'value',
-        label: localize('UESRPG.Fields.value'),
-        inputType: 'number',
-        isCheckbox: false,
-        value: system.value ?? '',
-        step: 1,
-      },
-      {
-        key: 'secondaryValue',
-        label: localize('UESRPG.Fields.secondaryValue'),
-        inputType: 'number',
-        isCheckbox: false,
-        value: system.secondaryValue ?? '',
-        step: 1,
-      },
-      {
-        key: 'formula',
-        label: localize('UESRPG.Fields.formula'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(system.formula ?? ''),
-      },
-      {
-        key: 'weaponProfile.type',
-        label: localize('UESRPG.Fields.weaponProfileType'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(weaponProfile.type ?? ''),
-      },
-      {
-        key: 'weaponProfile.damage',
-        label: localize('UESRPG.Fields.weaponProfileDamage'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(weaponProfile.damage ?? ''),
-      },
-      {
-        key: 'weaponProfile.range',
-        label: localize('UESRPG.Fields.weaponProfileRange'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(weaponProfile.range ?? ''),
-      },
-      {
-        key: 'source',
-        label: localize('UESRPG.Fields.source'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(system.source ?? ''),
-      },
-      {
-        key: 'temporary',
-        label: localize('UESRPG.Fields.temporary'),
-        inputType: 'checkbox',
-        isCheckbox: true,
-        value: Boolean(system.temporary ?? false),
-      },
-      {
-        key: 'durationText',
-        label: localize('UESRPG.Fields.durationText'),
-        inputType: 'text',
-        isCheckbox: false,
-        value: String(system.durationText ?? ''),
-      },
-    ];
+    return [];
   }
 
   #prepareFlavorTextField(

@@ -1,6 +1,7 @@
 /* global console, process */
 
 import {
+  cpSync,
   mkdtempSync,
   mkdirSync,
   readFileSync,
@@ -28,7 +29,11 @@ function ensureOutputRoot() {
 }
 
 function cleanOutputRoot() {
-  rmSync(OUTPUT_ROOT, { recursive: true, force: true });
+  mkdirSync(OUTPUT_ROOT, { recursive: true });
+
+  for (const entry of readdirSync(OUTPUT_ROOT, { withFileTypes: true })) {
+    rmSync(join(OUTPUT_ROOT, entry.name), { recursive: true, force: true });
+  }
 }
 
 async function compilePacks() {
@@ -92,16 +97,15 @@ function validateSourceTree() {
 }
 
 function stagePackSource(sourceDirectory, stagingDirectory) {
-  mkdirSync(stagingDirectory, { recursive: true });
+  cpSync(sourceDirectory, stagingDirectory, { recursive: true });
 
-  for (const entry of readdirSync(sourceDirectory, { withFileTypes: true })) {
+  for (const entry of readdirSync(stagingDirectory, { withFileTypes: true })) {
     if (!entry.isFile()) {
       continue;
     }
 
-    const sourceFile = join(sourceDirectory, entry.name);
     const stagedFile = join(stagingDirectory, entry.name);
-    const content = readFileSync(sourceFile, 'utf8');
+    const content = readFileSync(stagedFile, 'utf8');
     const document = YAML.load(content);
 
     preparePackEntry(document);

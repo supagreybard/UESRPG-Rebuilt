@@ -1,48 +1,66 @@
 import { createStandardTestMessage } from '../chat';
 import { buildStandardTest, performStandardTest } from '../dice';
 import {
-    getResolvedTraits,
-    getTraitInstances,
-    getTraitValue,
-    hasTrait,
+  dispatchTraitEvent,
+  getResolvedTraitEvents,
+  getResolvedTraits,
+  getTraitsForEvent,
+  getTraitInstances,
+  hasTrait,
+  hasTraitForEvent,
 } from '../utils/traits';
 
 export class UesrpgActor extends Actor {
-    buildTest(): Roll {
-        return buildStandardTest();
-    }
+  buildTest(): Roll {
+    return buildStandardTest();
+  }
 
-    async test(targetNumber: number) {
-        const result = await performStandardTest({
-            targetNumber,
-            test: this.buildTest(),
-        });
+  async test(targetNumber: number) {
+    const result = await performStandardTest({
+      targetNumber,
+      test: this.buildTest(),
+    });
 
-        await createStandardTestMessage({
-            document: this,
-            result,
-        });
+    await createStandardTestMessage({
+      document: this,
+      result,
+    });
 
-        return result;
-    }
+    return result;
+  }
 
-    buildInitiativeRoll(): Roll {
-        return new Roll('1d100');
-    }
+  buildInitiativeRoll(): Roll {
+    return new Roll('1d100');
+  }
 
-    hasTrait(slug: string, qualifier?: string): boolean {
-        return hasTrait(this, slug, qualifier);
-    }
+  hasTrait(slug: string): boolean {
+    return hasTrait(this, slug);
+  }
 
-    getTraitInstances(slug: string) {
-        return getTraitInstances(this, slug);
-    }
+  getTraitInstances(slug?: string) {
+    return getTraitInstances(this, slug);
+  }
 
-    getTraitValue(slug: string, qualifier?: string): number | null {
-        return getTraitValue(this, slug, qualifier);
-    }
+  getTraitsForEvent(event: string) {
+    return getTraitsForEvent(this, event);
+  }
 
-    getResolvedTraits() {
-        return getResolvedTraits(this);
-    }
+  hasTraitForEvent(event: string): boolean {
+    return hasTraitForEvent(this, event);
+  }
+
+  getResolvedTraits() {
+    return getResolvedTraits(this);
+  }
+
+  getResolvedTraitEvents() {
+    return getResolvedTraitEvents(this);
+  }
+
+  dispatchTraitEvent<TContext extends Record<string, unknown>>(
+    event: string,
+    context: TContext,
+  ) {
+    return dispatchTraitEvent(this, event, context);
+  }
 }
