@@ -6,6 +6,7 @@ export const ACTOR_DOCUMENT_TYPES = [
 ] as const;
 export const ITEM_DOCUMENT_TYPES = [
   ITEM_TYPES.weapon,
-  ITEM_TYPES.gear,
   ITEM_TYPES.trait,
+  ITEM_TYPES.race,
+  ITEM_TYPES.power,
 ] as const;

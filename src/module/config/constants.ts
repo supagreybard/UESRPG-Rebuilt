@@ -9,8 +9,17 @@ export const ACTOR_TYPES = {
 
 export const ITEM_TYPES = {
   weapon: 'weapon',
-  gear: 'gear',
   trait: 'trait',
+  race: 'race',
+  power: 'power',
+} as const;
+
+export const GRANT_TYPES = {
+  trait: 'trait',
+  power: 'power',
+  skill_0: 'skill_0',
+  talent: 'talent',
+  equipment_training: 'equipment_training',
 } as const;
 
 export const RESOURCE_PATHS = {
@@ -26,7 +35,8 @@ export const LABELS = {
   },
   itemTypes: {
     [ITEM_TYPES.weapon]: 'UESRPG.Item.weapon',
-    [ITEM_TYPES.gear]: 'UESRPG.Item.gear',
     [ITEM_TYPES.trait]: 'UESRPG.Item.trait',
+    [ITEM_TYPES.race]: 'UESRPG.Item.race',
+    [ITEM_TYPES.power]: 'UESRPG.Item.power',
   },
 } as const;

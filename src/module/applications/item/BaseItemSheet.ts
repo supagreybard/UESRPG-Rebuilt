@@ -40,8 +40,11 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
     const prose = (system.prose ?? {}) as Record<string, any>;
     const itemType = String(this.item.type) as keyof typeof LABELS.itemTypes;
     const rawItemType = String(this.item.type);
-    const isInventoryItem = rawItemType === 'weapon' || rawItemType === 'gear';
-    const isTrait = rawItemType === 'trait';
+    const isInventoryItem = rawItemType === 'weapon';
+    const isRuleItem =
+      rawItemType === 'trait' ||
+      rawItemType === 'race' ||
+      rawItemType === 'power';
 
     return {
       ...context,
@@ -50,11 +53,11 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       system,
       typeLabel: localize(LABELS.itemTypes[itemType]),
       inventoryFields: this.#prepareInventoryFields(system, isInventoryItem),
-      ruleFields: this.#prepareRuleFields(system, isTrait),
+      ruleFields: this.#prepareRuleFields(system, isRuleItem),
       subtypeFields: this.#prepareSubtypeFields(system),
-      isTrait,
+      isRuleItem,
       headerFlavorText: String(prose.flavorText ?? '').trim(),
-      flavorTextField: this.#prepareFlavorTextField(prose, isTrait),
+      flavorTextField: this.#prepareFlavorTextField(prose, isRuleItem),
     };
   }
 
@@ -86,9 +89,9 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
 
   #prepareRuleFields(
     system: Record<string, any>,
-    isTrait: boolean,
+    isRuleItem: boolean,
   ): ItemField[] {
-    if (!isTrait) {
+    if (!isRuleItem) {
       return [];
     }
 
@@ -186,9 +189,9 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
 
   #prepareFlavorTextField(
     prose: Record<string, any>,
-    isTrait: boolean,
+    isRuleItem: boolean,
   ): ItemField | null {
-    if (!isTrait) {
+    if (!isRuleItem) {
       return null;
     }
 
@@ -219,18 +222,6 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
           inputType: 'text',
           isCheckbox: false,
           value: String(system.range ?? ''),
-        },
-      ];
-    }
-
-    if (itemType === 'gear') {
-      return [
-        {
-          key: 'equipped',
-          label: localize('UESRPG.Fields.equipped'),
-          inputType: 'checkbox',
-          isCheckbox: true,
-          value: Boolean(system.equipped),
         },
       ];
     }

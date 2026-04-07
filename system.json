@@ -28,8 +28,9 @@
     },
     "Item": {
       "weapon": {},
-      "gear": {},
-      "trait": {}
+      "trait": {},
+      "race": {},
+      "power": {}
     }
   },
   "grid": {

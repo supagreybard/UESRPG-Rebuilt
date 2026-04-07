@@ -1,6 +1,7 @@
 export { BaseItemData } from './BaseItemData';
-export { BaseInventoryItem } from './BaseInventoryItem';
-export { BaseRuleItem } from './BaseRuleItem';
-export { GearData } from './GearData';
+export { BaseInventoryItemData } from './BaseInventoryItemData';
+export { BaseRuleItemData } from './BaseRuleItemData';
+export { PowerData } from './PowerData';
+export { RaceData } from './RaceData';
 export { TraitData } from './TraitData';
 export { WeaponData } from './WeaponData';
