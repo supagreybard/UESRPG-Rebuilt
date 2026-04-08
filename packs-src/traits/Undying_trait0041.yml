@@ -1,0 +1,17 @@
+_id: trait0041undyng0
+name: Undying
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: undying
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters are free from most concerns of the living. They are immune
+      to disease and the effects of aging.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

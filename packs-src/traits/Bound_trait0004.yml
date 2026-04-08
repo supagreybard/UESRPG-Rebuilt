@@ -1,0 +1,17 @@
+_id: trait0004boundd0
+name: Bound
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: bound
+  source: Core Rules
+  prose:
+    description: |-
+      <p>This creature is bound by the will of their master. They must obey the commands of their master, except they will always prioritize defending themselves. Additionally, if the bound creature's master or their master's allies intentionally take hostile or harmful action against them for any reason, they immediately turn hostile and lose the bound trait.</p>
+      <p>Items with this trait use their creator's Willpower score when forced to roll any relevant test (except Combat Style). These items are practically weightless, counting as having an effective ENC rating of 0.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

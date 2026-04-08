@@ -1,0 +1,20 @@
+_id: trait0015immund0
+name: Immunity (*)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: immunity
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character is immune to any effects of the type specified in
+      parenthesis. The character may have multiple instances of this trait for
+      different effects *.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: text
+      value: ''
+  event: null
+  stackMode: distinct
+  logic: null

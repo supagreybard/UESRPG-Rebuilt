@@ -35,6 +35,7 @@ export class TraitItemSheet extends BaseItemSheet {
     {
       classes: [SYSTEM_ID, 'sheet', 'item', 'item-trait'],
       actions: {
+        activateTab: TraitItemSheet.prototype._onActivateTab,
         addParameter: TraitItemSheet.prototype._onAddParameter,
         removeParameter: TraitItemSheet.prototype._onRemoveParameter,
       },
@@ -198,6 +199,19 @@ export class TraitItemSheet extends BaseItemSheet {
     });
   }
 
+  protected _onActivateTab(event: PointerEvent, target: HTMLElement): void {
+    event.preventDefault();
+
+    const tab = target.dataset.tab;
+    const group = target.dataset.group ?? 'primary';
+
+    if (!tab) {
+      return;
+    }
+
+    this.changeTab(tab, group);
+  }
+
   protected async _onRemoveParameter(
     event: PointerEvent,
     target: HTMLElement,
@@ -296,9 +310,22 @@ export class TraitItemSheet extends BaseItemSheet {
     }
 
     const activeTab = this.tabGroups.primary ?? 'prose';
+    const navTabs = element.querySelectorAll(
+      '[data-action="activateTab"][data-tab]',
+    );
     const panels = element.querySelectorAll(
       '.tab[data-group="primary"][data-tab]',
     );
+
+    for (const navTab of navTabs) {
+      if (!(navTab instanceof HTMLElement)) {
+        continue;
+      }
+
+      const isActive = navTab.dataset.tab === activeTab;
+      navTab.classList.toggle('active', isActive);
+      navTab.setAttribute('aria-selected', String(isActive));
+    }
 
     for (const panel of panels) {
       if (!(panel instanceof HTMLElement)) {

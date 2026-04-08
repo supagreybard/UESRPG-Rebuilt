@@ -6,9 +6,9 @@
   --uesrpg-rebuilt-space-5: 1.5rem;
   --uesrpg-rebuilt-space-6: 2rem;
 
-  --uesrpg-rebuilt-radius-sm: 0.5rem;
-  --uesrpg-rebuilt-radius-md: 0.75rem;
-  --uesrpg-rebuilt-radius-lg: 0.9rem;
+  --uesrpg-rebuilt-radius-sm: 5px;
+  --uesrpg-rebuilt-radius-md: 5px;
+  --uesrpg-rebuilt-radius-lg: 5px;
 
   --uesrpg-rebuilt-shadow-sm: 0 6px 18px rgb(0 0 0 / 0.08);
   --uesrpg-rebuilt-shadow-md: 0 10px 24px rgb(0 0 0 / 0.14);
@@ -292,6 +292,7 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
   font-weight: 700;
   letter-spacing: 0.06em;
   padding: 0.6rem 0.9rem;
+  text-decoration: none;
   text-transform: uppercase;
 }
 

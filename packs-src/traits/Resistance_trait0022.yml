@@ -1,0 +1,21 @@
+_id: trait0022resist0
+name: Resistance (*, X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: resistance
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Characters with this trait reduce damage of * type by X after any other mitigation and gain a +10 bonus per X to tests made to resist non-damaging effects of the listed type.</p>
+      <p>In cases where the character is not making the * related test, but rather a * related roll is being made against one of their Characteristics, increase that characteristic by 10 times X for the purposes of resolving that roll.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: text
+      value: ''
+    - type: number
+      value: ''
+  event: null
+  stackMode: distinct
+  logic: null

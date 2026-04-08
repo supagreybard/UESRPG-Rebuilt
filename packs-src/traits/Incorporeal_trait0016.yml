@@ -1,0 +1,24 @@
+_id: trait0016incorp0
+name: Incorporeal
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: incorporeal
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Incorporeal characters are spirits, faintly visible and capable of
+      moving through objects. They gain the Flyer (Speed) trait and may use it
+      to freely move through solid objects. They can be targeted by attacks, but
+      they cannot suffer damage except from magic damage or damage from attacks
+      with the Magic quality. Incorporeal characters do not normally affect the
+      world, but they can use magic and make attacks that are capable of
+      damaging non-incorporeal beings. Attacks from Incorporeal characters
+      ignore all AR from any armor that does not have the Magic quality and
+      cannot be blocked by shields without that quality.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

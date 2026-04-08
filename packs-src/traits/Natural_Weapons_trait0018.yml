@@ -1,0 +1,27 @@
+_id: trait0018natwep0
+name: Natural Weapons (Type, Damage, Range)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: natural-weapons
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character with this trait has unique natural weapons of some kind.
+      The Type, Damage, and Range together specify the complete profile for the
+      character's natural weapons. This overrides the default natural weapons
+      profile and they cannot be disarmed. Default Natural Weapons profiles can
+      be found in Unarmed Combat on page 104. Natural Weapons cannot be
+      enchanted.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: text
+      value: ''
+    - type: roll_formula
+      value: ''
+    - type: text
+      value: ''
+  event: null
+  stackMode: single
+  logic: null

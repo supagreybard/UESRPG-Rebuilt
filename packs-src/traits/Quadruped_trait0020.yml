@@ -1,0 +1,18 @@
+_id: trait0020quadpd0
+name: Quadruped
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: quadruped
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait move up to twice their speed when they use
+      the Dash action and three times their speed when they use the Sprint
+      stamina ability.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

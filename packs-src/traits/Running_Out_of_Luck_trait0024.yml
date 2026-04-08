@@ -1,0 +1,18 @@
+_id: trait0024runluk0
+name: Running Out of Luck
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: running-out-of-luck
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character's luck is running out. Whenever they would burn any
+      amount of Luck, burn twice that amount. If the character does not have
+      this much Luck remaining, just burn all remaining Luck.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

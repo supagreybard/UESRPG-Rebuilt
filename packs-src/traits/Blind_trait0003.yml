@@ -1,0 +1,17 @@
+_id: trait0003blindd0
+name: Blind
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: blind
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character has the blinded condition while they have this trait. See
+      the Conditions section in Chapter 5 for rules on this condition.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

@@ -1,0 +1,20 @@
+_id: trait0026silver0
+name: Silver-Scarred (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: silver-scarred
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Any damage inflicted on a character with this trait after mitigation by
+      an attack from a silver weapon is increased by X before calculating the
+      effects of the damage.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

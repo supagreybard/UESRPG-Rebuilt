@@ -1,0 +1,25 @@
+_id: trait0042unsens0
+name: Unnatural Senses (*, X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: unnatural-senses
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character with this trait can perceive its surroundings using
+      additional and/or different senses than the usual. Their Senses allow them
+      to detect the things specified by * within range of X meters (even through
+      solid objects). If * is "all" then their Senses have been replaced
+      entirely, and they can simply see "normally" through solid objects up to
+      X meters away.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: text
+      value: ''
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

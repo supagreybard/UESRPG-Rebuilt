@@ -1,0 +1,16 @@
+_id: trait0035thkskl0
+name: Thick Skull
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: thick-skull
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Immune to Stun and Dazed.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

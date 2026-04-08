@@ -1,0 +1,19 @@
+_id: trait0005climbd0
+name: Climber (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: climber
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character can climb walls and ceilings as if open ground. Their
+      Climb Speed is now set to Xm.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

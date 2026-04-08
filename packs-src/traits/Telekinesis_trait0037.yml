@@ -1,0 +1,19 @@
+_id: trait0037telekn0
+name: Telekinesis (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: telekinesis
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Characters with this trait can move objects with their mind within a range of 10 * X meters. This can only be used to move fairly small objects (at most a large crate or barrel) at a speed of about 1 meter per second (6 per round).</p>
+      <p>The character can also throw an object at an opponent. This is a Primary Action and a Ranged Attack, and it uses Mysticism (Willpower) for the test. Any object used in this manner counts as an improvised weapon and can only be thrown a distance of WB * 2 meters.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

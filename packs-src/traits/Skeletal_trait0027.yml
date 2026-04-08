@@ -1,0 +1,19 @@
+_id: trait0027skelet0
+name: Skeletal
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: skeletal
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait have purely skeletal forms. Attempts to hit
+      them with ranged weapons suffer a -20 penalty. Characters with this trait
+      also automatically gain the Undead trait as well and are immune to the
+      Burning (X) condition.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

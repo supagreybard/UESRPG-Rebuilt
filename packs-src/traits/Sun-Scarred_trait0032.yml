@@ -1,0 +1,19 @@
+_id: trait0032sunscd0
+name: Sun-Scarred (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: sun-scarred
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Any damage inflicted on a character with this trait after mitigation by an attack that counts as sunlight is increased by X before calculating the effects of the damage.</p>
+      <p>If this character is exposed to normal sunlight they lose 1 SP each hour. Cloud cover or other such weather halves the rate of SP loss. The character must spend an hour in a dark place before they can remove levels of fatigue/regain SP lost in this manner.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

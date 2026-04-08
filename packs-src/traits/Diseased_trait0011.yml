@@ -1,0 +1,21 @@
+_id: trait0011disead0
+name: Diseased (+/- X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: diseased
+  source: Core Rules
+  prose:
+    description: >-
+      <p>If a character with this trait deals at least 1 point of damage (after
+      mitigation) with their natural weapons to a target without the Diseased
+      trait, then the affected target must test Endurance +/- X or contract a
+      common disease.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

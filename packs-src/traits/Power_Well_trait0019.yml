@@ -1,0 +1,20 @@
+_id: trait0019powwel0
+name: Power Well (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: power-well
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait have more magicka than usual. The size of
+      their Magicka Pool is increased by X. If the character would receive this
+      trait twice, combine the X values.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: sum
+  logic: null

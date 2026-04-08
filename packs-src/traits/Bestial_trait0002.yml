@@ -1,0 +1,19 @@
+_id: trait0002bestia0
+name: Bestial
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: bestial
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character has no need to make Survival skill tests in their natural
+      habitat, but they must test Willpower to avoid fleeing combat if the GM
+      feels that it's appropriate (for example, if the creature would feel
+      intimidated by its foe).</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

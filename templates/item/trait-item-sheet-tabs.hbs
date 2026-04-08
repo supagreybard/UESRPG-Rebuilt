@@ -1,17 +1,20 @@
 <nav
   id='{{partIds.tabs}}'
   class='tabs uesrpg-rebuilt-trait-sheet__tabs'
+  data-group='primary'
   aria-label='{{localize "UESRPG.Sheets.trait"}}'
+  role='tablist'
 >
   {{#each sheetTabs as |tab|}}
-    <button
+    <a
       class='uesrpg-rebuilt-trait-sheet__tab {{#if tab.active}}active{{/if}}'
-      type='button'
-      data-action='tab'
+      data-action='activateTab'
       data-group='{{tab.group}}'
       data-tab='{{tab.id}}'
+      role='tab'
+      aria-selected='{{#if tab.active}}true{{else}}false{{/if}}'
     >
       {{tab.label}}
-    </button>
+    </a>
   {{/each}}
 </nav>

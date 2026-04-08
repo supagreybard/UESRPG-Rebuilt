@@ -1,0 +1,17 @@
+_id: trait0001amphib0
+name: Amphibious
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: amphibious
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character can breathe water and ignores the skill cap placed on
+      their combat rolls by their Athletics skill when fighting in water.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

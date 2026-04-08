@@ -1,0 +1,38 @@
+_id: trait0034telept0
+name: Telepathy (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: telepathy
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Characters with this trait can communicate with others telepathically. They are capable of "broadcasting" thoughts to a maximum number of characters equal to their WB within a number of meters equal to one hundred times their WB. They must have line of sight to the character to whom they are broadcasting, unless the target character has this trait as well.</p>
+      <p>Characters with this trait can make a Perception test as a Free Action to attempt to locate other characters with this trait within their broadcast range, though this test can be opposed by a Willpower test if a character wishes to remain hidden.</p>
+      <p>The strength X of this trait determines the complexity of the thoughts they can broadcast.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Telepathic Strength X</th>
+            <th>Maximum Message Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>A single word</td></tr>
+          <tr><td>2</td><td>A short sentence.</td></tr>
+          <tr><td>3</td><td>A full sentence.</td></tr>
+          <tr><td>4</td><td>Up to five sentences.</td></tr>
+          <tr><td>5</td><td>As many words as the character desires.</td></tr>
+          <tr><td>6</td><td>Images.</td></tr>
+          <tr><td>7+</td><td>Complex feelings and concepts.</td></tr>
+        </tbody>
+      </table>
+      <p>This trait can stack by adding together values of X.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: sum
+  logic: null

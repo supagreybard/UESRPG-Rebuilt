@@ -1,0 +1,20 @@
+_id: trait0010disres0
+name: Disease Resistance (X%)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: disease-resistance
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Whenever a character with this trait would be infected by a common
+      disease, roll a d100. If the roll is less than or equal to X, the
+      character doesn't get the disease.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

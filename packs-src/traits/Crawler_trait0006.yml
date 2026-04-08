@@ -1,0 +1,18 @@
+_id: trait0006crawld0
+name: Crawler
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: crawler
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Rather than walking, a character with this trait crawls. They halve
+      their normal Speed (round up) and take no penalties for moving through
+      difficult terrain.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

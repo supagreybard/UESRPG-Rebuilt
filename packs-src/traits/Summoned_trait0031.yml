@@ -1,0 +1,18 @@
+_id: trait0031summon0
+name: Summoned
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: summoned
+  source: Core Rules
+  prose:
+    description: >-
+      <p>This creature or item has been conjured from another plane of
+      existence. Upon its death or destruction, it returns to where it came from
+      immediately.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

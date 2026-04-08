@@ -1,0 +1,20 @@
+_id: trait0017nattgh0
+name: Natural Toughness (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: natural-toughness
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character with this trait is naturally tough and reduces incoming
+      damage of all types by X. This functions like AR for the purposes of
+      reducing damage, but it does not count as armor.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

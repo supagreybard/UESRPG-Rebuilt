@@ -1,0 +1,22 @@
+_id: trait0044weakns0
+name: Weakness (*, X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: weakness
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Characters with this trait are weak to a certain damage or effect type. They increase damage of * type by X after any other mitigation and suffer a -10 penalty per X to tests made to resist non-damaging effects of this type.</p>
+      <p>If this trait would stack for a single damage type, instead only apply the highest value of X. Different values of * damage type are considered different traits.</p>
+      <p>In cases where the character is not making the * related test, but rather a * related roll is being made against one of their Characteristics, decrease that characteristic by 10 times X for the purposes of resolving that roll.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: text
+      value: ''
+    - type: number
+      value: ''
+  event: null
+  stackMode: distinct
+  logic: null

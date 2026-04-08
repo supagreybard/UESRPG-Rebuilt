@@ -1,0 +1,17 @@
+_id: trait0014frombd0
+name: From Beyond
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: from-beyond
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character is immune to the effects of disease, fear, toxins, and
+      any mind-affecting magic (i.e. illusions).</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

@@ -1,0 +1,20 @@
+_id: trait0021regend0
+name: Regeneration (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: regeneration
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait heal very quickly. They may make an
+      Endurance test at the start of each round to heal X HP. This does not
+      count as magical healing unless applied by some magical source.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

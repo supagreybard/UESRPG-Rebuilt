@@ -1,0 +1,19 @@
+_id: trait0038terrif0
+name: Terrifying (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: terrifying
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Those who encounter this character must immediately make a Horror (X)
+      test.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

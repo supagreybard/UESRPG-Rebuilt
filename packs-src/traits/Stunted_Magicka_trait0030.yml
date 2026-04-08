@@ -1,0 +1,17 @@
+_id: trait0030stumag0
+name: Stunted Magicka
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: stunted-magicka
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait do not regenerate magicka naturally and
+      halve the benefits (round down) gained from Spell Restraint.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

@@ -1,0 +1,18 @@
+_id: trait0007darksd0
+name: Dark Sight
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: dark-sight
+  source: Core Rules
+  prose:
+    description: >-
+      <p>A character with this trait can see normally even in areas with total
+      darkness and never takes penalties for acting in areas with dim or no
+      lighting.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

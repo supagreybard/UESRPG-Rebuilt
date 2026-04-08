@@ -1,0 +1,24 @@
+_id: trait0008dawncd0
+name: Dawn-Cursed (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: dawn-cursed
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait are fatally sensitive to sunlight. While in
+      direct sunlight, the character suffers X damage per round which ignores
+      all damage mitigation. If the character covers themselves completely with
+      clothing and a hood with sufficient coverage, this damage is reduced to X
+      per hour in the sunlight. If the vampire is under full cover which would
+      block out all sunlight, like a fully covered wagon or inside a building,
+      they take no damage.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

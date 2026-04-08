@@ -1,0 +1,20 @@
+_id: trait0039toughh0
+name: Tough (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: tough
+  source: Core Rules
+  prose:
+    description: |-
+      <p>Increase Wound Threshold by X.</p>
+      <p><strong>Optional Rule Note: Alternate Wounds</strong></p>
+      <p>If you're using the rules for Alternate Wounds found in Physical Health on page 108, replace the text for the Tough trait with "Character gains a +(10 * X) bonus to Shock Tests".</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

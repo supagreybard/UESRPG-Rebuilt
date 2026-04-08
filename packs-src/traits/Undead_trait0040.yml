@@ -1,0 +1,22 @@
+_id: trait0040undead0
+name: Undead
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: undead
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Characters with this trait are mere walking corpses. They do not
+      breathe or require organs to function. They are immune to things such as
+      disease, poison, passive wound effects, aging, fatigue, and a number of
+      conditions including but not limited to dazed, deafened, and organ damage.
+      Use common sense when deciding what can and cannot affect characters with
+      this trait. The character cannot spend Stamina Points if doing so would
+      bring their current SP to below 0.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

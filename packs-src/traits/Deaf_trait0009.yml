@@ -1,0 +1,17 @@
+_id: trait0009deafff0
+name: Deaf
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: deaf
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The character has the deafened condition while they have this trait.
+      See the Conditions section in Chapter 5 for rules on this condition.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null

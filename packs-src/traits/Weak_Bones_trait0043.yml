@@ -1,0 +1,18 @@
+_id: trait0043weakbn0
+name: Weak Bones (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: weak-bones
+  source: Core Rules
+  prose:
+    description: >-
+      <p>Reduce Wound Threshold by X.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

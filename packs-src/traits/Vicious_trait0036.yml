@@ -1,0 +1,20 @@
+_id: trait0036viciou0
+name: Vicious (X)
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: vicious
+  source: Core Rules
+  prose:
+    description: >-
+      <p>The creature treats their SB as being X for the purposes of resolving
+      damage. This does not effect the character's Strength Characteristic
+      Score.</p>
+    flavorText: ''
+    notes: ''
+  parameters:
+    - type: number
+      value: ''
+  event: null
+  stackMode: highest
+  logic: null

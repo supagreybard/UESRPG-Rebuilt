@@ -1,0 +1,20 @@
+_id: trait0029strjaw0
+name: Strong Jaws
+type: trait
+img: icons/svg/aura.svg
+system:
+  slug: strong-jaws
+  source: Core Rules
+  prose:
+    description: >-
+      <p>A Bite attack made by this character that deals damage automatically
+      starts a Grapple test. The test to contest this Grapple is made against
+      the original test made by the attacker. If the target Counter Attacks
+      againt a Bite attack, the Counter Attack ignores the creature's AR and
+      Natural Toughness trait.</p>
+    flavorText: ''
+    notes: ''
+  parameters: []
+  event: null
+  stackMode: single
+  logic: null
