@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: natural-toughness
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character with this trait is naturally tough and reduces incoming

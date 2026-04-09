@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: resist-normal-weapons
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Characters with this trait are resistant to mundane weapons. If the

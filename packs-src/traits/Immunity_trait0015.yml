@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: immunity
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character is immune to any effects of the type specified in

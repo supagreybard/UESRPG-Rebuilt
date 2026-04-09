@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: dark-sight
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>A character with this trait can see normally even in areas with total

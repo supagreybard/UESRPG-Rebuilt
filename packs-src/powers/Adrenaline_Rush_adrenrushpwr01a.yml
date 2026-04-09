@@ -1,0 +1,15 @@
+_id: adrenrushpwr01a
+name: Adrenaline Rush
+type: power
+img: icons/magic/control/buff-strength-muscle-damage.webp
+system:
+  slug: adrenaline-rush
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>The character may choose to gain 1 SP at any time. If the character is
+      fatigued when this power is used then remove a level of fatigue instead.
+      This SP persists only for that encounter, and this power may only be used
+      once until after the character's next long rest.</p>
+    flavorText: ''
+    notes: ''

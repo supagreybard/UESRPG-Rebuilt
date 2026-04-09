@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: deaf
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character has the deafened condition while they have this trait.

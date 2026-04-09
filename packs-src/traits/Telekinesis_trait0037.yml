@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: telekinesis
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Characters with this trait can move objects with their mind within a range of 10 * X meters. This can only be used to move fairly small objects (at most a large crate or barrel) at a speed of about 1 meter per second (6 per round).</p>

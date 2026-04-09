@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: power-well
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Characters with this trait have more magicka than usual. The size of

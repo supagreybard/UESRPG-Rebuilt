@@ -1,0 +1,17 @@
+_id: warcrypower001a
+name: War Cry
+type: power
+img: icons/magic/sonic/projectile-shock-wave-teal.webp
+system:
+  slug: war-cry
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>Nords are able to call on a very simple form of the Thu'um and harness
+      it to frighten their enemies in battle. As a Primary Action, they put
+      forth a mighty war cry that forces all enemies who hear it to make a Panic
+      (+30) test. If a character passes this test, they are immune to the
+      effects of this power for the remainder of the encounter. This power may
+      only be used once until after the character's next long rest.</p>
+    flavorText: ''
+    notes: ''

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: resistance
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Characters with this trait reduce damage of * type by X after any other mitigation and gain a +10 bonus per X to tests made to resist non-damaging effects of the listed type.</p>

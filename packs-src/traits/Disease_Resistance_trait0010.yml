@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: disease-resistance
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Whenever a character with this trait would be infected by a common

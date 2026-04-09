@@ -1,0 +1,16 @@
+_id: treasureseek01a
+name: Treasure Seeker
+type: power
+img: icons/tools/hand/lockpicks-steel-grey.webp
+system:
+  slug: treasure-seeker
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>The character has a knack for finding treasure and overcoming the
+      obstacles that protect it. At any time the character can choose to reroll
+      a failed Subterfuge test made to pick a lock or disarm a trap, but only
+      once for a given test. This power may only be used once until after the
+      character's next long rest.</p>
+    flavorText: ''
+    notes: ''

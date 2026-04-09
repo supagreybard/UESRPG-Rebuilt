@@ -1,0 +1,20 @@
+_id: moonshadowpwr01
+name: Moonshadow
+type: power
+img: icons/magic/perception/veil-shadow-shroud.webp
+system:
+  slug: moonshadow
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>The character possesses a simple form of innate shadow magic. This
+      power may be activated once a day with the use of the Cast Magic action.
+      The character becomes Invisible for 18 seconds (3 rounds). The character
+      may spend a Luck point, or burn one Luck, to extend this duration by one
+      round (this may be done as many times as the character desires). This
+      invisibility is broken if the character makes an attack, after which it
+      reforms at the beginning of the next round as long as there is 1 round of
+      duration left. This power may only be used once until after the
+      character's next long rest.</p>
+    flavorText: ''
+    notes: ''

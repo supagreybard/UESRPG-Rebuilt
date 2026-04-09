@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: unnatural-senses
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character with this trait can perceive its surroundings using

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: sun-scarred
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Any damage inflicted on a character with this trait after mitigation by an attack that counts as sunlight is increased by X before calculating the effects of the damage.</p>

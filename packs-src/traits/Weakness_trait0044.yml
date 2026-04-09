@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: weakness
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Characters with this trait are weak to a certain damage or effect type. They increase damage of * type by X after any other mitigation and suffer a -10 penalty per X to tests made to resist non-damaging effects of this type.</p>

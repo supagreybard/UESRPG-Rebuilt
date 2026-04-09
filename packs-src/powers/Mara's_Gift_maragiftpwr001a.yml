@@ -1,0 +1,19 @@
+_id: maragiftpwr001a
+name: Mara's Gift
+type: power
+img: icons/magic/life/heart-cross-strong-flame-purple-pink.webp
+system:
+  slug: maras-gift
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>This character can speak the word of the divines for an hour in order
+      to remove a single wound and all of its effects (not including lost limbs)
+      from themselves. This also restores an amount of HP equal to the amount of
+      damage dealt to cause the wound. The character may choose to burn 2d6 Luck
+      in order to allow this power to also restore lost limbs. The character
+      must remain still for the entire duration while they perform the ritual.
+      This power can only be used once until after the character's next long
+      rest.</p>
+    flavorText: ''
+    notes: ''

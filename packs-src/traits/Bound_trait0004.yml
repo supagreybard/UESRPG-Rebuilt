@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: bound
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>This creature is bound by the will of their master. They must obey the commands of their master, except they will always prioritize defending themselves. Additionally, if the bound creature's master or their master's allies intentionally take hostile or harmful action against them for any reason, they immediately turn hostile and lose the bound trait.</p>

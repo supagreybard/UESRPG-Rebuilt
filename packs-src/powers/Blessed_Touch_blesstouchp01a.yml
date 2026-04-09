@@ -1,0 +1,19 @@
+_id: blesstouchp01a
+name: Blessed Touch
+type: power
+img: icons/magic/life/heart-cross-strong-flame-purple-orange.webp
+system:
+  slug: blessed-touch
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>This character can speak the word of the divines for an hour in order
+      to remove a single wound and all of its effects (not including lost
+      limbs) from another character. This also restores an amount of HP equal to
+      the amount of damage dealt to cause the wound. This character or the
+      target character may choose to burn 2d6 Luck to allow this power to also
+      restore lost limbs. The target character must remain still for the entire
+      duration while the character performs the ritual. This power can only be
+      used once until after the character's next long rest.</p>
+    flavorText: ''
+    notes: ''

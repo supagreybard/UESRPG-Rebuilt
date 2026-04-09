@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: regeneration
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Characters with this trait heal very quickly. They may make an

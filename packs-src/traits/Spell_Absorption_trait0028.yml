@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: spell-absorption
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Characters with this trait absorb a portion of the magic directed at them to fuel their own magicka reserves. Whenever magic from another source/character affects them, roll a d10. If the value is less than or equal to X, the magic has no effect on them; instead, they regain missing MP up to the cost of the magic.</p>

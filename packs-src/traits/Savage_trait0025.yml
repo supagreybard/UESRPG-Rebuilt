@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: savage
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character treats weapons that they wield (including Natural

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: crawler
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Rather than walking, a character with this trait crawls. They halve

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: strong-jaws
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>A Bite attack made by this character that deals damage automatically

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: climber
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character can climb walls and ceilings as if open ground. Their

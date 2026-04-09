@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: amphibious
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character can breathe water and ignores the skill cap placed on

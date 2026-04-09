@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: dawn-cursed
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Characters with this trait are fatally sensitive to sunlight. While in

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: tough
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Increase Wound Threshold by X.</p>

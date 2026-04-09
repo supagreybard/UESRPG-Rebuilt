@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: telepathy
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: |-
       <p>Characters with this trait can communicate with others telepathically. They are capable of "broadcasting" thoughts to a maximum number of characters equal to their WB within a number of meters equal to one hundred times their WB. They must have line of sight to the character to whom they are broadcasting, unless the target character has this trait as well.</p>

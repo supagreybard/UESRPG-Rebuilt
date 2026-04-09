@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: running-out-of-luck
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The character's luck is running out. Whenever they would burn any

@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: thick-skull
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Immune to Stun and Dazed.</p>

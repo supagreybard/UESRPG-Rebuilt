@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: stunted-magicka
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>Characters with this trait do not regenerate magicka naturally and

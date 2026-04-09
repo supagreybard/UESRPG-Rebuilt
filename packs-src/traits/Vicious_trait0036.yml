@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: vicious
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>The creature treats their SB as being X for the purposes of resolving

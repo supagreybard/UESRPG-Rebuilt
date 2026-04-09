@@ -1,0 +1,12 @@
+_id: akavirdsensp01a
+name: Akaviri Danger-Sense
+type: power
+img: icons/magic/perception/eye-ringed-glow-angry-small-teal.webp
+system:
+  slug: akaviri-danger-sense
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>The character may make a Luck test in order to avoid surprise.</p>
+    flavorText: ''
+    notes: ''

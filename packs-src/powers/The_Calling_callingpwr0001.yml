@@ -1,0 +1,22 @@
+_id: callingpwr0001
+name: The Calling
+type: power
+img: icons/magic/control/fear-fright-monster-purple-blue.webp
+system:
+  slug: the-calling
+  source: Rules Compendium
+  prose:
+    description: >-
+      <p>The Dwemer have developed the capability to form connections with the
+      minds of others, allowing silent and instant communication across great
+      distances. A Dwemer may do this at any time, though they may not attempt
+      to contact someone they have not met. Forming a mental connection requires
+      the character to pass a Willpower test or gain a level of fatigue. Once a
+      connection is formed the two minds may communicate as they see fit. Every
+      minute of communication beyond the first imposes another Willpower test,
+      where failure incurs a level of fatigue. Alternatively, they may form a
+      connection with a number of others equal to their Willpower bonus, but
+      doing so causes them to automatically fail the Willpower tests imposed by
+      normal communication.</p>
+    flavorText: ''
+    notes: ''

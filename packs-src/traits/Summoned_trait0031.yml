@@ -4,7 +4,7 @@ type: trait
 img: icons/svg/aura.svg
 system:
   slug: summoned
-  source: Core Rules
+  source: Rules Compendium
   prose:
     description: >-
       <p>This creature or item has been conjured from another plane of
