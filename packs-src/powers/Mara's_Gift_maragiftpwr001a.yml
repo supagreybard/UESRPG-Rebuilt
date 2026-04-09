@@ -1,7 +1,7 @@
-_id: maragiftpwr001a
+_id: maragiftpwr001ab
 name: Mara's Gift
 type: power
-img: icons/magic/life/heart-cross-strong-flame-purple-pink.webp
+img: icons/magic/life/heart-cross-strong-flame-green.webp
 system:
   slug: maras-gift
   source: Rules Compendium

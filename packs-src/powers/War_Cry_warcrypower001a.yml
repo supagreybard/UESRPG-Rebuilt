@@ -1,7 +1,7 @@
-_id: warcrypower001a
+_id: warcrypower001ab
 name: War Cry
 type: power
-img: icons/magic/sonic/projectile-shock-wave-teal.webp
+img: icons/magic/sonic/scream-wail-shout-teal.webp
 system:
   slug: war-cry
   source: Rules Compendium

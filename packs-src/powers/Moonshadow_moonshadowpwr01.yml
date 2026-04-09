@@ -1,7 +1,7 @@
-_id: moonshadowpwr01
+_id: moonshadowpwr01a
 name: Moonshadow
 type: power
-img: icons/magic/perception/veil-shadow-shroud.webp
+img: icons/magic/perception/shadow-stealth-eyes-purple.webp
 system:
   slug: moonshadow
   source: Rules Compendium
