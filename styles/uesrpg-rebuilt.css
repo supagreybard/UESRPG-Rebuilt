@@ -259,24 +259,28 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
     color-mix(in srgb, var(--uesrpg-rebuilt-accent) 58%, transparent);
 }
 
-.uesrpg-rebuilt-trait-sheet__details-layout {
+.uesrpg-rebuilt-trait-sheet__details-layout,
+.uesrpg-rebuilt-rule-item-sheet__details-layout {
   display: flex;
   flex-direction: column;
   gap: var(--uesrpg-rebuilt-space-4);
 }
 
-.uesrpg-rebuilt-trait-sheet__content {
+.uesrpg-rebuilt-trait-sheet__content,
+.uesrpg-rebuilt-rule-item-sheet__content {
   display: grid;
 }
 
-.uesrpg-rebuilt-trait-sheet__tabs {
+.uesrpg-rebuilt-trait-sheet__tabs,
+.uesrpg-rebuilt-rule-item-sheet__tabs {
   display: flex;
   flex-wrap: wrap;
   gap: var(--uesrpg-rebuilt-space-2);
   margin-bottom: var(--uesrpg-rebuilt-space-4);
 }
 
-.uesrpg-rebuilt-trait-sheet__tab {
+.uesrpg-rebuilt-trait-sheet__tab,
+.uesrpg-rebuilt-rule-item-sheet__tab {
   appearance: none;
   border: 1px solid
     color-mix(in srgb, var(--uesrpg-rebuilt-border) 72%, transparent);
@@ -297,12 +301,15 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
 }
 
 .uesrpg-rebuilt-trait-sheet__tab:hover,
-.uesrpg-rebuilt-trait-sheet__tab:focus-visible {
+.uesrpg-rebuilt-trait-sheet__tab:focus-visible,
+.uesrpg-rebuilt-rule-item-sheet__tab:hover,
+.uesrpg-rebuilt-rule-item-sheet__tab:focus-visible {
   border-color: var(--uesrpg-rebuilt-accent);
   color: var(--uesrpg-rebuilt-text-heading);
 }
 
-.uesrpg-rebuilt-trait-sheet__tab.active {
+.uesrpg-rebuilt-trait-sheet__tab.active,
+.uesrpg-rebuilt-rule-item-sheet__tab.active {
   background: color-mix(
     in srgb,
     var(--uesrpg-rebuilt-accent) 18%,
@@ -316,19 +323,23 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
   color: var(--uesrpg-rebuilt-text-heading);
 }
 
-.uesrpg-rebuilt-trait-sheet__content .tab {
+.uesrpg-rebuilt-trait-sheet__content .tab,
+.uesrpg-rebuilt-rule-item-sheet__content .tab {
   display: none;
 }
 
-.uesrpg-rebuilt-trait-sheet__content .tab.active {
+.uesrpg-rebuilt-trait-sheet__content .tab.active,
+.uesrpg-rebuilt-rule-item-sheet__content .tab.active {
   display: flex;
 }
 
-.uesrpg-rebuilt-trait-sheet__field--logic {
+.uesrpg-rebuilt-trait-sheet__field--logic,
+.uesrpg-rebuilt-rule-item-sheet__field--logic {
   grid-column: 1 / -1;
 }
 
-.uesrpg-rebuilt-trait-sheet__logic-input {
+.uesrpg-rebuilt-trait-sheet__logic-input,
+.uesrpg-rebuilt-rule-item-sheet__logic-field textarea {
   min-height: 12rem;
   resize: vertical;
   font-family: var(--font-monospace);
@@ -955,11 +966,13 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
     grid-template-columns: 1fr;
   }
 
-  .uesrpg-rebuilt-trait-sheet__tabs {
+  .uesrpg-rebuilt-trait-sheet__tabs,
+  .uesrpg-rebuilt-rule-item-sheet__tabs {
     gap: var(--uesrpg-rebuilt-space-1);
   }
 
-  .uesrpg-rebuilt-trait-sheet__tab {
+  .uesrpg-rebuilt-trait-sheet__tab,
+  .uesrpg-rebuilt-rule-item-sheet__tab {
     flex: 1 1 100%;
   }
 

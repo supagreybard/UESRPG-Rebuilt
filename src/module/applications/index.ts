@@ -5,6 +5,7 @@ import {
 import { SYSTEM_ID } from '../config/constants';
 import { CharacterSheet } from './actor/CharacterSheet';
 import { NPCSheet } from './actor/NPCSheet';
+import { PowerItemSheet } from './item/PowerItemSheet';
 import { TraitItemSheet } from './item/TraitItemSheet';
 import { UesrpgItemSheet } from './item/UesrpgItemSheet';
 
@@ -35,7 +36,9 @@ export function registerApplicationClasses(): void {
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, UesrpgItemSheet as any, {
-    types: ITEM_DOCUMENT_TYPES.filter((type) => type !== 'trait'),
+    types: ITEM_DOCUMENT_TYPES.filter(
+      (type) => type !== 'trait' && type !== 'power',
+    ),
     makeDefault: true,
     label: 'UESRPG.Sheets.item',
   });
@@ -44,5 +47,11 @@ export function registerApplicationClasses(): void {
     types: ['trait'],
     makeDefault: true,
     label: 'UESRPG.Sheets.trait',
+  });
+
+  DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, PowerItemSheet as any, {
+    types: ['power'],
+    makeDefault: true,
+    label: 'UESRPG.Sheets.power',
   });
 }

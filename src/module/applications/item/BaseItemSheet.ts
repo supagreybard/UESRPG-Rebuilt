@@ -37,11 +37,9 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       unknown
     >;
     const system = this.item.system as Record<string, any>;
-    const prose = (system.prose ?? {}) as Record<string, any>;
     const itemType = String(this.item.type) as keyof typeof LABELS.itemTypes;
     const rawItemType = String(this.item.type);
     const isInventoryItem = rawItemType === 'weapon';
-    const isRuleItem = rawItemType === 'race' || rawItemType === 'power';
 
     return {
       ...context,
@@ -50,11 +48,11 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
       system,
       typeLabel: localize(LABELS.itemTypes[itemType]),
       inventoryFields: this.#prepareInventoryFields(system, isInventoryItem),
-      ruleFields: this.#prepareRuleFields(system, isRuleItem),
+      ruleFields: [],
       subtypeFields: this.#prepareSubtypeFields(system),
-      isRuleItem,
-      headerFlavorText: String(prose.flavorText ?? '').trim(),
-      flavorTextField: this.#prepareFlavorTextField(prose, isRuleItem),
+      isRuleItem: false,
+      headerFlavorText: '',
+      flavorTextField: null,
     };
   }
 
@@ -82,34 +80,6 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
         value: Number(system.encumbrance ?? 0),
       },
     ];
-  }
-
-  #prepareRuleFields(
-    system: Record<string, any>,
-    isRuleItem: boolean,
-  ): ItemField[] {
-    if (!isRuleItem) {
-      return [];
-    }
-
-    return [];
-  }
-
-  #prepareFlavorTextField(
-    prose: Record<string, any>,
-    isRuleItem: boolean,
-  ): ItemField | null {
-    if (!isRuleItem) {
-      return null;
-    }
-
-    return {
-      key: 'prose.flavorText',
-      label: localize('UESRPG.Fields.flavorText'),
-      inputType: 'text',
-      isCheckbox: false,
-      value: String(prose.flavorText ?? ''),
-    };
   }
 
   #prepareSubtypeFields(system: Record<string, any>): ItemField[] {

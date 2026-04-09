@@ -1,0 +1,25 @@
+<article
+  class='tab {{#if tabs.prose.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-item-sheet__card--prose'
+  data-group='primary'
+  data-tab='prose'
+>
+  <h2 class='uesrpg-rebuilt-card__heading'>{{localize 'UESRPG.Sections.prose'}}</h2>
+
+  <div class='uesrpg-rebuilt-item-sheet__prose-layout'>
+    <label
+      class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field uesrpg-rebuilt-item-sheet__prose-field--flavor'
+    >
+      <span>{{flavorTextField.label}}</span>
+      <textarea name='system.{{flavorTextField.key}}'>{{flavorTextField.value}}</textarea>
+    </label>
+
+    {{#each proseFields as |field|}}
+      <label
+        class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field {{field.cssClass}}'
+      >
+        <span>{{field.label}}</span>
+        <textarea name='system.{{field.key}}'>{{field.value}}</textarea>
+      </label>
+    {{/each}}
+  </div>
+</article>

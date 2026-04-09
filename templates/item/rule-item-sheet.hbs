@@ -1,0 +1,45 @@
+<form class='uesrpg-rebuilt-sheet uesrpg-rebuilt-rule-item-sheet' autocomplete='off'>
+  <header class='uesrpg-rebuilt-sheet__header'>
+    <img
+      class='uesrpg-rebuilt-sheet__portrait'
+      src='{{item.img}}'
+      data-edit='img'
+      title='{{item.name}}'
+    />
+
+    <div class='uesrpg-rebuilt-item-sheet__header-copy'>
+      <div
+        class='uesrpg-rebuilt-sheet__title-row uesrpg-rebuilt-item-sheet__title-row'
+      >
+        <div class='uesrpg-rebuilt-sheet__type'>{{typeLabel}}
+          -
+          {{sheetTitle}}</div>
+      </div>
+
+      <input
+        class='uesrpg-rebuilt-sheet__name'
+        name='name'
+        type='text'
+        value='{{item.name}}'
+        placeholder='{{localize "UESRPG.Fields.name"}}'
+      />
+
+      {{#if headerFlavorText}}
+        <div
+          class='uesrpg-rebuilt-sheet__flavor-text uesrpg-rebuilt-item-sheet__flavor-text'
+        >{{headerFlavorText}}</div>
+      {{/if}}
+    </div>
+  </header>
+
+  <section id='{{partIds.tabs}}'></section>
+
+  <section class='uesrpg-rebuilt-rule-item-sheet__content'>
+    {{#each contentSections as |section|}}
+      <section
+        id='{{section.id}}'
+        data-rule-item-tab-panel='{{section.tab}}'
+      ></section>
+    {{/each}}
+  </section>
+</form>

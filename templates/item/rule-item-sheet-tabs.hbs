@@ -1,0 +1,20 @@
+<nav
+  id='{{partIds.tabs}}'
+  class='tabs uesrpg-rebuilt-rule-item-sheet__tabs'
+  data-group='primary'
+  aria-label='{{sheetTitle}}'
+  role='tablist'
+>
+  {{#each sheetTabs as |tab|}}
+    <a
+      class='uesrpg-rebuilt-rule-item-sheet__tab {{tab.cssClass}} {{#if tab.active}}active{{/if}}'
+      data-action='activateTab'
+      data-group='{{tab.group}}'
+      data-tab='{{tab.id}}'
+      role='tab'
+      aria-selected='{{#if tab.active}}true{{else}}false{{/if}}'
+    >
+      {{tab.label}}
+    </a>
+  {{/each}}
+</nav>

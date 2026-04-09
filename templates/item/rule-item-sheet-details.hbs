@@ -1,0 +1,34 @@
+<article
+  class='tab {{#if tabs.details.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-item-sheet__card--details'
+  data-group='primary'
+  data-tab='details'
+>
+  <h2 class='uesrpg-rebuilt-card__heading'>{{localize 'UESRPG.Sections.details'}}</h2>
+
+  <div class='uesrpg-rebuilt-rule-item-sheet__details-layout'>
+    <div class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two'>
+      {{#each detailFields as |field|}}
+        <label
+          class='uesrpg-rebuilt-field uesrpg-rebuilt-rule-item-sheet__field {{field.cssClass}}'
+        >
+          <span>{{field.label}}</span>
+          {{#if field.isSelect}}
+            <select name='system.{{field.key}}'>
+              {{#each field.options as |option|}}
+                <option value='{{option.value}}' {{#if option.selected}}selected{{/if}}>
+                  {{option.label}}
+                </option>
+              {{/each}}
+            </select>
+          {{else}}
+            {{#if field.isTextarea}}
+              <textarea name='system.{{field.key}}'>{{field.value}}</textarea>
+            {{else}}
+              <input name='system.{{field.key}}' type='text' value='{{field.value}}' />
+            {{/if}}
+          {{/if}}
+        </label>
+      {{/each}}
+    </div>
+  </div>
+</article>
