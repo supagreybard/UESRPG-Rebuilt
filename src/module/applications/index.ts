@@ -6,6 +6,7 @@ import { SYSTEM_ID } from '../config/constants';
 import { CharacterSheet } from './actor/CharacterSheet';
 import { NPCSheet } from './actor/NPCSheet';
 import { PowerItemSheet } from './item/PowerItemSheet';
+import { RaceItemSheet } from './item/RaceItemSheet';
 import { TraitItemSheet } from './item/TraitItemSheet';
 import { UesrpgItemSheet } from './item/UesrpgItemSheet';
 
@@ -37,7 +38,7 @@ export function registerApplicationClasses(): void {
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, UesrpgItemSheet as any, {
     types: ITEM_DOCUMENT_TYPES.filter(
-      (type) => type !== 'trait' && type !== 'power',
+      (type) => type !== 'trait' && type !== 'race' && type !== 'power',
     ),
     makeDefault: true,
     label: 'UESRPG.Sheets.item',
@@ -53,5 +54,11 @@ export function registerApplicationClasses(): void {
     types: ['power'],
     makeDefault: true,
     label: 'UESRPG.Sheets.power',
+  });
+
+  DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, RaceItemSheet as any, {
+    types: ['race'],
+    makeDefault: true,
+    label: 'UESRPG.Sheets.race',
   });
 }

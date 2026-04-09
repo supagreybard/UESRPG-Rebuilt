@@ -1,0 +1,22 @@
+<article
+  class='tab {{#if tabs.system.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-race-sheet__system-card'
+  data-group='primary'
+  data-tab='system'
+>
+  <h2 class='uesrpg-rebuilt-card__heading'>{{localize
+      'UESRPG.Sections.characteristics'
+    }}</h2>
+
+  <div class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two'>
+    {{#each characteristicFields as |characteristic|}}
+      <label class='uesrpg-rebuilt-field uesrpg-rebuilt-race-sheet__field'>
+        <span>{{characteristic.label}}</span>
+        <input
+          name='system.characteristics.{{characteristic.key}}'
+          type='number'
+          value='{{characteristic.value}}'
+        />
+      </label>
+    {{/each}}
+  </div>
+</article>
