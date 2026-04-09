@@ -1,4 +1,7 @@
 {
+  "TYPES.Item.power": "Power",
+  "TYPES.Item.trait": "Trait",
+  "TYPES.Item.race": "Race",
   "UESRPG.SystemTitle": "UESRPG",
   "UESRPG.Sheets.character": "Character Sheet",
   "UESRPG.Sheets.npc": "NPC Sheet",
