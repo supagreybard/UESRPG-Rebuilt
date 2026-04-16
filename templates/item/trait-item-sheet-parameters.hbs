@@ -18,6 +18,12 @@
     <div class='uesrpg-rebuilt-trait-sheet__parameters-list'>
       {{#each parameterFields as |parameter|}}
         <div class='uesrpg-rebuilt-trait-sheet__parameter-row'>
+          <input
+            name='system.parameters.{{parameter.index}}.id'
+            type='hidden'
+            value='{{parameter.id}}'
+          />
+
           <div class='uesrpg-rebuilt-trait-sheet__parameter-index'>#{{parameter.index}}</div>
 
           <label

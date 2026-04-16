@@ -1,0 +1,84 @@
+<section
+  class='tab {{#if tabs.grants.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-item-sheet__card uesrpg-rebuilt-race-sheet__grants-card'
+  data-group='primary'
+  data-tab='grants'
+>
+  <div class='uesrpg-rebuilt-race-sheet__grants-header'>
+    <h2 class='uesrpg-rebuilt-card__heading'>{{localize 'UESRPG.Sections.grants'}}</h2>
+  </div>
+
+  <div class='uesrpg-rebuilt-race-sheet__grant-drop-zone' data-race-grant-drop-zone>
+    <div class='uesrpg-rebuilt-race-sheet__grant-drop-copy'>
+      {{localize 'UESRPG.Messages.dropTraitOrPower'}}
+    </div>
+  </div>
+
+  {{#if hasGrants}}
+    <div class='uesrpg-rebuilt-race-sheet__grants-list'>
+      {{#each grantFields as |grant|}}
+        <article class='uesrpg-rebuilt-race-sheet__grant-row {{#if grant.isBroken}}uesrpg-rebuilt-race-sheet__grant-row--broken{{/if}}'>
+          <input name='system.grants.{{grant.index}}.type' type='hidden' value='{{grant.type}}' />
+          <input name='system.grants.{{grant.index}}.slug' type='hidden' value='{{grant.slug}}' />
+          <input name='system.grants.{{grant.index}}.sourceUuid' type='hidden' value='{{grant.sourceUuid}}' />
+          <input name='system.grants.{{grant.index}}.sourceName' type='hidden' value='{{grant.sourceName}}' />
+          <input name='system.grants.{{grant.index}}.optionGroup' type='hidden' value='{{grant.optionGroup}}' />
+
+          <div class='uesrpg-rebuilt-race-sheet__grant-copy'>
+            <div class='uesrpg-rebuilt-race-sheet__grant-heading-row'>
+              <h3 class='uesrpg-rebuilt-race-sheet__grant-name'>{{grant.displayName}}</h3>
+              <div class='uesrpg-rebuilt-race-sheet__grant-badges'>
+                {{#if grant.isBroken}}
+                  <span class='uesrpg-rebuilt-race-sheet__grant-badge uesrpg-rebuilt-race-sheet__grant-badge--broken'>{{localize
+                      'UESRPG.Messages.brokenGrantSource'
+                    }}</span>
+                {{/if}}
+                <span class='uesrpg-rebuilt-race-sheet__grant-type'>{{grant.type}}</span>
+              </div>
+            </div>
+
+            {{#if grant.slug}}
+              <div class='uesrpg-rebuilt-race-sheet__grant-meta'>{{localize 'UESRPG.Fields.slug'}}: {{grant.slug}}</div>
+            {{/if}}
+
+            {{#if grant.sourceUuid}}
+              <div class='uesrpg-rebuilt-race-sheet__grant-meta'>{{grant.sourceUuid}}</div>
+            {{else}}
+              <div class='uesrpg-rebuilt-race-sheet__grant-meta uesrpg-rebuilt-race-sheet__grant-meta--broken'>{{localize
+                  'UESRPG.Messages.missingGrantSource'
+                }}</div>
+              <div class='uesrpg-rebuilt-race-sheet__grant-broken-copy'>{{localize
+                  'UESRPG.Messages.brokenGrantSourceHelp'
+                }}</div>
+            {{/if}}
+
+            {{#if grant.hasParameters}}
+              <div class='uesrpg-rebuilt-race-sheet__grant-parameters'>
+                {{#each grant.parameterFields as |parameter|}}
+                  <label class='uesrpg-rebuilt-field uesrpg-rebuilt-race-sheet__grant-parameter-field'>
+                    <input name='system.grants.{{grant.index}}.parameters.{{parameter.index}}.id' type='hidden' value='{{parameter.id}}' />
+                    <span>#{{parameter.index}} · {{parameter.type}}</span>
+                    <input
+                      name='system.grants.{{grant.index}}.parameters.{{parameter.index}}.value'
+                      type='text'
+                      value='{{parameter.value}}'
+                      {{#unless grant.isResolved}}disabled{{/unless}}
+                    />
+                  </label>
+                {{/each}}
+              </div>
+            {{/if}}
+          </div>
+
+          <button
+            class='uesrpg-rebuilt-trait-sheet__parameter-action uesrpg-rebuilt-trait-sheet__parameter-action--remove'
+            type='button'
+            data-action='removeGrant'
+            data-index='{{grant.index}}'
+          >{{localize 'UESRPG.Actions.removeGrant'}}</button>
+        </article>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class='uesrpg-rebuilt-trait-sheet__empty'>{{localize 'UESRPG.Empty.raceGrants'}}</p>
+  {{/if}}
+</section>

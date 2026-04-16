@@ -9,9 +9,16 @@ import { BaseRuleItemSheet } from './BaseRuleItemSheet';
 
 type TraitParameterField = {
   index: number;
+  id: string;
   type: string;
   value: string;
   typeOptions: TraitSelectOption[];
+};
+
+type NormalizedTraitParameterEntry = {
+  id: string;
+  type: string;
+  value: string;
 };
 
 type TraitSelectOption = {
@@ -96,7 +103,7 @@ export class TraitItemSheet extends BaseRuleItemSheet {
     system.parameters = entries
       .map((entry) => this.#normalizeParameterEntry(entry))
       .filter(
-        (entry): entry is { type: string; value: string } => entry !== null,
+        (entry): entry is NormalizedTraitParameterEntry => entry !== null,
       );
     system.event = this.#normalizeOptionalText(system.event);
     system.logic = this.#normalizeOptionalText(system.logic);
@@ -198,6 +205,7 @@ export class TraitItemSheet extends BaseRuleItemSheet {
 
     return parameters.map((entry, index) => ({
       index,
+      id: this.#readParameterId(entry),
       type: this.#readParameterType(entry),
       value: this.#readParameterValue(entry),
       typeOptions: this.#buildParameterTypeOptions(
@@ -228,11 +236,28 @@ export class TraitItemSheet extends BaseRuleItemSheet {
 
   #normalizeParameterEntry(
     entry: unknown,
-  ): { type: string; value: string } | null {
+  ): NormalizedTraitParameterEntry | null {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+      return null;
+    }
+
+    const id = this.#normalizeParameterId(
+      (entry as Record<string, unknown>).id,
+    );
     const type = this.#normalizeParameterType(this.#readParameterType(entry));
     const value = this.#readParameterValue(entry).trim();
 
-    return { type, value };
+    return { id, type, value };
+  }
+
+  #normalizeParameterId(value: unknown): string {
+    if (typeof value !== 'string') {
+      return foundry.utils.randomID();
+    }
+
+    const trimmedValue = value.trim();
+
+    return trimmedValue.length > 0 ? trimmedValue : foundry.utils.randomID();
   }
 
   #normalizeParameterType(value: unknown): string {
@@ -267,6 +292,14 @@ export class TraitItemSheet extends BaseRuleItemSheet {
     );
   }
 
+  #readParameterId(entry: unknown): string {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+      return foundry.utils.randomID();
+    }
+
+    return this.#normalizeParameterId((entry as Record<string, unknown>).id);
+  }
+
   #readParameterValue(entry: unknown): string {
     if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
       return '';
@@ -275,8 +308,9 @@ export class TraitItemSheet extends BaseRuleItemSheet {
     return String((entry as Record<string, unknown>).value ?? '');
   }
 
-  #createDefaultParameter(): { type: string; value: string } {
+  #createDefaultParameter(): NormalizedTraitParameterEntry {
     return {
+      id: foundry.utils.randomID(),
       type: PARAMETER_TYPES.text,
       value: '',
     };

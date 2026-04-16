@@ -6,6 +6,7 @@ type TraitStackMode =
   (typeof TRAIT_STACK_MODES)[keyof typeof TRAIT_STACK_MODES];
 
 type TraitParameterData = {
+  id?: string | null;
   type?: string | null;
   value?: string | null;
 };
@@ -21,6 +22,7 @@ type TraitLike = Item & {
 };
 
 export type ResolvedTraitParameter = {
+  id: string;
   index: number;
   type: TraitParameterType;
   raw: string;
@@ -176,10 +178,21 @@ function normalizeParameters(parameters: TraitLike['system']['parameters']) {
   }
 
   return parameters.map((parameter, index) => ({
+    id: normalizeParameterId(parameter?.id ?? null),
     index,
     type: normalizeParameterType(parameter?.type ?? null),
     raw: normalizeRawValue(parameter?.value ?? null),
   }));
+}
+
+function normalizeParameterId(value: string | null): string {
+  if (typeof value !== 'string') {
+    return foundry.utils.randomID();
+  }
+
+  const trimmedValue = value.trim();
+
+  return trimmedValue.length > 0 ? trimmedValue : foundry.utils.randomID();
 }
 
 function getParameter(
