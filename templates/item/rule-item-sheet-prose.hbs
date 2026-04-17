@@ -13,13 +13,22 @@
       <textarea name='system.{{flavorTextField.key}}'>{{flavorTextField.value}}</textarea>
     </label>
 
-    {{#each proseFields as |field|}}
-      <label
-        class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field {{field.cssClass}}'
-      >
-        <span>{{field.label}}</span>
-        <textarea name='system.{{field.key}}'>{{field.value}}</textarea>
-      </label>
-    {{/each}}
+    <label class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'>
+      <span>{{localize 'UESRPG.Fields.description'}}</span>
+      <prose-mirror
+        name='system.prose.description'
+        value='{{source.system.prose.description}}'
+        compact
+      ></prose-mirror>
+    </label>
+
+    <label class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'>
+      <span>{{localize 'UESRPG.Fields.notes'}}</span>
+      <prose-mirror
+        name='system.prose.notes'
+        value='{{source.system.prose.notes}}'
+        compact
+      ></prose-mirror>
+    </label>
   </div>
 </article>

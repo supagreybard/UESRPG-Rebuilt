@@ -53,10 +53,18 @@
       "npc": {}
     },
     "Item": {
-      "weapon": {},
-      "trait": {},
-      "race": {},
-      "power": {}
+      "weapon": {
+        "htmlFields": ["prose.description", "prose.notes"]
+      },
+      "trait": {
+        "htmlFields": ["prose.description", "prose.notes"]
+      },
+      "race": {
+        "htmlFields": ["prose.description", "prose.notes"]
+      },
+      "power": {
+        "htmlFields": ["prose.description", "prose.notes"]
+      }
     }
   },
   "grid": {

@@ -122,18 +122,6 @@ export abstract class BaseRuleItemSheet extends BaseItemSheet {
         localize('UESRPG.Fields.flavorText'),
         String(prose.flavorText ?? ''),
       ),
-      proseFields: [
-        this._createTextareaField(
-          'prose.description',
-          localize('UESRPG.Fields.description'),
-          String(prose.description ?? ''),
-        ),
-        this._createTextareaField(
-          'prose.notes',
-          localize('UESRPG.Fields.notes'),
-          String(prose.notes ?? ''),
-        ),
-      ],
       contentSections: this._getContentSectionOrder().map((part) => ({
         id: partIds[part],
         tab: part,

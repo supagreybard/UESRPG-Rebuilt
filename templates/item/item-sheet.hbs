@@ -155,16 +155,22 @@
           class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'
         >
           <span>{{localize 'UESRPG.Fields.description'}}</span>
-          <textarea
+          <prose-mirror
             name='system.prose.description'
-          >{{system.prose.description}}</textarea>
+            value='{{source.system.prose.description}}'
+            compact
+          ></prose-mirror>
         </label>
 
         <label
           class='uesrpg-rebuilt-field uesrpg-rebuilt-item-sheet__prose-field'
         >
           <span>{{localize 'UESRPG.Fields.notes'}}</span>
-          <textarea name='system.prose.notes'>{{system.prose.notes}}</textarea>
+          <prose-mirror
+            name='system.prose.notes'
+            value='{{source.system.prose.notes}}'
+            compact
+          ></prose-mirror>
         </label>
       </div>
     </article>
