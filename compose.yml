@@ -6,9 +6,9 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - ./foundryvtt:/app/foundryvtt
-      - ./foundrydata:/data/foundry
-      - ../dist:/data/foundry/Data/systems/uesrpg-rebuilt
+      - ./dev-server/foundryvtt:/app/foundryvtt
+      - ./dev-server/foundrydata:/data/foundry
+      - ./dist:/data/foundry/Data/systems/uesrpg-rebuilt
     ports:
       - '30001:30000'
     command: node main.js --dataPath=/data/foundry

@@ -13,9 +13,9 @@ Project Status: In Development - not ready for user testing
 
 ### Running the Local Development Server
 
-For developer convenience, I've set up a docker compose project in the `dev-server/` directory which is intended to run a clean, UESRPG Rebuilt-only instance of Foundry for local development purposes.
+For developer convenience, I've set up a docker compose configuration in the root directory which is intended to run a clean, UESRPG Rebuilt-only instance of Foundry for local development purposes.
 
-If you're new to docker, visit Docker's  page for more info.
+If you're new to docker, visit Docker's documentation for more info.
 
 #### Requirements
 
@@ -30,8 +30,8 @@ If you're new to docker, visit Docker's  page for more info.
 4. Unzip the contents of the downloaded .zip file into the `dev-server/foundryvtt` directory.
 5. Open a terminal in the project root and run `npm i && npm run build`.
 6. Make sure the build went as expected and ensure that a build of the system package exists in `./dist`. If something went wrong, stop here and resolve before continuing.
-7. Move into the `dev-server` directory (`cd ./dev-server`) and run `docker compose up -d`.`
-8. Foundry should now be available at `localhost:30001` if everything went smoothly. Input your license key and set up the foundry instance as usual.
+7. Run `docker compose up -d` from the project root directory.
+8. Foundry should now be available at `localhost:30001`. Input your license key and set up the foundry instance as usual.
 
 #### Notes
 
