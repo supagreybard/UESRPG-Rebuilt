@@ -36,5 +36,5 @@ If you're new to docker, visit Docker's documentation for more info.
 #### Notes
 
 - Foundry's data path is shared between the host and the dev server container at `dev-server/foundrydata`.
-- `dist` is shared between the host and the container, pointing to `/data/foundry/Data/systems/uesrpg-rebuilt`. This should make your local build available in foundry as a system with no further action needed if your first time setup went as intended.
-- Use `docker compose down` from the `dev-server` directory to spin down the foundry container.
+- `dist` is shared between the host and the container, pointing to `/data/foundry/Data/systems/uesrpg-rebuilt`. This makes your local build available in the foundry dev server when you run `npm run build`.
+- Use `docker compose down` from the project root directory to spin down the foundry container.
