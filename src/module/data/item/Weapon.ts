@@ -1,4 +1,4 @@
-import { BaseInventoryItemData } from './BaseInventoryItemData';
+import { BaseInventoryItemData } from './abstract/BaseInventoryItem';
 
 const fields = foundry.data.fields;
 

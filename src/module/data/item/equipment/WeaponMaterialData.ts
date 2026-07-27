@@ -1,5 +1,5 @@
-import { defineParameterOverride } from "../../shared-definitions/parameters";
-import { BaseItemData } from "../BaseItemData";
+import { defineParameterOverride } from '../../shared/parameters';
+import { BaseItemData } from '../abstract/BaseItem';
 
 const fields = foundry.data.fields;
 

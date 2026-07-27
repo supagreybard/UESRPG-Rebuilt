@@ -1,4 +1,4 @@
-import { BaseRuleItemData } from './BaseRuleItemData';
+import { BaseRuleItemData } from './abstract/BaseRuleItem';
 
 const fields = foundry.data.fields;
 

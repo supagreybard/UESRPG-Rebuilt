@@ -1,6 +1,6 @@
 import type { NumberField } from '../../util/fields';
 
-import { BaseItemData, BaseItemSchema } from './BaseItemData';
+import { BaseItemData, BaseItemSchema } from './BaseItem';
 
 const fields = foundry.data.fields;
 

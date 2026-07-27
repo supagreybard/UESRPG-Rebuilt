@@ -1,6 +1,6 @@
 import { TRAIT_STACK_MODES } from '../../config/constants';
-import { defineParameter } from '../shared-definitions/parameters';
-import { BaseRuleItemData } from './BaseRuleItemData';
+import { defineParameter } from '../shared/parameters';
+import { BaseRuleItemData } from './abstract/BaseRuleItem';
 
 const fields = foundry.data.fields;
 

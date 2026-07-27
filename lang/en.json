@@ -93,5 +93,6 @@
   "UESRPG.Attributes.willpower": "Willpower",
   "UESRPG.Attributes.perception": "Perception",
   "UESRPG.Attributes.personality": "Personality",
-  "UESRPG.Attributes.luck": "Luck"
+  "UESRPG.Attributes.luck": "Luck",
+  "UESRPG.Attributes.morale": "Morale"
 }

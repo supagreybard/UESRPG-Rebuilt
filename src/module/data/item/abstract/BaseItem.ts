@@ -14,7 +14,7 @@ export interface BaseItemSchema extends DataSchema {
     source: StringField;
 };
 
-export class BaseItemData<T extends DataSchema | undefined> extends foundry.abstract.TypeDataModel<
+export class BaseItemData<T extends DataSchema | undefined = undefined> extends foundry.abstract.TypeDataModel<
     BaseItemSchema & T,
     Item.Implementation
 > {
