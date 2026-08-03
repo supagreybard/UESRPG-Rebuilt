@@ -1,12 +1,8 @@
 import { defineBaseCharacteristics } from '../shared/characteristics';
 import { defineGrant } from '../shared/grants';
-import { BaseRuleItemData, BaseRuleItemSchema } from './abstract/BaseRuleItem';
+import { BaseRuleItemData } from './abstract/BaseRuleItem';
 
 const fields = foundry.data.fields;
-
-export interface RaceSchema extends BaseRuleItemSchema {
-
-}
 
 export class RaceData extends BaseRuleItemData {
     static defineSchema() {
