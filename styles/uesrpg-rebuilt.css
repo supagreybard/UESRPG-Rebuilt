@@ -1,4 +1,5 @@
-:root {
+.uesrpg-rebuilt,
+.uesrpg-rebuilt-chat-card {
   --uesrpg-rebuilt-space-1: 0.25rem;
   --uesrpg-rebuilt-space-2: 0.5rem;
   --uesrpg-rebuilt-space-3: 0.75rem;
@@ -10,6 +11,11 @@
   --uesrpg-rebuilt-radius-lg: 5px;
 
   --uesrpg-rebuilt-shadow-sm: 0 6px 18px rgb(0 0 0 / 0.08);
+  --uesrpg-rebuilt-focus-ring: 0 0 0 2px
+    color-mix(in srgb, var(--uesrpg-rebuilt-accent-strong) 42%, transparent);
+  --uesrpg-rebuilt-font-role-heading: var(--font-primary);
+  --uesrpg-rebuilt-font-role-body: var(--font-primary);
+  --uesrpg-rebuilt-font-role-numeric: var(--font-monospace);
 
   --uesrpg-rebuilt-color-health: #8c2f2d;
   --uesrpg-rebuilt-color-stamina: #47693c;
@@ -17,6 +23,7 @@
   --uesrpg-rebuilt-color-success: #2f6e3f;
   --uesrpg-rebuilt-color-failure: #8b342e;
   --uesrpg-rebuilt-color-warning: #9b6b28;
+  --uesrpg-rebuilt-color-missing-data: var(--uesrpg-rebuilt-color-warning);
 }
 
 .uesrpg-rebuilt {
@@ -84,6 +91,7 @@ body.theme-dark .uesrpg-rebuilt {
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.05),
     inset 0 0 0 1px rgb(255 255 255 / 0.03);
+  font-family: var(--uesrpg-rebuilt-font-role-body);
 }
 
 .uesrpg-rebuilt-chat-card {
@@ -190,6 +198,7 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
   border-radius: 0;
   background: transparent;
   color: var(--uesrpg-rebuilt-text-heading);
+  font-family: var(--uesrpg-rebuilt-font-role-heading);
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.1;
@@ -485,10 +494,14 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
 .uesrpg-rebuilt-race-sheet__grant-row--broken {
   border-top-color: color-mix(
     in srgb,
-    #b86262 60%,
+    var(--uesrpg-rebuilt-color-missing-data) 60%,
     var(--uesrpg-rebuilt-divider) 40%
   );
-  background: color-mix(in srgb, #5a1f1f 10%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-color-missing-data) 10%,
+    transparent
+  );
 }
 
 .uesrpg-rebuilt-race-sheet__grant-copy {
@@ -537,9 +550,18 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
 }
 
 .uesrpg-rebuilt-race-sheet__grant-badge--broken {
-  border-bottom: 1px solid rgb(255 224 102 / 0.7);
+  border-bottom: 1px solid
+    color-mix(
+      in srgb,
+      var(--uesrpg-rebuilt-color-missing-data) 70%,
+      transparent
+    );
   background: transparent;
-  color: #ffe066;
+  color: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-color-missing-data) 72%,
+    var(--uesrpg-rebuilt-text-heading) 28%
+  );
 }
 
 .uesrpg-rebuilt-race-sheet__grant-meta {
@@ -549,7 +571,11 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
 }
 
 .uesrpg-rebuilt-race-sheet__grant-meta--broken {
-  color: #ffb4b4;
+  color: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-color-missing-data) 68%,
+    var(--uesrpg-rebuilt-text-heading) 32%
+  );
 }
 
 .uesrpg-rebuilt-race-sheet__grant-broken-copy {
@@ -598,6 +624,7 @@ body.theme-dark .uesrpg-rebuilt-chat-card {
 .uesrpg-rebuilt-card__heading {
   margin: 0;
   color: var(--uesrpg-rebuilt-text-heading);
+  font-family: var(--uesrpg-rebuilt-font-role-heading);
   display: flex;
   align-items: center;
   gap: var(--uesrpg-rebuilt-space-3);
@@ -750,6 +777,7 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 }
 
 .uesrpg-rebuilt-actor-sheet__resource-pair input {
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
   font-size: 1.05rem;
   font-weight: 700;
 }
@@ -880,12 +908,16 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 .uesrpg-rebuilt-field textarea:focus-visible {
   outline: none;
   border-color: var(--uesrpg-rebuilt-accent-strong);
-  box-shadow: inset 0 -1px 0 0 var(--uesrpg-rebuilt-accent-strong);
+  box-shadow:
+    inset 0 -1px 0 0 var(--uesrpg-rebuilt-accent-strong),
+    var(--uesrpg-rebuilt-focus-ring);
 }
 
 .uesrpg-rebuilt-field--checkbox:focus-within {
   border-color: var(--uesrpg-rebuilt-accent-strong);
-  box-shadow: inset 0 -1px 0 0 var(--uesrpg-rebuilt-accent-strong);
+  box-shadow:
+    inset 0 -1px 0 0 var(--uesrpg-rebuilt-accent-strong),
+    var(--uesrpg-rebuilt-focus-ring);
 }
 
 .uesrpg-rebuilt-field input:not([type='checkbox']):not([type='radio']):disabled,
@@ -1045,6 +1077,7 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 
 .uesrpg-rebuilt-chat-card__roll-total {
   color: var(--uesrpg-rebuilt-text-heading);
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
   font-size: 1.85rem;
   font-weight: 700;
   line-height: 1;
@@ -1078,6 +1111,7 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 
 .uesrpg-rebuilt-chat-card__stat strong {
   color: var(--uesrpg-rebuilt-text-heading);
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
   font-size: 1.05rem;
   line-height: 1.1;
 }

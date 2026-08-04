@@ -1,4 +1,6 @@
 {
+  "TYPES.Actor.character": "Character",
+  "TYPES.Actor.npc": "NPC",
   "TYPES.Item.power": "Power",
   "TYPES.Item.trait": "Trait",
   "TYPES.Item.race": "Race",
@@ -63,6 +65,9 @@
   "UESRPG.ParameterTypes.number": "Number",
   "UESRPG.ParameterTypes.text": "Text",
   "UESRPG.ParameterTypes.rollFormula": "Roll Formula",
+  "UESRPG.GrantTypes.skill": "Skill",
+  "UESRPG.GrantTypes.talent": "Talent",
+  "UESRPG.GrantTypes.equipmentTraining": "Equipment Training",
   "UESRPG.TraitStackModes.single": "Single",
   "UESRPG.TraitStackModes.highest": "Highest",
   "UESRPG.TraitStackModes.sum": "Sum",

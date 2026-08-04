@@ -32,7 +32,7 @@
                       'UESRPG.Messages.brokenGrantSource'
                     }}</span>
                 {{/if}}
-                <span class='uesrpg-rebuilt-race-sheet__grant-type'>{{grant.type}}</span>
+                <span class='uesrpg-rebuilt-race-sheet__grant-type'>{{grant.typeLabel}}</span>
               </div>
             </div>
 
@@ -56,7 +56,7 @@
                 {{#each grant.parameterFields as |parameter|}}
                   <label class='uesrpg-rebuilt-field uesrpg-rebuilt-race-sheet__grant-parameter-field'>
                     <input name='system.grants.{{grant.index}}.parameters.{{parameter.index}}.id' type='hidden' value='{{parameter.id}}' />
-                    <span>#{{parameter.index}} · {{parameter.type}}</span>
+                    <span>#{{parameter.index}} · {{parameter.typeLabel}}</span>
                     <input
                       name='system.grants.{{grant.index}}.parameters.{{parameter.index}}.value'
                       type='text'
