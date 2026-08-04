@@ -1,4 +1,8 @@
 import { LABELS, SYSTEM_ID } from '../../config/constants';
+import {
+  CHARACTER_CHARACTERISTIC_KEYS,
+  NPC_CHARACTERISTIC_KEYS,
+} from '../../data/shared/characteristics';
 import { localize } from '../../utils/localization';
 
 type CharacteristicField = {
@@ -6,6 +10,7 @@ type CharacteristicField = {
   label: string;
   value: number;
   editable: boolean;
+  warnings: string[];
 };
 
 type ResourceField = {
@@ -13,7 +18,13 @@ type ResourceField = {
   label: string;
   value: number;
   max: number;
+  displayValue: string;
+  displayMax: string;
+  fillPercent: number;
+  valueLabel: string;
+  maxLabel: string;
   editable: boolean;
+  warnings: string[];
 };
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -58,40 +69,73 @@ export class BaseActorSheet extends ActorHandlebarsSheet {
 
   #prepareResources(system: Record<string, any>): ResourceField[] {
     const resources = system.resources ?? {};
+    const valueLabel = localize('UESRPG.Fields.current');
+    const maxLabel = localize('UESRPG.Fields.max');
 
-    return [
-      {
-        key: 'health',
-        label: localize('UESRPG.Fields.health'),
-        value: Number(resources.health?.value ?? 0),
-        max: Number(resources.health?.max ?? 0),
+    return ['health', 'stamina', 'magicka'].map((key) => {
+      const resource = resources[key] as Record<string, unknown> | undefined;
+      const value = this.#numericFallback(resource?.value);
+      const max = this.#numericFallback(resource?.max);
+      const warnings = [
+        ...(resource ? [] : [localize('UESRPG.Messages.missingResourceData')]),
+        ...(Number.isFinite(Number(resource?.value))
+          ? []
+          : [localize('UESRPG.Messages.missingResourceValue')]),
+        ...(Number.isFinite(Number(resource?.max))
+          ? []
+          : [localize('UESRPG.Messages.missingResourceMax')]),
+      ];
+
+      return {
+        key,
+        label: localize(`UESRPG.Fields.${key}`),
+        value,
+        max,
+        displayValue: String(value),
+        displayMax: String(max),
+        fillPercent: this.#resourceFillPercent(value, max),
+        valueLabel,
+        maxLabel,
         editable: this.isEditable,
-      },
-      {
-        key: 'stamina',
-        label: localize('UESRPG.Fields.stamina'),
-        value: Number(resources.stamina?.value ?? 0),
-        max: Number(resources.stamina?.max ?? 0),
-        editable: this.isEditable,
-      },
-      {
-        key: 'magicka',
-        label: localize('UESRPG.Fields.magicka'),
-        value: Number(resources.magicka?.value ?? 0),
-        max: Number(resources.magicka?.max ?? 0),
-        editable: this.isEditable,
-      },
-    ];
+        warnings,
+      };
+    });
   }
 
   #prepareCharacteristics(system: Record<string, any>): CharacteristicField[] {
     const characteristics = system.characteristics ?? {};
+    const actorType = this.actor.type as string;
+    const keys =
+      actorType === 'npc'
+        ? NPC_CHARACTERISTIC_KEYS
+        : CHARACTER_CHARACTERISTIC_KEYS;
 
-    return Object.entries(characteristics).map(([key, value]) => ({
-      key,
-      label: localize(`UESRPG.Attributes.${key}`),
-      value: Number(value ?? 0),
-      editable: this.isEditable,
-    }));
+    return keys.map((key) => {
+      const rawValue = characteristics[key];
+      const hasValue = Number.isFinite(Number(rawValue));
+      const value = this.#numericFallback(rawValue);
+
+      return {
+        key,
+        label: localize(`UESRPG.Attributes.${key}`),
+        value,
+        editable: this.isEditable,
+        warnings: hasValue
+          ? []
+          : [localize('UESRPG.Messages.missingCharacteristicValue')],
+      };
+    });
+  }
+
+  #numericFallback(value: unknown): number {
+    const numericValue = Number(value);
+
+    return Number.isFinite(numericValue) ? numericValue : 0;
+  }
+
+  #resourceFillPercent(current: number, max: number): number {
+    if (max <= 0) return 0;
+
+    return Math.max(0, Math.min(100, Math.round((current / max) * 100)));
   }
 }

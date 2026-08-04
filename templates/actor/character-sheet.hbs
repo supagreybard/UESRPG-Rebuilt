@@ -92,9 +92,6 @@
         <h2 class='uesrpg-rebuilt-card__heading'>{{localize
             'UESRPG.Sections.overview'
           }}</h2>
-        <p class='uesrpg-rebuilt-character-sheet__empty'>{{localize
-            'UESRPG.Empty.characterOverview'
-          }}</p>
 
         <section class='uesrpg-rebuilt-character-sheet__preserved-block'>
           <h3>{{localize 'UESRPG.Sections.resources'}}</h3>
@@ -108,34 +105,52 @@
                   class='uesrpg-rebuilt-field__label'
                 >{{resource.label}}</span>
                 <div
-                  class='uesrpg-rebuilt-field__pair uesrpg-rebuilt-actor-sheet__resource-pair'
+                  class='uesrpg-rebuilt-actor-sheet__resource-bar'
+                  style='--uesrpg-rebuilt-resource-fill: {{resource.fillPercent}}%;'
                 >
                   {{#if resource.editable}}
-                    <input
-                      name='system.resources.{{resource.key}}.value'
-                      type='number'
-                      value='{{resource.value}}'
-                    />
-                    <input
-                      name='system.resources.{{resource.key}}.max'
-                      type='number'
-                      value='{{resource.max}}'
-                    />
+                    <label
+                      class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
+                    >
+                      <input
+                        name='system.resources.{{resource.key}}.value'
+                        type='number'
+                        value='{{resource.value}}'
+                        min='0'
+                        aria-label='{{resource.label}} {{resource.valueLabel}}'
+                      />
+                    </label>
                   {{else}}
-                    <input
-                      name='system.resources.{{resource.key}}.value'
-                      type='number'
-                      value='{{resource.value}}'
-                      disabled
-                    />
-                    <input
-                      name='system.resources.{{resource.key}}.max'
-                      type='number'
-                      value='{{resource.max}}'
-                      disabled
-                    />
+                    <label
+                      class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
+                    >
+                      <input
+                        name='system.resources.{{resource.key}}.value'
+                        type='number'
+                        value='{{resource.value}}'
+                        min='0'
+                        aria-label='{{resource.label}} {{resource.valueLabel}}'
+                        disabled
+                      />
+                    </label>
                   {{/if}}
+                  <span
+                    class='uesrpg-rebuilt-actor-sheet__resource-slash'
+                    aria-hidden='true'
+                  >/</span>
+                  <div class='uesrpg-rebuilt-actor-sheet__resource-max'>
+                    <strong
+                      aria-label='{{resource.label}} {{resource.maxLabel}} {{resource.displayMax}}'
+                    >{{resource.displayMax}}</strong>
+                  </div>
                 </div>
+                {{#if resource.warnings}}
+                  <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                    {{#each resource.warnings as |warning|}}
+                      <li>{{warning}}</li>
+                    {{/each}}
+                  </ul>
+                {{/if}}
               </div>
             {{/each}}
           </div>
@@ -146,7 +161,7 @@
           <label
             class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__experience'
           >
-            <span>{{localize 'UESRPG.Fields.experience'}}</span>
+            <span>{{localize 'UESRPG.Fields.totalExperience'}}</span>
             {{#if editable}}
               <input
                 name='system.experience'
@@ -173,9 +188,6 @@
         <h2 class='uesrpg-rebuilt-card__heading'>{{localize
             'UESRPG.Sections.characteristics'
           }}</h2>
-        <p class='uesrpg-rebuilt-character-sheet__empty'>{{localize
-            'UESRPG.Empty.characteristicsPreview'
-          }}</p>
 
         <div
           class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two uesrpg-rebuilt-actor-sheet__attribute-grid'
@@ -198,6 +210,13 @@
                   value='{{characteristic.value}}'
                   disabled
                 />
+              {{/if}}
+              {{#if characteristic.warnings}}
+                <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                  {{#each characteristic.warnings as |warning|}}
+                    <li>{{warning}}</li>
+                  {{/each}}
+                </ul>
               {{/if}}
             </label>
           {{/each}}

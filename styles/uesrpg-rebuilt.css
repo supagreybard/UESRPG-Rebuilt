@@ -861,7 +861,67 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   );
 }
 
-.uesrpg-rebuilt-actor-sheet__resource-pair input {
+.uesrpg-rebuilt-actor-sheet__resource-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(3.5rem, 4.5rem) auto auto;
+  gap: var(--uesrpg-rebuilt-space-2);
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: var(--uesrpg-rebuilt-space-2);
+  border: 1px solid
+    color-mix(in srgb, var(--uesrpg-rebuilt-resource-accent) 42%, transparent);
+  border-radius: 1.5em;
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-input-surface) 68%,
+    transparent
+  );
+  overflow: hidden;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--uesrpg-rebuilt-resource-fill);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-resource-accent) 24%,
+    transparent
+  );
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-current,
+.uesrpg-rebuilt-actor-sheet__resource-slash,
+.uesrpg-rebuilt-actor-sheet__resource-max {
+  position: relative;
+  z-index: 1;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-current {
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-current input {
+  width: 100%;
+  text-align: center;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-slash {
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-max {
+  min-width: 2.5rem;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-current input,
+.uesrpg-rebuilt-actor-sheet__resource-max strong {
   font-family: var(--uesrpg-rebuilt-font-role-numeric);
   font-size: 1.05rem;
   font-weight: 700;
@@ -881,6 +941,11 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   border-left: 0;
   border-radius: 0;
   background: transparent;
+}
+
+.uesrpg-rebuilt-actor-sheet__attribute input {
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
+  font-weight: 700;
 }
 
 .uesrpg-rebuilt-actor-sheet__prose textarea {
