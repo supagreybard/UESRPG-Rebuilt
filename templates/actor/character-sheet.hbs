@@ -469,6 +469,209 @@
       </article>
 
       <article
+        class='tab {{#if tabs.inventory.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--inventory'
+        data-group='primary'
+        data-tab='inventory'
+      >
+        <div class='uesrpg-rebuilt-character-sheet__inventory-groups'>
+          {{#each inventoryGroups as |group|}}
+            <section
+              class='uesrpg-rebuilt-character-sheet__inventory-group'
+              aria-labelledby='uesrpg-rebuilt-character-inventory-{{group.key}}'
+            >
+              <div class='uesrpg-rebuilt-character-sheet__section-header'>
+                <h3
+                  id='uesrpg-rebuilt-character-inventory-{{group.key}}'
+                  class='uesrpg-rebuilt-card__heading'
+                >{{group.label}}</h3>
+                {{#if group.canCreate}}
+                  <button
+                    class='uesrpg-rebuilt-character-sheet__add-row'
+                    type='button'
+                    data-action='createItem'
+                    data-item-type='{{group.createType}}'
+                  >{{localize 'UESRPG.Actions.addPlaceholder'}}</button>
+                {{/if}}
+              </div>
+
+              {{#if group.manualFallbackLabel}}
+                <p class='uesrpg-rebuilt-character-sheet__manual-fallback'>{{group.manualFallbackLabel}}</p>
+              {{/if}}
+
+              {{#if group.entries}}
+                <ul class='uesrpg-rebuilt-character-sheet__inventory-list'>
+                  {{#each group.entries as |entry|}}
+                    <li class='uesrpg-rebuilt-character-sheet__inventory-row'>
+                      <div class='uesrpg-rebuilt-character-sheet__inventory-main'>
+                        <div class='uesrpg-rebuilt-character-sheet__inventory-title-row'>
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__inventory-name'
+                            type='button'
+                            data-action='openItem'
+                            data-item-id='{{entry.id}}'
+                          >{{entry.name}}</button>
+                          <span class='uesrpg-rebuilt-character-sheet__inventory-type'>{{entry.typeLabel}}</span>
+                          <span class='uesrpg-rebuilt-character-sheet__inventory-type'>{{entry.equippedLabel}}</span>
+                        </div>
+
+                        <dl class='uesrpg-rebuilt-character-sheet__inventory-fields'>
+                          {{#each entry.fields as |field|}}
+                            <div class='uesrpg-rebuilt-character-sheet__inventory-field {{#if field.isMissing}}uesrpg-rebuilt-character-sheet__inventory-field--missing{{/if}}'>
+                              <dt>{{field.label}}</dt>
+                              <dd>{{field.value}}</dd>
+                            </div>
+                          {{/each}}
+                        </dl>
+
+                        {{#if entry.warnings}}
+                          <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                            {{#each entry.warnings as |warning|}}
+                              <li>{{warning}}</li>
+                            {{/each}}
+                          </ul>
+                        {{/if}}
+                      </div>
+
+                      <div class='uesrpg-rebuilt-character-sheet__inventory-controls'>
+                        {{#if entry.canOpen}}
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__remove-row'
+                            type='button'
+                            data-action='openItem'
+                            data-item-id='{{entry.id}}'
+                          >{{localize 'UESRPG.Actions.openItem'}}</button>
+                        {{/if}}
+                        {{#if entry.canToggleEquipped}}
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__remove-row'
+                            type='button'
+                            data-action='toggleEquipped'
+                            data-item-id='{{entry.id}}'
+                          >{{localize 'UESRPG.Actions.toggleEquipped'}}</button>
+                        {{/if}}
+                        {{#if entry.canDelete}}
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__remove-row'
+                            type='button'
+                            data-action='deleteItem'
+                            data-item-id='{{entry.id}}'
+                          >{{localize 'UESRPG.Actions.deleteItem'}}</button>
+                        {{/if}}
+                        <button
+                          class='uesrpg-rebuilt-character-sheet__remove-row'
+                          type='button'
+                          disabled
+                          title='{{../../unavailableWorkflowLabel}}'
+                        >{{localize 'UESRPG.Actions.resolveLater'}}</button>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <p class='uesrpg-rebuilt-character-sheet__empty'>{{group.emptyLabel}}</p>
+              {{/if}}
+            </section>
+          {{/each}}
+        </div>
+      </article>
+      <article
+        class='tab {{#if tabs.magic.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--magic'
+        data-group='primary'
+        data-tab='magic'
+      >
+        <div class='uesrpg-rebuilt-character-sheet__inventory-groups'>
+          {{#each magicGroups as |group|}}
+            <section
+              class='uesrpg-rebuilt-character-sheet__inventory-group'
+              aria-labelledby='uesrpg-rebuilt-character-magic-{{group.key}}'
+            >
+              <div class='uesrpg-rebuilt-character-sheet__section-header'>
+                <h3
+                  id='uesrpg-rebuilt-character-magic-{{group.key}}'
+                  class='uesrpg-rebuilt-card__heading'
+                >{{group.label}}</h3>
+                {{#if group.canCreate}}
+                  <button
+                    class='uesrpg-rebuilt-character-sheet__add-row'
+                    type='button'
+                    data-action='createItem'
+                    data-item-type='{{group.createType}}'
+                  >{{localize 'UESRPG.Actions.addPlaceholder'}}</button>
+                {{/if}}
+              </div>
+
+              {{#if group.manualFallbackLabel}}
+                <p class='uesrpg-rebuilt-character-sheet__manual-fallback'>{{group.manualFallbackLabel}}</p>
+              {{/if}}
+
+              {{#if group.entries}}
+                <ul class='uesrpg-rebuilt-character-sheet__inventory-list'>
+                  {{#each group.entries as |entry|}}
+                    <li class='uesrpg-rebuilt-character-sheet__inventory-row'>
+                      <div class='uesrpg-rebuilt-character-sheet__inventory-main'>
+                        <div class='uesrpg-rebuilt-character-sheet__inventory-title-row'>
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__inventory-name'
+                            type='button'
+                            data-action='openItem'
+                            data-item-id='{{entry.id}}'
+                          >{{entry.name}}</button>
+                          <span class='uesrpg-rebuilt-character-sheet__inventory-type'>{{entry.typeLabel}}</span>
+                        </div>
+
+                        <dl class='uesrpg-rebuilt-character-sheet__inventory-fields'>
+                          {{#each entry.fields as |field|}}
+                            <div class='uesrpg-rebuilt-character-sheet__inventory-field {{#if field.isMissing}}uesrpg-rebuilt-character-sheet__inventory-field--missing{{/if}}'>
+                              <dt>{{field.label}}</dt>
+                              <dd>{{field.value}}</dd>
+                            </div>
+                          {{/each}}
+                        </dl>
+
+                        {{#if entry.warnings}}
+                          <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                            {{#each entry.warnings as |warning|}}
+                              <li>{{warning}}</li>
+                            {{/each}}
+                          </ul>
+                        {{/if}}
+                      </div>
+
+                      <div class='uesrpg-rebuilt-character-sheet__inventory-controls'>
+                        {{#if entry.canOpen}}
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__remove-row'
+                            type='button'
+                            data-action='openItem'
+                            data-item-id='{{entry.id}}'
+                          >{{localize 'UESRPG.Actions.openItem'}}</button>
+                        {{/if}}
+                        {{#if entry.canDelete}}
+                          <button
+                            class='uesrpg-rebuilt-character-sheet__remove-row'
+                            type='button'
+                            data-action='deleteItem'
+                            data-item-id='{{entry.id}}'
+                          >{{localize 'UESRPG.Actions.deleteItem'}}</button>
+                        {{/if}}
+                        <button
+                          class='uesrpg-rebuilt-character-sheet__remove-row'
+                          type='button'
+                          disabled
+                          title='{{../../unavailableWorkflowLabel}}'
+                        >{{localize 'UESRPG.Actions.resolveLater'}}</button>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <p class='uesrpg-rebuilt-character-sheet__empty'>{{group.emptyLabel}}</p>
+              {{/if}}
+            </section>
+          {{/each}}
+        </div>
+      </article>
+      <article
         class='tab {{#if tabs.notes.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--prose'
         data-group='primary'
         data-tab='notes'

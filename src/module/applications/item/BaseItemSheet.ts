@@ -79,6 +79,13 @@ export class BaseItemSheet extends ItemHandlebarsSheet {
         isCheckbox: false,
         value: Number(system.encumbrance ?? 0),
       },
+      {
+        key: 'equipped',
+        label: localize('UESRPG.Fields.equipped'),
+        inputType: 'checkbox',
+        isCheckbox: true,
+        value: Boolean(system.equipped),
+      },
     ];
   }
 

@@ -4,6 +4,7 @@ export type DataField = foundry.data.fields.DataField.Any;
 export type StringField = foundry.data.fields.StringField;
 export type HTMLField = foundry.data.fields.HTMLField;
 export type NumberField = foundry.data.fields.NumberField;
+export type BooleanField = foundry.data.fields.BooleanField;
 export type JavaScriptField = foundry.data.fields.JavaScriptField;
 
 export type SchemaField<T extends DataSchema> = foundry.data.fields.SchemaField<T>;

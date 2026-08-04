@@ -62,6 +62,35 @@ type OverviewListEntry = {
   warnings: string[];
 };
 
+type CharacterItemField = {
+  label: string;
+  value: string;
+  isMissing: boolean;
+};
+
+type CharacterItemRow = {
+  id: string;
+  name: string;
+  typeLabel: string;
+  fields: CharacterItemField[];
+  warnings: string[];
+  equipped: boolean;
+  equippedLabel: string;
+  canOpen: boolean;
+  canDelete: boolean;
+  canToggleEquipped: boolean;
+};
+
+type CharacterItemGroup = {
+  key: string;
+  label: string;
+  emptyLabel: string;
+  manualFallbackLabel: string;
+  createType: string;
+  canCreate: boolean;
+  entries: CharacterItemRow[];
+};
+
 type CharacterRaceDisplay = {
   uuid: string;
   name: string;
@@ -96,6 +125,10 @@ export class CharacterSheet extends BaseActorSheet {
         activateTab: CharacterSheet.prototype._onActivateTab,
         addSkill: CharacterSheet.prototype._onAddSkill,
         removeSkill: CharacterSheet.prototype._onRemoveSkill,
+        createItem: CharacterSheet.prototype._onCreateItem,
+        deleteItem: CharacterSheet.prototype._onDeleteItem,
+        openItem: CharacterSheet.prototype._onOpenItem,
+        toggleEquipped: CharacterSheet.prototype._onToggleEquipped,
       },
     },
   );
@@ -104,7 +137,13 @@ export class CharacterSheet extends BaseActorSheet {
     primary: {
       initial: 'overview',
       labelPrefix: 'UESRPG.Tabs',
-      tabs: [{ id: 'overview' }, { id: 'skills' }, { id: 'notes' }],
+      tabs: [
+        { id: 'overview' },
+        { id: 'skills' },
+        { id: 'inventory' },
+        { id: 'magic' },
+        { id: 'notes' },
+      ],
     },
   };
 
@@ -151,6 +190,11 @@ export class CharacterSheet extends BaseActorSheet {
       skillRows: this.#prepareSkillRows(system.skills),
       hasSkillRows: Array.isArray(system.skills) && system.skills.length > 0,
       overviewListGroups: this.#prepareOverviewListGroups(),
+      inventoryGroups: this.#prepareInventoryGroups(),
+      magicGroups: this.#prepareMagicGroups(),
+      unavailableWorkflowLabel: localize(
+        'UESRPG.Placeholders.futureWorkflowUnavailable',
+      ),
     };
   }
 
@@ -247,6 +291,105 @@ export class CharacterSheet extends BaseActorSheet {
     });
   }
 
+  protected async _onCreateItem(
+    event: PointerEvent,
+    target: HTMLElement,
+  ): Promise<void> {
+    event.preventDefault();
+
+    const type = target.dataset.itemType;
+
+    if (
+      !this.isEditable ||
+      !type ||
+      !Object.values(ITEM_TYPES).includes(type as any)
+    ) {
+      return;
+    }
+
+    await this.#preserveScrollPosition(async () => {
+      await this.submit();
+      await Item.create(
+        {
+          name: localize(`UESRPG.Placeholders.new${this.#capitalize(type)}`),
+          type: type as any,
+        },
+        { parent: this.actor } as any,
+      );
+      await this.render();
+    });
+  }
+
+  protected _onOpenItem(event: PointerEvent, target: HTMLElement): void {
+    event.preventDefault();
+
+    const item = this.#getOwnedItem(target);
+
+    if (!item) {
+      return;
+    }
+
+    const sheet = item.sheet as { render?: (force?: boolean) => unknown } | null;
+
+    sheet?.render?.(true);
+  }
+
+  protected async _onDeleteItem(
+    event: PointerEvent,
+    target: HTMLElement,
+  ): Promise<void> {
+    event.preventDefault();
+
+    const item = this.#getOwnedItem(target);
+
+    if (!item || !this.isEditable) {
+      return;
+    }
+
+    const confirmed = await (
+      foundry.applications.api.DialogV2 as {
+        confirm: (options: {
+          window: { title: string };
+          content: string;
+        }) => Promise<boolean>;
+      }
+    ).confirm({
+      window: { title: localize('UESRPG.Dialogs.deleteItemTitle') },
+      content: `<p>${localize('UESRPG.Dialogs.deleteItemContent')}</p>`,
+    });
+
+    if (!confirmed) {
+      return;
+    }
+
+    await this.#preserveScrollPosition(async () => {
+      await this.submit();
+      await item.delete();
+      await this.render();
+    });
+  }
+
+  protected async _onToggleEquipped(
+    event: PointerEvent,
+    target: HTMLElement,
+  ): Promise<void> {
+    event.preventDefault();
+
+    const item = this.#getOwnedItem(target);
+
+    if (!item || String(item.type) !== ITEM_TYPES.weapon || !this.isEditable) {
+      return;
+    }
+
+    const system = item.system as Record<string, any>;
+
+    await this.#preserveScrollPosition(async () => {
+      await this.submit();
+      await item.update({ 'system.equipped': !system.equipped } as any);
+      await this.render();
+    });
+  }
+
   #prepareSkillRows(skills: unknown): CharacterSkillRow[] {
     if (!Array.isArray(skills)) {
       return [];
@@ -311,6 +454,145 @@ export class CharacterSheet extends BaseActorSheet {
       ),
       this.#prepareEffectsGroup(),
     ];
+  }
+
+  #prepareInventoryGroups(): CharacterItemGroup[] {
+    return [
+      this.#prepareItemManagementGroup({
+        key: 'weapons',
+        type: ITEM_TYPES.weapon,
+        label: localize('UESRPG.Sections.weapons'),
+        emptyLabel: localize('UESRPG.Empty.weapons'),
+        manualFallbackLabel: '',
+      }),
+      {
+        key: 'future-items',
+        label: localize('UESRPG.Sections.futureInventoryTypes'),
+        emptyLabel: localize('UESRPG.Empty.futureInventoryTypes'),
+        manualFallbackLabel: localize('UESRPG.Messages.manualFallbackRequired'),
+        createType: '',
+        canCreate: false,
+        entries: [],
+      },
+    ];
+  }
+
+  #prepareMagicGroups(): CharacterItemGroup[] {
+    return [
+      this.#prepareItemManagementGroup({
+        key: 'powers',
+        type: ITEM_TYPES.power,
+        label: localize('UESRPG.Sections.powers'),
+        emptyLabel: localize('UESRPG.Empty.magic'),
+        manualFallbackLabel: localize('UESRPG.Messages.magicManualFallback'),
+      }),
+      {
+        key: 'future-magic',
+        label: localize('UESRPG.Sections.futureMagicTypes'),
+        emptyLabel: localize('UESRPG.Empty.futureMagicTypes'),
+        manualFallbackLabel: localize('UESRPG.Messages.manualFallbackRequired'),
+        createType: '',
+        canCreate: false,
+        entries: [],
+      },
+    ];
+  }
+
+  #prepareItemManagementGroup(options: {
+    key: string;
+    type: string;
+    label: string;
+    emptyLabel: string;
+    manualFallbackLabel: string;
+  }): CharacterItemGroup {
+    const entries = this.actor.items
+      .filter((item: Item) => item.type === options.type)
+      .map((item: Item) => this.#prepareItemRow(item));
+
+    return {
+      key: options.key,
+      label: options.label,
+      emptyLabel: options.emptyLabel,
+      manualFallbackLabel: options.manualFallbackLabel,
+      createType: options.type,
+      canCreate: this.isEditable,
+      entries,
+    };
+  }
+
+  #prepareItemRow(item: Item): CharacterItemRow {
+    const system = item.system as Record<string, any>;
+    const name = String(item.name ?? '').trim();
+    const fields = this.#prepareItemFields(item, system);
+
+    return {
+      id: item.id ?? '',
+      name: name || localize('UESRPG.Empty.unnamedItem'),
+      typeLabel: localize(`UESRPG.Item.${String(item.type)}`),
+      fields,
+      warnings: [
+        ...(name ? [] : [localize('UESRPG.Messages.missingListEntryName')]),
+        ...fields
+          .filter((field) => field.isMissing)
+          .map((field) =>
+            localize('UESRPG.Messages.missingItemField', {
+              field: field.label,
+            }),
+          ),
+      ],
+      equipped: !!system.equipped,
+      equippedLabel: system.equipped
+        ? localize('UESRPG.Fields.equipped')
+        : localize('UESRPG.Fields.carried'),
+      canOpen: true,
+      canDelete: this.isEditable,
+      canToggleEquipped: this.isEditable && String(item.type) === ITEM_TYPES.weapon,
+    };
+  }
+
+  #prepareItemFields(
+    item: Item,
+    system: Record<string, any>,
+  ): CharacterItemField[] {
+    if (String(item.type) === ITEM_TYPES.weapon) {
+      return [
+        this.#prepareNumberField('quantity', system.quantity, 1),
+        this.#prepareNumberField('encumbrance', system.encumbrance, 0),
+        this.#prepareTextField('damage', system.damage),
+        this.#prepareTextField('range', system.range),
+      ];
+    }
+
+    if (String(item.type) === ITEM_TYPES.power) {
+      return [this.#prepareTextField('source', system.source)];
+    }
+
+    return [this.#prepareTextField('category', system.source)];
+  }
+
+  #prepareNumberField(
+    key: string,
+    value: unknown,
+    fallback: number,
+  ): CharacterItemField {
+    const numericValue = Number(value);
+    const hasValue = Number.isFinite(numericValue);
+
+    return {
+      label: localize(`UESRPG.Fields.${key}`),
+      value: String(hasValue ? numericValue : fallback),
+      isMissing: !hasValue,
+    };
+  }
+
+  #prepareTextField(key: string, value: unknown): CharacterItemField {
+    const text = String(value ?? '').trim();
+
+    return {
+      label: localize(`UESRPG.Fields.${key}`),
+      value: text || localize('UESRPG.Empty.unassigned'),
+      isMissing: text.length === 0,
+    };
   }
 
   #prepareItemGroup(
@@ -499,6 +781,20 @@ export class CharacterSheet extends BaseActorSheet {
     const trimmedValue = value.trim();
 
     return trimmedValue.length > 0 ? trimmedValue : null;
+  }
+
+  #getOwnedItem(target: HTMLElement): Item | null {
+    const itemId = target.dataset.itemId;
+
+    if (!itemId) {
+      return null;
+    }
+
+    return this.actor.items.get(itemId) ?? null;
+  }
+
+  #capitalize(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
   async #preserveScrollPosition(operation: () => Promise<void>): Promise<void> {

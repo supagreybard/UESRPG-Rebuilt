@@ -51,16 +51,29 @@
               class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two'
             >
               {{#each inventoryFields as |field|}}
-                <label class='uesrpg-rebuilt-field'>
-                  <span>{{field.label}}</span>
-                  <input
-                    name='system.{{field.key}}'
-                    type='{{field.inputType}}'
-                    value='{{field.value}}'
-                    min='0'
-                    step='any'
-                  />
-                </label>
+                {{#if field.isCheckbox}}
+                  <label
+                    class='uesrpg-rebuilt-field uesrpg-rebuilt-field--checkbox'
+                  >
+                    <input
+                      name='system.{{field.key}}'
+                      type='checkbox'
+                      {{checked field.value}}
+                    />
+                    <span>{{field.label}}</span>
+                  </label>
+                {{else}}
+                  <label class='uesrpg-rebuilt-field'>
+                    <span>{{field.label}}</span>
+                    <input
+                      name='system.{{field.key}}'
+                      type='{{field.inputType}}'
+                      value='{{field.value}}'
+                      min='0'
+                      step='any'
+                    />
+                  </label>
+                {{/if}}
               {{/each}}
             </div>
           </section>
