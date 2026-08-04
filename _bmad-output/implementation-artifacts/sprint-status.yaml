@@ -57,7 +57,7 @@ development_status:
   epic-2: in-progress
   2-1-build-character-sheet-shell-identity-permissions-and-empty-states: done
   2-2-add-character-characteristics-resources-and-derived-summary-panels: done
-  2-3-add-character-skills-and-common-play-lists: ready-for-dev
+  2-3-add-character-skills-and-overview-content: done
   2-4-add-character-inventory-equipment-and-magic-summary-sections: ready-for-dev
   2-5-validate-complete-character-sheet-for-core-play-readiness: ready-for-dev
   2-6-build-statblock-sheet-shell-identity-permissions-and-empty-states: ready-for-dev

@@ -29,29 +29,66 @@
           {{sheetTitle}}</div>
       </div>
 
-      <label class='uesrpg-rebuilt-character-sheet__identity-field'>
-        <span class='uesrpg-rebuilt-character-sheet__field-label'>{{localize
-            'UESRPG.Fields.name'
-          }}</span>
-        {{#if editable}}
-          <input
-            class='uesrpg-rebuilt-sheet__name'
-            name='name'
-            type='text'
-            value='{{actor.name}}'
-            placeholder='{{localize "UESRPG.Empty.unnamedCharacter"}}'
-          />
-        {{else}}
-          <input
-            class='uesrpg-rebuilt-sheet__name'
-            name='name'
-            type='text'
-            value='{{actor.name}}'
-            placeholder='{{localize "UESRPG.Empty.unnamedCharacter"}}'
-            disabled
-          />
-        {{/if}}
-      </label>
+      <div class='uesrpg-rebuilt-character-sheet__identity-row'>
+        <label class='uesrpg-rebuilt-character-sheet__identity-field'>
+          <span class='uesrpg-rebuilt-character-sheet__field-label'>{{localize
+              'UESRPG.Fields.name'
+            }}</span>
+          {{#if editable}}
+            <input
+              class='uesrpg-rebuilt-sheet__name'
+              name='name'
+              type='text'
+              value='{{actor.name}}'
+              placeholder='{{localize "UESRPG.Empty.unnamedCharacter"}}'
+            />
+          {{else}}
+            <input
+              class='uesrpg-rebuilt-sheet__name'
+              name='name'
+              type='text'
+              value='{{actor.name}}'
+              placeholder='{{localize "UESRPG.Empty.unnamedCharacter"}}'
+              disabled
+            />
+          {{/if}}
+        </label>
+
+        <label
+          class='uesrpg-rebuilt-character-sheet__identity-field uesrpg-rebuilt-character-sheet__race-field'
+        >
+          <span class='uesrpg-rebuilt-character-sheet__field-label'>{{race.label}}</span>
+          {{#if race.editable}}
+            <input
+              name='system.race.uuid'
+              type='hidden'
+              value='{{race.uuid}}'
+            />
+            <input
+              class='uesrpg-rebuilt-character-sheet__race-name'
+              name='system.race.name'
+              type='text'
+              value='{{race.name}}'
+              placeholder='{{race.placeholder}}'
+            />
+          {{else}}
+            <input
+              name='system.race.uuid'
+              type='hidden'
+              value='{{race.uuid}}'
+              disabled
+            />
+            <input
+              class='uesrpg-rebuilt-character-sheet__race-name'
+              name='system.race.name'
+              type='text'
+              value='{{race.name}}'
+              placeholder='{{race.placeholder}}'
+              disabled
+            />
+          {{/if}}
+        </label>
+      </div>
 
       {{#if identity.missingMessages}}
         <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
@@ -60,137 +97,75 @@
           {{/each}}
         </ul>
       {{/if}}
+
+      <div class='uesrpg-rebuilt-actor-sheet__resource-list uesrpg-rebuilt-character-sheet__header-resources'>
+        {{#each resourceFields as |resource|}}
+          <div
+            class='uesrpg-rebuilt-actor-sheet__resource'
+            data-resource='{{resource.key}}'
+          >
+            <span class='uesrpg-rebuilt-field__label'>{{resource.label}}</span>
+            <div
+              class='uesrpg-rebuilt-actor-sheet__resource-bar'
+              style='--uesrpg-rebuilt-resource-fill: {{resource.fillPercent}}%;'
+            >
+              {{#if resource.editable}}
+                <label
+                  class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
+                >
+                  <input
+                    name='system.resources.{{resource.key}}.value'
+                    type='number'
+                    value='{{resource.value}}'
+                    min='0'
+                    aria-label='{{resource.label}} {{resource.valueLabel}}'
+                  />
+                </label>
+              {{else}}
+                <label
+                  class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
+                >
+                  <input
+                    name='system.resources.{{resource.key}}.value'
+                    type='number'
+                    value='{{resource.value}}'
+                    min='0'
+                    aria-label='{{resource.label}} {{resource.valueLabel}}'
+                    disabled
+                  />
+                </label>
+              {{/if}}
+              <span
+                class='uesrpg-rebuilt-actor-sheet__resource-slash'
+                aria-hidden='true'
+              >/</span>
+              <div class='uesrpg-rebuilt-actor-sheet__resource-max'>
+                <strong
+                  aria-label='{{resource.label}} {{resource.maxLabel}} {{resource.displayMax}}'
+                >{{resource.displayMax}}</strong>
+              </div>
+            </div>
+            {{#if resource.warnings}}
+              <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                {{#each resource.warnings as |warning|}}
+                  <li>{{warning}}</li>
+                {{/each}}
+              </ul>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
     </div>
   </header>
 
-  <section class='uesrpg-rebuilt-character-sheet__section-stack'>
-    <article
-      class='uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-character-sheet__identity-card'
-    >
-      <h2 class='uesrpg-rebuilt-card__heading'>{{localize
-          'UESRPG.Sections.identity'
-        }}</h2>
-
-      <div class='uesrpg-rebuilt-character-sheet__identity-summary'>
-        <div class='uesrpg-rebuilt-character-sheet__summary-item'>
-          <span>{{localize 'UESRPG.Fields.type'}}</span>
-          <strong>{{typeLabel}}</strong>
-        </div>
-        <div class='uesrpg-rebuilt-character-sheet__summary-item'>
-          <span>{{localize 'UESRPG.Fields.sheet'}}</span>
-          <strong>{{sheetTitle}}</strong>
-        </div>
-      </div>
-    </article>
-
-    <section
-      class='uesrpg-rebuilt-sheet__grid uesrpg-rebuilt-actor-sheet__grid uesrpg-rebuilt-character-sheet__grid'
-    >
-      <article
-        class='uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--resources'
-      >
-        <h2 class='uesrpg-rebuilt-card__heading'>{{localize
-            'UESRPG.Sections.overview'
-          }}</h2>
-
-        <section class='uesrpg-rebuilt-character-sheet__preserved-block'>
-          <h3>{{localize 'UESRPG.Sections.resources'}}</h3>
-          <div class='uesrpg-rebuilt-actor-sheet__resource-list'>
-            {{#each resourceFields as |resource|}}
-              <div
-                class='uesrpg-rebuilt-actor-sheet__resource'
-                data-resource='{{resource.key}}'
-              >
-                <span
-                  class='uesrpg-rebuilt-field__label'
-                >{{resource.label}}</span>
-                <div
-                  class='uesrpg-rebuilt-actor-sheet__resource-bar'
-                  style='--uesrpg-rebuilt-resource-fill: {{resource.fillPercent}}%;'
-                >
-                  {{#if resource.editable}}
-                    <label
-                      class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
-                    >
-                      <input
-                        name='system.resources.{{resource.key}}.value'
-                        type='number'
-                        value='{{resource.value}}'
-                        min='0'
-                        aria-label='{{resource.label}} {{resource.valueLabel}}'
-                      />
-                    </label>
-                  {{else}}
-                    <label
-                      class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
-                    >
-                      <input
-                        name='system.resources.{{resource.key}}.value'
-                        type='number'
-                        value='{{resource.value}}'
-                        min='0'
-                        aria-label='{{resource.label}} {{resource.valueLabel}}'
-                        disabled
-                      />
-                    </label>
-                  {{/if}}
-                  <span
-                    class='uesrpg-rebuilt-actor-sheet__resource-slash'
-                    aria-hidden='true'
-                  >/</span>
-                  <div class='uesrpg-rebuilt-actor-sheet__resource-max'>
-                    <strong
-                      aria-label='{{resource.label}} {{resource.maxLabel}} {{resource.displayMax}}'
-                    >{{resource.displayMax}}</strong>
-                  </div>
-                </div>
-                {{#if resource.warnings}}
-                  <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
-                    {{#each resource.warnings as |warning|}}
-                      <li>{{warning}}</li>
-                    {{/each}}
-                  </ul>
-                {{/if}}
-              </div>
-            {{/each}}
-          </div>
-        </section>
-
-        <section class='uesrpg-rebuilt-character-sheet__preserved-block'>
-          <h3>{{localize 'UESRPG.Sections.experience'}}</h3>
-          <label
-            class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__experience'
-          >
-            <span>{{localize 'UESRPG.Fields.totalExperience'}}</span>
-            {{#if editable}}
-              <input
-                name='system.experience'
-                type='number'
-                value='{{experience}}'
-                min='0'
-              />
-            {{else}}
-              <input
-                name='system.experience'
-                type='number'
-                value='{{experience}}'
-                min='0'
-                disabled
-              />
-            {{/if}}
-          </label>
-        </section>
-      </article>
-
+  <section class='uesrpg-rebuilt-character-sheet__body'>
+    <aside class='uesrpg-rebuilt-character-sheet__left-pane'>
       <article
         class='uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--attributes'
+        aria-label='{{localize "UESRPG.Sections.characteristics"}}'
       >
-        <h2 class='uesrpg-rebuilt-card__heading'>{{localize
-            'UESRPG.Sections.characteristics'
-          }}</h2>
-
         <div
-          class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-field-grid--two uesrpg-rebuilt-actor-sheet__attribute-grid'
+          class='uesrpg-rebuilt-field-grid uesrpg-rebuilt-actor-sheet__attribute-grid uesrpg-rebuilt-character-sheet__characteristics-rail'
         >
           {{#each characteristicFields as |characteristic|}}
             <label
@@ -222,14 +197,276 @@
           {{/each}}
         </div>
       </article>
+    </aside>
+
+    <main class='uesrpg-rebuilt-character-sheet__right-pane'>
+      <nav
+        class='uesrpg-rebuilt-character-sheet__tabs'
+        aria-roledescription='{{localize "SHEETS.FormNavLabel"}}'
+      >
+        {{#each sheetTabs as |tab|}}
+          <button
+            class='uesrpg-rebuilt-character-sheet__tab {{tab.cssClass}} {{#if tab.active}}active{{/if}}'
+            type='button'
+            data-action='activateTab'
+            data-group='{{tab.group}}'
+            data-tab='{{tab.id}}'
+            role='tab'
+            aria-selected='{{tab.active}}'
+          >{{tab.label}}</button>
+        {{/each}}
+      </nav>
+
+      <section class='uesrpg-rebuilt-character-sheet__tab-content'>
+        <article
+          class='tab {{#if tabs.overview.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-character-sheet__identity-card'
+          data-group='primary'
+          data-tab='overview'
+        >
+          <div class='uesrpg-rebuilt-character-sheet__identity-summary'>
+            <div class='uesrpg-rebuilt-character-sheet__summary-item'>
+              <span>{{localize 'UESRPG.Fields.type'}}</span>
+              <strong>{{typeLabel}}</strong>
+            </div>
+            <div class='uesrpg-rebuilt-character-sheet__summary-item'>
+              <span>{{localize 'UESRPG.Fields.sheet'}}</span>
+              <strong>{{sheetTitle}}</strong>
+            </div>
+          </div>
+
+          <section class='uesrpg-rebuilt-character-sheet__preserved-block'>
+            <h3>{{localize 'UESRPG.Sections.experience'}}</h3>
+            <label
+              class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__experience'
+            >
+              <span>{{localize 'UESRPG.Fields.totalExperience'}}</span>
+              {{#if editable}}
+                <input
+                  name='system.experience'
+                  type='number'
+                  value='{{experience}}'
+                  min='0'
+                />
+              {{else}}
+                <input
+                  name='system.experience'
+                  type='number'
+                  value='{{experience}}'
+                  min='0'
+                  disabled
+                />
+              {{/if}}
+            </label>
+          </section>
+
+          <section class='uesrpg-rebuilt-character-sheet__overview-lists'>
+            <div class='uesrpg-rebuilt-character-sheet__overview-list-groups'>
+              {{#each overviewListGroups as |group|}}
+                <section class='uesrpg-rebuilt-character-sheet__overview-list-group'>
+                  <h4>{{group.label}}</h4>
+                  {{#if group.entries}}
+                    <ul class='uesrpg-rebuilt-character-sheet__overview-list'>
+                      {{#each group.entries as |entry|}}
+                        <li class='uesrpg-rebuilt-character-sheet__overview-list-entry'>
+                          <span>{{entry.name}}</span>
+                          <strong>{{entry.meta}}</strong>
+                          {{#if entry.warnings}}
+                            <ul class='uesrpg-rebuilt-character-sheet__missing-list'>
+                              {{#each entry.warnings as |warning|}}
+                                <li>{{warning}}</li>
+                              {{/each}}
+                            </ul>
+                          {{/if}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    <p class='uesrpg-rebuilt-character-sheet__empty'>{{group.emptyLabel}}</p>
+                  {{/if}}
+                </section>
+              {{/each}}
+            </div>
+          </section>
+        </article>
 
       <article
-        class='uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--prose'
+        class='tab {{#if tabs.skills.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--skills'
+        data-group='primary'
+        data-tab='skills'
       >
-        <h2 class='uesrpg-rebuilt-card__heading'>{{localize
-            'UESRPG.Sections.notes'
-          }}</h2>
+        {{#if editable}}
+          <div class='uesrpg-rebuilt-character-sheet__section-header'>
+            <button
+              class='uesrpg-rebuilt-character-sheet__add-row'
+              type='button'
+              data-action='addSkill'
+            >{{localize 'UESRPG.Actions.addSkill'}}</button>
+          </div>
+        {{/if}}
 
+        {{#if hasSkillRows}}
+          <div class='uesrpg-rebuilt-character-sheet__skill-table'>
+            <div class='uesrpg-rebuilt-character-sheet__skill-header'>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.skill'
+                }}</div>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.rank'
+                }}</div>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.bonus'
+                }}</div>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.targetNumber'
+                }}</div>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.governingCharacteristic'
+                }}</div>
+              <div class='uesrpg-rebuilt-character-sheet__skill-heading'>{{localize
+                  'UESRPG.Fields.controls'
+                }}</div>
+            </div>
+
+            {{#each skillRows as |skill|}}
+              <div
+                class='uesrpg-rebuilt-character-sheet__skill-row'
+                data-skill-index='{{skill.index}}'
+              >
+                <div class='uesrpg-rebuilt-character-sheet__skill-cell'>
+                  {{#if skill.editable}}
+                    <input
+                      name='system.skills.{{skill.index}}.key'
+                      type='hidden'
+                      value='{{skill.key}}'
+                    />
+                    <input
+                      name='system.skills.{{skill.index}}.source'
+                      type='hidden'
+                      value='{{skill.source}}'
+                    />
+                    <input
+                      name='system.skills.{{skill.index}}.name'
+                      type='text'
+                      value='{{skill.name}}'
+                      placeholder='{{skill.namePlaceholder}}'
+                      aria-label='{{localize "UESRPG.Fields.skill"}}'
+                    />
+                  {{else}}
+                    <input
+                      name='system.skills.{{skill.index}}.key'
+                      type='hidden'
+                      value='{{skill.key}}'
+                      disabled
+                    />
+                    <input
+                      name='system.skills.{{skill.index}}.source'
+                      type='hidden'
+                      value='{{skill.source}}'
+                      disabled
+                    />
+                    <input
+                      name='system.skills.{{skill.index}}.name'
+                      type='text'
+                      value='{{skill.name}}'
+                      placeholder='{{skill.namePlaceholder}}'
+                      aria-label='{{localize "UESRPG.Fields.skill"}}'
+                      disabled
+                    />
+                  {{/if}}
+                </div>
+
+                <div class='uesrpg-rebuilt-character-sheet__skill-cell'>
+                  {{#if skill.editable}}
+                    <input
+                      class='uesrpg-rebuilt-character-sheet__numeric'
+                      name='system.skills.{{skill.index}}.rank'
+                      type='number'
+                      value='{{skill.rank}}'
+                      min='0'
+                      aria-label='{{localize "UESRPG.Fields.rank"}}'
+                    />
+                  {{else}}
+                    <input
+                      class='uesrpg-rebuilt-character-sheet__numeric'
+                      name='system.skills.{{skill.index}}.rank'
+                      type='number'
+                      value='{{skill.rank}}'
+                      min='0'
+                      aria-label='{{localize "UESRPG.Fields.rank"}}'
+                      disabled
+                    />
+                  {{/if}}
+                </div>
+
+                <div
+                  class='uesrpg-rebuilt-character-sheet__future-value'
+                  title='{{skill.unavailableLabel}}'
+                >
+                  <strong aria-label='{{localize "UESRPG.Fields.bonus"}}: {{skill.unavailableLabel}}'>{{skill.bonus}}</strong>
+                </div>
+
+                <div
+                  class='uesrpg-rebuilt-character-sheet__future-value'
+                  title='{{skill.unavailableLabel}}'
+                >
+                  <strong aria-label='{{localize "UESRPG.Fields.targetNumber"}}: {{skill.unavailableLabel}}'>{{skill.targetNumber}}</strong>
+                </div>
+
+                <div class='uesrpg-rebuilt-character-sheet__skill-cell'>
+                  {{#if skill.editable}}
+                    <select
+                      name='system.skills.{{skill.index}}.governingCharacteristic'
+                      aria-label='{{localize "UESRPG.Fields.governingCharacteristic"}}'
+                    >
+                      {{#each skill.governingCharacteristicOptions as |option|}}
+                        <option value='{{option.value}}' {{#if option.selected}}selected{{/if}}>{{option.label}}</option>
+                      {{/each}}
+                    </select>
+                  {{else}}
+                    <input
+                      type='text'
+                      value='{{skill.governingCharacteristicLabel}}'
+                      aria-label='{{localize "UESRPG.Fields.governingCharacteristic"}}'
+                      disabled
+                    />
+                  {{/if}}
+                </div>
+
+                <div class='uesrpg-rebuilt-character-sheet__row-controls'>
+                  {{#if skill.editable}}
+                    <button
+                      class='uesrpg-rebuilt-character-sheet__remove-row'
+                      type='button'
+                      data-action='removeSkill'
+                      data-index='{{skill.index}}'
+                    >{{localize 'UESRPG.Actions.removeSkill'}}</button>
+                  {{else}}
+                    <span>{{localize 'UESRPG.Empty.noControls'}}</span>
+                  {{/if}}
+                </div>
+
+                {{#if skill.warnings}}
+                  <ul class='uesrpg-rebuilt-character-sheet__missing-list uesrpg-rebuilt-character-sheet__skill-warnings'>
+                    {{#each skill.warnings as |warning|}}
+                      <li>{{warning}}</li>
+                    {{/each}}
+                  </ul>
+                {{/if}}
+              </div>
+            {{/each}}
+          </div>
+        {{else}}
+          <p class='uesrpg-rebuilt-character-sheet__empty'>{{localize
+              'UESRPG.Empty.skills'
+            }}</p>
+        {{/if}}
+      </article>
+
+      <article
+        class='tab {{#if tabs.notes.active}}active{{/if}} uesrpg-rebuilt-card uesrpg-rebuilt-actor-sheet__card uesrpg-rebuilt-actor-sheet__card--prose'
+        data-group='primary'
+        data-tab='notes'
+      >
         <div class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__prose'>
           {{#if editable}}
             <textarea
@@ -251,6 +488,7 @@
           {{/if}}
         </div>
       </article>
-    </section>
+      </section>
+    </main>
   </section>
 </form>

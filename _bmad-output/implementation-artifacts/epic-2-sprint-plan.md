@@ -19,7 +19,7 @@ Stories:
 
 - `2-1-build-character-sheet-shell-identity-permissions-and-empty-states`
 - `2-2-add-character-characteristics-resources-and-derived-summary-panels`
-- `2-3-add-character-skills-and-common-play-lists`
+- `2-3-add-character-skills-and-overview-content`
 - `2-4-add-character-inventory-equipment-and-magic-summary-sections`
 - `2-5-validate-complete-character-sheet-for-core-play-readiness`
 

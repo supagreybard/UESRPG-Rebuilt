@@ -742,9 +742,222 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   gap: var(--uesrpg-rebuilt-space-4);
 }
 
+.uesrpg-rebuilt-character-sheet__body {
+  display: grid;
+  grid-template-columns: minmax(12em, 0.22fr) minmax(0, 0.78fr);
+  gap: 0;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.uesrpg-rebuilt-character-sheet {
+  gap: 0;
+}
+
+.uesrpg-rebuilt-character-sheet .uesrpg-rebuilt-sheet__header {
+  background: transparent;
+  box-shadow: none;
+}
+
+.uesrpg-rebuilt-character-sheet__left-pane,
+.uesrpg-rebuilt-character-sheet__right-pane,
+.uesrpg-rebuilt-character-sheet__tab-content {
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__tab-content {
+  display: block;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.uesrpg-rebuilt-character-sheet__right-pane {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--uesrpg-rebuilt-divider-strong);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-panel-surface) 30%,
+    transparent
+  );
+  min-height: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__left-pane {
+  display: flex;
+  min-height: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__left-pane > .uesrpg-rebuilt-card {
+  flex: 1 1 auto;
+  gap: var(--uesrpg-rebuilt-space-2);
+  padding: 0.5rem 0.25rem;
+}
+
+.uesrpg-rebuilt-character-sheet__header-resources {
+  grid-template-columns: repeat(3, minmax(8rem, 1fr));
+  gap: var(--uesrpg-rebuilt-space-3);
+  margin-top: var(--uesrpg-rebuilt-space-2);
+}
+
+.uesrpg-rebuilt-character-sheet__header-resources
+  .uesrpg-rebuilt-actor-sheet__resource {
+  padding: var(--uesrpg-rebuilt-space-2) 0.25rem;
+}
+
+.uesrpg-rebuilt-character-sheet__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  border-top: 1px solid var(--uesrpg-rebuilt-divider-strong);
+  border-bottom: 1px solid var(--uesrpg-rebuilt-divider-strong);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-panel-surface-strong) 34%,
+    transparent
+  );
+}
+
+.uesrpg-rebuilt-character-sheet__tab {
+  display: flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0;
+  border-right: 1px solid var(--uesrpg-rebuilt-divider);
+  border-radius: 0;
+  background: transparent;
+  color: var(--uesrpg-rebuilt-text-muted);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.72;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease,
+    opacity 140ms ease;
+}
+
+.uesrpg-rebuilt-character-sheet__tab:last-child {
+  border-right: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__tab:hover,
+.uesrpg-rebuilt-character-sheet__tab:focus-visible {
+  background: color-mix(in srgb, var(--uesrpg-rebuilt-accent) 12%, transparent);
+  color: var(--uesrpg-rebuilt-text-heading);
+  transform: translateY(-1px);
+  opacity: 0.88;
+}
+
+.uesrpg-rebuilt-character-sheet__tab.active {
+  background: color-mix(in srgb, var(--uesrpg-rebuilt-accent) 16%, transparent);
+  color: var(--uesrpg-rebuilt-text-heading);
+  opacity: 1;
+  box-shadow: inset 0 -2px 0 var(--uesrpg-rebuilt-accent-strong);
+}
+
+.uesrpg-rebuilt-character-sheet__tab-content .tab {
+  display: none;
+}
+
+.uesrpg-rebuilt-character-sheet__tab-content .tab.active {
+  display: flex;
+  min-height: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__tab-content .uesrpg-rebuilt-card {
+  border-top: 0;
+  padding-top: calc(1rem + var(--uesrpg-rebuilt-space-1));
+  min-height: 100%;
+}
+
+.uesrpg-rebuilt-character-sheet__characteristics-rail {
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+}
+
+.uesrpg-rebuilt-character-sheet__characteristics-rail
+  .uesrpg-rebuilt-actor-sheet__attribute {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3.8em;
+  align-items: center;
+  column-gap: 0.35rem;
+  min-height: 1.75rem;
+  padding: 0.1rem 0.15rem;
+}
+
+.uesrpg-rebuilt-character-sheet__characteristics-rail
+  .uesrpg-rebuilt-actor-sheet__attribute
+  span {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.uesrpg-rebuilt-character-sheet__characteristics-rail
+  .uesrpg-rebuilt-actor-sheet__attribute
+  input {
+  width: 3.8em;
+  min-height: 1.65rem;
+  height: 1.65rem;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  justify-self: end;
+  text-align: center;
+}
+
+.uesrpg-rebuilt-character-sheet__characteristics-rail
+  .uesrpg-rebuilt-character-sheet__missing-list {
+  grid-column: 1 / -1;
+}
+
 .uesrpg-rebuilt-character-sheet__identity-field {
   display: grid;
   gap: var(--uesrpg-rebuilt-space-1);
+}
+
+.uesrpg-rebuilt-character-sheet__identity-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.34fr);
+  gap: var(--uesrpg-rebuilt-space-4);
+  align-items: end;
+}
+
+.uesrpg-rebuilt-character-sheet__race-name {
+  width: 100%;
+  min-height: 2.25rem;
+  margin: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--uesrpg-rebuilt-divider-strong);
+  border-left: 0;
+  border-radius: 0;
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-input-surface) 52%,
+    transparent
+  );
+  color: var(--uesrpg-rebuilt-text-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.35rem 0.15rem;
+}
+
+.uesrpg-rebuilt-character-sheet__race-name::placeholder {
+  color: color-mix(in srgb, var(--uesrpg-rebuilt-text-muted) 78%, transparent);
 }
 
 .uesrpg-rebuilt-character-sheet__field-label {
@@ -785,7 +998,8 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 }
 
 .uesrpg-rebuilt-character-sheet__summary-item span,
-.uesrpg-rebuilt-character-sheet__preserved-block h3 {
+.uesrpg-rebuilt-character-sheet__preserved-block h3,
+.uesrpg-rebuilt-character-sheet__overview-list-group h4 {
   margin: 0;
   color: var(--uesrpg-rebuilt-text-muted);
   font-size: 0.72rem;
@@ -811,6 +1025,196 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   display: grid;
   gap: var(--uesrpg-rebuilt-space-3);
   min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__section-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--uesrpg-rebuilt-space-3);
+}
+
+.uesrpg-rebuilt-character-sheet__section-header .uesrpg-rebuilt-card__heading {
+  flex: 1 1 auto;
+}
+
+.uesrpg-rebuilt-character-sheet__add-row,
+.uesrpg-rebuilt-character-sheet__remove-row {
+  appearance: none;
+  border: 1px solid
+    color-mix(in srgb, var(--uesrpg-rebuilt-accent) 34%, transparent);
+  border-radius: 0;
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-accent) 10%,
+    var(--uesrpg-rebuilt-panel-surface) 22%
+  );
+  color: var(--uesrpg-rebuilt-text-heading);
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.42rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.uesrpg-rebuilt-character-sheet__add-row:hover,
+.uesrpg-rebuilt-character-sheet__add-row:focus-visible,
+.uesrpg-rebuilt-character-sheet__remove-row:hover,
+.uesrpg-rebuilt-character-sheet__remove-row:focus-visible {
+  border-color: var(--uesrpg-rebuilt-accent-strong);
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-accent) 14%,
+    var(--uesrpg-rebuilt-panel-surface) 18%
+  );
+}
+
+.uesrpg-rebuilt-character-sheet__skill-table {
+  --uesrpg-rebuilt-character-skill-columns: minmax(8.5rem, 1.45fr)
+    minmax(2.75rem, 0.34fr) minmax(2.75rem, 0.34fr) minmax(2.75rem, 0.34fr)
+    minmax(5.75rem, 0.78fr) minmax(4.75rem, 0.5fr);
+  display: flex;
+  flex-direction: column;
+  gap: var(--uesrpg-rebuilt-space-2);
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__skill-header {
+  display: grid;
+  grid-template-columns: var(--uesrpg-rebuilt-character-skill-columns);
+  gap: var(--uesrpg-rebuilt-space-2);
+}
+
+.uesrpg-rebuilt-character-sheet__skill-heading {
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.uesrpg-rebuilt-character-sheet__skill-row {
+  display: grid;
+  grid-template-columns: var(--uesrpg-rebuilt-character-skill-columns);
+  gap: var(--uesrpg-rebuilt-space-2);
+  align-items: start;
+  min-width: 0;
+  padding-bottom: var(--uesrpg-rebuilt-space-2);
+  border-bottom: 1px solid var(--uesrpg-rebuilt-divider);
+}
+
+.uesrpg-rebuilt-character-sheet__skill-cell,
+.uesrpg-rebuilt-character-sheet__future-value,
+.uesrpg-rebuilt-character-sheet__row-controls {
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__skill-cell input,
+.uesrpg-rebuilt-character-sheet__skill-cell select {
+  width: 100%;
+  min-width: 0;
+  height: 2rem;
+  margin: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--uesrpg-rebuilt-divider-strong);
+  border-left: 0;
+  border-radius: 0;
+  background: color-mix(
+    in srgb,
+    var(--uesrpg-rebuilt-input-surface) 52%,
+    transparent
+  );
+  color: var(--uesrpg-rebuilt-text-heading);
+  font-size: 0.86rem;
+  padding: 0.25rem 0.15rem;
+}
+
+.uesrpg-rebuilt-character-sheet__numeric {
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
+  font-weight: 700;
+  text-align: center;
+}
+
+.uesrpg-rebuilt-character-sheet__future-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+}
+
+.uesrpg-rebuilt-character-sheet__row-controls span,
+.uesrpg-rebuilt-character-sheet__overview-list-entry strong {
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uesrpg-rebuilt-character-sheet__future-value strong {
+  color: var(--uesrpg-rebuilt-text-heading);
+  font-family: var(--uesrpg-rebuilt-font-role-numeric);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.uesrpg-rebuilt-character-sheet__skill-warnings {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__overview-lists {
+  display: grid;
+  gap: var(--uesrpg-rebuilt-space-3);
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--uesrpg-rebuilt-space-4);
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list-group {
+  display: grid;
+  gap: var(--uesrpg-rebuilt-space-2);
+  min-width: 0;
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list-group h4 {
+  margin: 0;
+  color: var(--uesrpg-rebuilt-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list {
+  display: grid;
+  gap: var(--uesrpg-rebuilt-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--uesrpg-rebuilt-space-2);
+  align-items: baseline;
+  min-width: 0;
+  padding: var(--uesrpg-rebuilt-space-2) 0;
+  border-bottom: 1px solid var(--uesrpg-rebuilt-divider);
+}
+
+.uesrpg-rebuilt-character-sheet__overview-list-entry span {
+  color: var(--uesrpg-rebuilt-text-heading);
+  overflow-wrap: anywhere;
 }
 
 .uesrpg-rebuilt-actor-sheet__card {
@@ -1268,7 +1672,9 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 
 @media (max-width: 780px) {
   .uesrpg-rebuilt-sheet__grid,
-  .uesrpg-rebuilt-actor-sheet__grid {
+  .uesrpg-rebuilt-actor-sheet__grid,
+  .uesrpg-rebuilt-character-sheet__body,
+  .uesrpg-rebuilt-character-sheet__header-resources {
     grid-template-columns: 1fr;
   }
 
@@ -1285,6 +1691,8 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   .uesrpg-rebuilt-field-grid--two,
   .uesrpg-rebuilt-actor-sheet__attribute-grid,
   .uesrpg-rebuilt-character-sheet__identity-summary,
+  .uesrpg-rebuilt-character-sheet__identity-row,
+  .uesrpg-rebuilt-character-sheet__overview-list-groups,
   .uesrpg-rebuilt-chat-card__stats {
     grid-template-columns: 1fr;
   }
@@ -1343,6 +1751,21 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 
   .uesrpg-rebuilt-sheet__name {
     font-size: 1.6rem;
+  }
+
+  .uesrpg-rebuilt-character-sheet__skill-header {
+    display: none;
+  }
+
+  .uesrpg-rebuilt-character-sheet__skill-row {
+    grid-template-columns: minmax(0, 1fr) repeat(3, minmax(2.5rem, 3rem));
+  }
+
+  .uesrpg-rebuilt-character-sheet__skill-cell:first-child,
+  .uesrpg-rebuilt-character-sheet__skill-cell:nth-of-type(5),
+  .uesrpg-rebuilt-character-sheet__row-controls,
+  .uesrpg-rebuilt-character-sheet__skill-warnings {
+    grid-column: 1 / -1;
   }
 
   .uesrpg-rebuilt-item-sheet__flavor-text {

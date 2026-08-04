@@ -552,10 +552,10 @@ So that I can understand my character's current state without hunting through ra
 **Then** characteristics, resources, localization, persistence, narrow-width layout, and missing-data behavior work without runtime errors
 **And** validation evidence records limitations and follow-up defects if any.
 
-### Story 2.3: Add Character Skills And Common Play Lists
+### Story 2.3: Add Character Skills And Overview Content
 
 As a player using my character during a session,
-I want skills and common play lists to be organized, scan-friendly, and editable where appropriate,
+I want skills and overview content to be organized, scan-friendly, and editable where appropriate,
 So that I can find the values needed for ordinary play without raw data editing.
 
 **Acceptance Criteria:**
@@ -565,7 +565,7 @@ So that I can find the values needed for ordinary play without raw data editing.
 **Then** the sheet displays the character's skills with localized names, ranks or relevant values, governing characteristic where applicable, and clear missing-data states
 **And** editable skill source fields persist through schema-backed actor data paths.
 
-**Given** the character has many skills or play-relevant entries
+**Given** the character has many skills or overview entries
 **When** the user scans the list
 **Then** values remain aligned and readable using the system's numeric typography role
 **And** the layout supports normal Foundry scrolling without hiding section headings or required fields.
@@ -575,10 +575,10 @@ So that I can find the values needed for ordinary play without raw data editing.
 **Then** missing or incomplete entries are surfaced near the affected row or section
 **And** the sheet does not silently omit data needed for later skill-test workflows.
 
-**Given** common play lists are present for character data such as traits, conditions, statuses, effects, or similar non-inventory/non-magic entries
-**When** those lists render
-**Then** they are grouped in predictable sheet sections with localized labels and safe empty states
-**And** edit controls are reachable when the user has permission.
+**Given** overview content is present for character data such as traits, race, powers, active effects, or similar non-inventory/non-magic entries
+**When** that content renders
+**Then** it is grouped in predictable overview sheet sections with localized labels and safe empty states
+**And** this story does not introduce a separate common-list model or separate common-list editing workflow.
 
 **Given** future roll automation is not yet part of this story
 **When** the skills section presents roll-related values
@@ -586,17 +586,17 @@ So that I can find the values needed for ordinary play without raw data editing.
 **And** it must not implement separate skill-test math outside the shared d100 services planned for Epic 3.
 
 **Given** the character sheet is viewed at narrow width or with dense data
-**When** the skills and play lists render
+**When** skills and overview content render
 **Then** rows remain readable, keyboard traversal follows reading order, and core values are reachable without horizontal scrolling.
 
 **Given** the user has non-editable permissions
-**When** skills and common play lists render
+**When** skills and overview content render
 **Then** values remain legible
 **And** edit controls are disabled, hidden, or read-only according to Foundry conventions.
 
 **Given** this story is validated in Foundry VTT 14
-**When** a character actor is opened with default, partial, filled, editable, non-editable, and dense skill/list data states
-**Then** skills, common play lists, localization, persistence, narrow-width layout, and missing-data behavior work without runtime errors
+**When** a character actor is opened with default, partial, filled, editable, non-editable, and dense skill/overview data states
+**Then** skills, overview content, localization, persistence, narrow-width layout, and missing-data behavior work without runtime errors
 **And** validation evidence records limitations and follow-up defects if any.
 
 ### Story 2.4: Add Character Inventory, Equipment, And Magic Summary Sections
@@ -656,7 +656,7 @@ So that Epic 3 and Epic 4 workflows can safely rely on character sheet data bein
 
 **Given** Stories 2.1 through 2.4 are implemented
 **When** the character sheet is opened in Foundry VTT 14
-**Then** identity, notes, GM/private areas, characteristics, resources, derived summaries, skills, common play lists, inventory, equipment, and magic summaries render together without runtime errors
+**Then** identity, notes, GM/private areas, characteristics, resources, derived summaries, skills, overview content, inventory, equipment, and magic summaries render together without runtime errors
 **And** the result is recorded as character sheet validation evidence.
 
 **Given** a character actor has default, partial, filled, dense, and intentionally incomplete data states

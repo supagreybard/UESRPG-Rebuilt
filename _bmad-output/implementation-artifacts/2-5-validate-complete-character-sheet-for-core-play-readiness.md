@@ -10,7 +10,7 @@ so that Epic 3 and Epic 4 workflows can safely rely on character sheet data bein
 
 ## Acceptance Criteria
 
-1. With Stories 2.1 through 2.4 implemented, the complete character sheet opens in Foundry VTT 14 with identity, notes, GM/private areas, characteristics, resources, summaries, skills, common play lists, inventory, equipment, and magic summaries rendering together.
+1. With Stories 2.1 through 2.4 implemented, the complete character sheet opens in Foundry VTT 14 with identity, notes, GM/private areas, characteristics, resources, summaries, skills, overview content, inventory, equipment, and magic summaries rendering together.
 2. Default, partial, filled, dense, and intentionally incomplete character data states show safe fallbacks, localized labels, near-field missing-data warnings, and no broken template output.
 3. Representative edits across character sheet sections persist actor and embedded item data through Foundry document APIs, with migration impact recorded for changed schema shape.
 4. Owner/editor, observer/limited, and non-owner permission states respect Foundry controls, item actions, private fields, and readable non-editable views.
