@@ -1,0 +1,135 @@
+# generated: 2026-08-03
+# last_updated: 2026-08-04
+# project: UESRPG-Rebuilt
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: /home/greybard/src/UESRPG-Rebuilt/_bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog -> in-progress: Automatically when first story is created (via create-story)
+#   - in-progress -> done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# Action Item Status:
+#   - open: Committed during a retrospective, not yet addressed
+#   - in-progress: Actively being worked on
+#   - done: Completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+# - Retrospective appends its action items to action_items; sprint-status surfaces open ones
+
+generated: 2026-08-03
+last_updated: 2026-08-04
+project: UESRPG-Rebuilt
+project_key: NOKEY
+tracking_system: file-system
+story_location: /home/greybard/src/UESRPG-Rebuilt/_bmad-output/implementation-artifacts
+
+development_status:
+  epic-1: done
+  1-1-verify-foundry-package-metadata-and-build-copy-contract: done
+  1-2-register-system-lifecycle-documents-data-models-sheets-settings-and-public-api-boundary: done
+  1-3-establish-localization-and-ui-token-foundations: done
+  1-4-validate-foundation-in-foundry-runtime: done
+  epic-1-retrospective: optional
+  epic-2: in-progress
+  2-1-build-character-sheet-shell-identity-permissions-and-empty-states: ready-for-dev
+  2-2-add-character-characteristics-resources-and-derived-summary-panels: ready-for-dev
+  2-3-add-character-skills-and-common-play-lists: ready-for-dev
+  2-4-add-character-inventory-equipment-and-magic-summary-sections: ready-for-dev
+  2-5-validate-complete-character-sheet-for-core-play-readiness: ready-for-dev
+  2-6-build-statblock-sheet-shell-identity-permissions-and-empty-states: ready-for-dev
+  2-7-add-statblock-characteristics-resources-defenses-and-summary-panels: ready-for-dev
+  2-8-add-statblock-attacks-and-abilities: ready-for-dev
+  2-9-add-statblock-equipment-and-treasure: ready-for-dev
+  2-10-add-statblock-magic-summaries: ready-for-dev
+  2-11-validate-complete-statblock-sheet-for-play-readiness: ready-for-dev
+  2-12-build-equipment-and-general-item-sheet-shells: ready-for-dev
+  2-13-add-equipment-and-general-item-mechanical-fields: ready-for-dev
+  2-14-validate-equipment-and-general-item-sheets-for-play-readiness: ready-for-dev
+  2-15-build-spell-and-ritual-sheet-shells: ready-for-dev
+  2-16-add-spell-and-ritual-mechanical-fields: ready-for-dev
+  2-17-validate-spell-and-ritual-sheets-for-play-readiness: ready-for-dev
+  2-18-build-enchantment-and-alchemy-sheet-shells: ready-for-dev
+  2-19-add-enchantment-and-alchemy-mechanical-fields: ready-for-dev
+  2-20-validate-enchantment-and-alchemy-sheets-for-manual-play-readiness: ready-for-dev
+  epic-2-retrospective: optional
+  epic-3: backlog
+  3-1-implement-shared-d100-test-resolution-service: backlog
+  3-2-add-skill-test-dialog-and-sheet-entry-points: backlog
+  3-3-add-characteristic-test-dialog-and-sheet-entry-points: backlog
+  3-4-add-opposed-test-setup-and-resolution-flow: backlog
+  3-5-build-transparent-roll-chat-cards: backlog
+  3-6-add-missing-data-modifier-and-manual-adjudication-feedback: backlog
+  3-7-validate-core-d100-tests-in-foundry-runtime: backlog
+  epic-3-retrospective: optional
+  epic-4: backlog
+  4-1-integrate-uesrpg-initiative-with-foundry-combat-tracker: backlog
+  4-2-add-attack-workflow-from-actor-and-weapon-data: backlog
+  4-3-add-linked-defense-workflow-for-attack-results: backlog
+  4-4-support-conservative-combat-state-updates: backlog
+  4-5-add-combat-missing-data-and-manual-override-feedback: backlog
+  4-6-add-spellcasting-workflow-from-actor-and-spell-data: backlog
+  4-7-add-manual-ritual-spellcasting-support: backlog
+  4-8-add-magical-and-alchemical-mishap-workflow: backlog
+  4-9-add-alchemy-and-consumable-use-workflow: backlog
+  4-10-validate-live-play-combat-magic-and-mishap-workflows-in-foundry-runtime: backlog
+  epic-4-retrospective: optional
+  epic-5: backlog
+  5-1-establish-shared-builder-stepper-validation-and-completion-pattern: backlog
+  5-2-build-character-creation-core-identity-and-characteristics-steps: backlog
+  5-3-add-character-creation-skills-resources-and-advancement-inputs: backlog
+  5-4-add-character-creation-equipment-magic-and-final-actor-creation: backlog
+  5-5-add-character-advancement-builder: backlog
+  5-6-add-spell-creation-builder: backlog
+  5-7-add-weapon-armor-and-shield-builders: backlog
+  5-8-add-general-equipment-and-consumable-builders: backlog
+  5-9-build-statblock-builder-core-identity-characteristics-and-role-steps: backlog
+  5-10-add-statblock-combat-magic-notes-and-final-actor-creation: backlog
+  5-11-add-minimal-enchanting-builder-with-manual-fallback: backlog
+  5-12-add-minimal-alchemy-builder-with-manual-fallback: backlog
+  5-13-validate-builder-outputs-across-sheets-play-workflows-and-packaging-readiness: backlog
+  epic-5-retrospective: optional
+  epic-6: backlog
+  6-1-add-simple-xp-reward-calculation-and-distribution-support: backlog
+  6-2-add-treasure-table-rolling-workflow: backlog
+  6-3-add-artifact-generation-workflow-with-gm-editable-output: backlog
+  6-4-define-system-content-source-categories-and-minimum-coverage: backlog
+  6-5-add-provenance-manifest-schema-and-review-workflow: backlog
+  6-6-align-compendium-source-data-and-pack-compilation-workflow: backlog
+  6-7-validate-system-content-packs-and-gm-tool-workflows-in-foundry-runtime: backlog
+  epic-6-retrospective: optional
+  epic-7: backlog
+  7-1-create-the-1-0-release-checklist: backlog
+  7-2-run-final-baseline-verification-and-package-build: backlog
+  7-3-validate-full-foundry-runtime-install-and-core-surfaces: backlog
+  7-4-validate-balanced-one-shot-workflow-coverage: backlog
+  7-5-create-installation-setup-quickstart: backlog
+  7-6-create-core-play-workflow-guide: backlog
+  7-7-create-gm-content-workflow-notes-and-release-limitations: backlog
+  7-8-add-foundry-tutorial-api-guidance-for-common-workflows: backlog
+  7-9-run-minimal-handholding-validation-pass: backlog
+  7-10-finalize-1-0-release-readiness-evidence: backlog
+  epic-7-retrospective: optional
