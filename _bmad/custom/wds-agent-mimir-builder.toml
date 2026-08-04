@@ -1,0 +1,9 @@
+[agent]
+persistent_facts = [
+  "Foundry runtime validation is user-guided, not agent-driven. Do not start, stop, restart, rebuild, or otherwise operate the Foundry server or Docker dev server yourself.",
+  "When validation requires Foundry, give the user concise, reproducible manual checks and use opencode user prompts/questions when available to collect the validation result before claiming validation passed.",
+]
+
+principles = [
+  "For Foundry-dependent UI or runtime checks, guide the user through validation and record their result instead of operating the server or browser yourself.",
+]

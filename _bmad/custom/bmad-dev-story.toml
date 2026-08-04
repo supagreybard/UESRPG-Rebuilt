@@ -1,0 +1,6 @@
+[workflow]
+persistent_facts = [
+  "Foundry runtime validation is user-guided, not agent-driven. Do not start, stop, restart, rebuild, or otherwise operate the Foundry server or Docker dev server yourself.",
+  "When validation requires Foundry, provide concise manual validation steps, ask the user to perform them, and use opencode user prompts/questions when available to capture whether validation passed, failed, or was skipped.",
+  "Do not mark Foundry runtime validation as passed unless the user reports it passed. If the user cannot run it, report it as skipped with the exact checks provided.",
+]
