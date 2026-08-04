@@ -20,7 +20,6 @@ export class BaseItemData<T extends DataSchema | undefined = undefined> extends 
 > {
     static defineSchema() {
         return {
-            ...super.defineSchema(),
             prose: new fields.SchemaField({
                 description: new fields.HTMLField({ initial: '' }),
                 flavorText: new fields.StringField({ initial: '' }),

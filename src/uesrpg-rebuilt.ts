@@ -36,7 +36,7 @@ Hooks.once('setup', () => {
   registerTrackableAttributes();
 });
 
-Hooks.once('ready', () => {
-  void runMigrations();
+Hooks.once('ready', async () => {
+  await runMigrations();
   logInfo(`${SYSTEM_TITLE} | Ready.`);
 });

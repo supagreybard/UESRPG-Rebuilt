@@ -2,7 +2,7 @@ import {
   ACTOR_DOCUMENT_TYPES,
   ITEM_DOCUMENT_TYPES,
 } from '../config/document-types';
-import { SYSTEM_ID } from '../config/constants';
+import { ITEM_TYPES, SYSTEM_ID } from '../config/constants';
 import { CharacterSheet } from './actor/CharacterSheet';
 import { NPCSheet } from './actor/NPCSheet';
 import { PowerItemSheet } from './item/PowerItemSheet';
@@ -38,26 +38,29 @@ export function registerApplicationClasses(): void {
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, UesrpgItemSheet as any, {
     types: ITEM_DOCUMENT_TYPES.filter(
-      (type) => type !== 'trait' && type !== 'race' && type !== 'power',
+      (type) =>
+        type !== ITEM_TYPES.trait &&
+        type !== ITEM_TYPES.race &&
+        type !== ITEM_TYPES.power,
     ),
     makeDefault: true,
     label: 'UESRPG.Sheets.item',
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, TraitItemSheet as any, {
-    types: ['trait'],
+    types: [ITEM_TYPES.trait],
     makeDefault: true,
     label: 'UESRPG.Sheets.trait',
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, PowerItemSheet as any, {
-    types: ['power'],
+    types: [ITEM_TYPES.power],
     makeDefault: true,
     label: 'UESRPG.Sheets.power',
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, RaceItemSheet as any, {
-    types: ['race'],
+    types: [ITEM_TYPES.race],
     makeDefault: true,
     label: 'UESRPG.Sheets.race',
   });
