@@ -771,6 +771,8 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   display: block;
   min-height: 0;
   overflow-y: auto;
+  outline: 1px solid var(--uesrpg-rebuilt-accent-strong);
+  outline-offset: -1px;
 }
 
 .uesrpg-rebuilt-character-sheet__right-pane {
