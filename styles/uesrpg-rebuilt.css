@@ -999,7 +999,7 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 
 .uesrpg-rebuilt-character-sheet__summary-item span,
 .uesrpg-rebuilt-character-sheet__preserved-block h3,
-.uesrpg-rebuilt-character-sheet__overview-list-group h4 {
+.uesrpg-rebuilt-character-sheet__overview-list-heading {
   margin: 0;
   color: var(--uesrpg-rebuilt-text-muted);
   font-size: 0.72rem;
@@ -1185,7 +1185,7 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
   min-width: 0;
 }
 
-.uesrpg-rebuilt-character-sheet__overview-list-group h4 {
+.uesrpg-rebuilt-character-sheet__overview-list-heading {
   margin: 0;
   color: var(--uesrpg-rebuilt-text-muted);
   font-size: 0.72rem;

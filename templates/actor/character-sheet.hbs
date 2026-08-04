@@ -262,8 +262,14 @@
           <section class='uesrpg-rebuilt-character-sheet__overview-lists'>
             <div class='uesrpg-rebuilt-character-sheet__overview-list-groups'>
               {{#each overviewListGroups as |group|}}
-                <section class='uesrpg-rebuilt-character-sheet__overview-list-group'>
-                  <h4>{{group.label}}</h4>
+                <section
+                  class='uesrpg-rebuilt-character-sheet__overview-list-group'
+                  aria-labelledby='uesrpg-rebuilt-character-overview-{{group.key}}'
+                >
+                  <div
+                    id='uesrpg-rebuilt-character-overview-{{group.key}}'
+                    class='uesrpg-rebuilt-character-sheet__overview-list-heading'
+                  >{{group.label}}</div>
                   {{#if group.entries}}
                     <ul class='uesrpg-rebuilt-character-sheet__overview-list'>
                       {{#each group.entries as |entry|}}
