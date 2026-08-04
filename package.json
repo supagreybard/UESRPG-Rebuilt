@@ -10,7 +10,7 @@
     "packs:compile": "node automation/compendium-packager.mjs compile",
     "packs:extract": "node automation/compendium-packager.mjs extract",
     "preversion": "npm run typecheck && npm run lint && npm run build",
-    "version": "node automation/sync-system-version.mjs",
+    "version": "node automation/sync-system-version.mjs && git add system.json",
     "postversion": "git status --short",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
