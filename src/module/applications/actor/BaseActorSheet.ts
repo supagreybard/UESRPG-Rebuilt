@@ -5,6 +5,7 @@ type CharacteristicField = {
   key: string;
   label: string;
   value: number;
+  editable: boolean;
 };
 
 type ResourceField = {
@@ -12,6 +13,7 @@ type ResourceField = {
   label: string;
   value: number;
   max: number;
+  editable: boolean;
 };
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -63,18 +65,21 @@ export class BaseActorSheet extends ActorHandlebarsSheet {
         label: localize('UESRPG.Fields.health'),
         value: Number(resources.health?.value ?? 0),
         max: Number(resources.health?.max ?? 0),
+        editable: this.isEditable,
       },
       {
         key: 'stamina',
         label: localize('UESRPG.Fields.stamina'),
         value: Number(resources.stamina?.value ?? 0),
         max: Number(resources.stamina?.max ?? 0),
+        editable: this.isEditable,
       },
       {
         key: 'magicka',
         label: localize('UESRPG.Fields.magicka'),
         value: Number(resources.magicka?.value ?? 0),
         max: Number(resources.magicka?.max ?? 0),
+        editable: this.isEditable,
       },
     ];
   }
@@ -86,6 +91,7 @@ export class BaseActorSheet extends ActorHandlebarsSheet {
       key,
       label: localize(`UESRPG.Attributes.${key}`),
       value: Number(value ?? 0),
+      editable: this.isEditable,
     }));
   }
 }

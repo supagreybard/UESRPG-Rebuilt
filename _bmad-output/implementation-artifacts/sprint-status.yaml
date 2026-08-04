@@ -55,7 +55,7 @@ development_status:
   1-4-validate-foundation-in-foundry-runtime: done
   epic-1-retrospective: optional
   epic-2: in-progress
-  2-1-build-character-sheet-shell-identity-permissions-and-empty-states: ready-for-dev
+  2-1-build-character-sheet-shell-identity-permissions-and-empty-states: done
   2-2-add-character-characteristics-resources-and-derived-summary-panels: ready-for-dev
   2-3-add-character-skills-and-common-play-lists: ready-for-dev
   2-4-add-character-inventory-equipment-and-magic-summary-sections: ready-for-dev

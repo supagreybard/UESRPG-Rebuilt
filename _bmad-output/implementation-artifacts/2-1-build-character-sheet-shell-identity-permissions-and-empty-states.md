@@ -1,6 +1,10 @@
+---
+baseline_commit: 1aecc5332674ca695bacf24479e682e3c02c2b89
+---
+
 # Story 2.1: Build Character Sheet Shell, Identity, Permissions, And Empty States
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -21,36 +25,41 @@ so that character data has a reliable, readable place to live before detailed pl
 
 ## Tasks / Subtasks
 
-- [ ] Audit the existing character sheet shell and preserve working foundation behavior. (AC: 1, 3)
-  - [ ] Read `src/module/applications/actor/BaseActorSheet.ts`, `src/module/applications/actor/CharacterSheet.ts`, `templates/actor/character-sheet.hbs`, `src/module/data/actor/BaseActorData.ts`, `src/module/data/actor/CharacterData.ts`, `lang/en.json`, and relevant `styles/uesrpg-rebuilt.css` sections before editing.
-  - [ ] Confirm the sheet still uses `foundry.applications.api.HandlebarsApplicationMixin`, `ActorSheetV2`, `classes: [SYSTEM_ID, 'sheet', 'actor']`, `position.width: 720`, `position.height: 640`, `window.resizable: true`, `form.submitOnChange: true`, and `form.closeOnSubmit: false`.
-  - [ ] Preserve existing default character resources, characteristics, experience, and notes fields unless moving them behind placeholder/summary sections is necessary for shell clarity; do not remove persisted paths used by current templates without a migration assessment.
-- [ ] Implement the Story 2.1 character shell scope. (AC: 1, 2, 5)
-  - [ ] Refine the header/document identity area around actor name, actor image, type/sheet label, and safe fallback display values.
-  - [ ] Add clear shell-level sections or tabs for identity/overview, notes, and GM/private content where applicable, with empty states for sections whose detailed play data lands in later Epic 2 stories.
-  - [ ] Keep detailed characteristics/resources panels out of scope except for preserving current rendering; Story 2.2 owns characteristic, resource, and derived summary completion.
-  - [ ] Do not add skill, inventory, equipment, magic, roll, combat, or builder actions in this story; later stories own those surfaces.
-- [ ] Add permission-aware rendering. (AC: 3, 4)
-  - [ ] Prepare permission/editability state in `_prepareContext`; keep templates simple.
-  - [ ] Make identity, image, notes, and GM/private controls respect `this.isEditable` or Foundry-provided editability conventions.
-  - [ ] Ensure non-editable views remain legible and do not offer misleading editable controls.
-  - [ ] Protect any GM/private area according to Foundry permission expectations; if the exact private-data convention is not yet established, implement the smallest clear GM/private notes surface and record any limitations.
-- [ ] Add localization and scoped styling for new shell labels, warnings, and empty states. (AC: 2, 5)
-  - [ ] Add all new user-facing labels to `lang/en.json`; do not hardcode user-facing strings in TypeScript or Handlebars.
-  - [ ] Reuse existing `UESRPG.Sheets.*`, `UESRPG.Sections.*`, `UESRPG.Fields.*`, `UESRPG.Empty.*`, and `UESRPG.Messages.*` key patterns where they fit.
-  - [ ] Keep CSS scoped under `.uesrpg-rebuilt` / `.uesrpg-rebuilt-sheet` / `.uesrpg-rebuilt-actor-sheet` classes and use existing `--uesrpg-rebuilt-*` tokens.
-  - [ ] Preserve narrow-window behavior: core identity, notes, and empty states must collapse without horizontal scrolling.
-- [ ] Assess persisted data and migration impact. (AC: 3)
-  - [ ] If adding schema-backed fields such as GM/private notes, add them through `foundry.data.fields` in `BaseActorData` or `CharacterData` with safe initial values.
-  - [ ] If persisted data shape changes, explicitly decide whether a migration is required for existing world actors and embedded data; add migration only for a concrete persisted-world need.
-  - [ ] Use path-based actor updates through Foundry sheet submission; do not introduce separate client-side state or raw JSON editing workflows.
-- [ ] Verify the story with existing project gates and Foundry runtime evidence. (AC: 1-6)
-  - [ ] Run `npm run typecheck`.
-  - [ ] Run `npm run lint`.
-  - [ ] Run `npm run build`.
-  - [ ] In Foundry VTT 14, open a character actor with default data, partial/missing identity data, filled identity/notes data, editable permissions, and observer/limited or non-owner permissions where feasible.
-  - [ ] Resize the sheet to a narrow window and check light/dark theme readability, focus states, and absence of horizontal scrolling for core shell fields.
-  - [ ] Record validation evidence in the Dev Agent Record using the required format from Story 1.4.
+- [x] Audit the existing character sheet shell and preserve working foundation behavior. (AC: 1, 3)
+  - [x] Read `src/module/applications/actor/BaseActorSheet.ts`, `src/module/applications/actor/CharacterSheet.ts`, `templates/actor/character-sheet.hbs`, `src/module/data/actor/BaseActorData.ts`, `src/module/data/actor/CharacterData.ts`, `lang/en.json`, and relevant `styles/uesrpg-rebuilt.css` sections before editing.
+  - [x] Confirm the sheet still uses `foundry.applications.api.HandlebarsApplicationMixin`, `ActorSheetV2`, `classes: [SYSTEM_ID, 'sheet', 'actor']`, `position.width: 720`, `position.height: 640`, `window.resizable: true`, `form.submitOnChange: true`, and `form.closeOnSubmit: false`.
+  - [x] Preserve existing default character resources, characteristics, experience, and notes fields unless moving them behind placeholder/summary sections is necessary for shell clarity; do not remove persisted paths used by current templates without a migration assessment.
+- [x] Implement the Story 2.1 character shell scope. (AC: 1, 2, 5)
+  - [x] Refine the header/document identity area around actor name, actor image, type/sheet label, and safe fallback display values.
+  - [x] Add clear shell-level sections or tabs for identity/overview, notes, and GM/private content where applicable, with empty states for sections whose detailed play data lands in later Epic 2 stories.
+  - [x] Keep detailed characteristics/resources panels out of scope except for preserving current rendering; Story 2.2 owns characteristic, resource, and derived summary completion.
+  - [x] Do not add skill, inventory, equipment, magic, roll, combat, or builder actions in this story; later stories own those surfaces.
+- [x] Add permission-aware rendering. (AC: 3, 4)
+  - [x] Prepare permission/editability state in `_prepareContext`; keep templates simple.
+  - [x] Make identity, image, notes, and GM/private controls respect `this.isEditable` or Foundry-provided editability conventions.
+  - [x] Ensure non-editable views remain legible and do not offer misleading editable controls.
+  - [x] Protect any GM/private area according to Foundry permission expectations; if the exact private-data convention is not yet established, implement the smallest clear GM/private notes surface and record any limitations.
+- [x] Add localization and scoped styling for new shell labels, warnings, and empty states. (AC: 2, 5)
+  - [x] Add all new user-facing labels to `lang/en.json`; do not hardcode user-facing strings in TypeScript or Handlebars.
+  - [x] Reuse existing `UESRPG.Sheets.*`, `UESRPG.Sections.*`, `UESRPG.Fields.*`, `UESRPG.Empty.*`, and `UESRPG.Messages.*` key patterns where they fit.
+  - [x] Keep CSS scoped under `.uesrpg-rebuilt` / `.uesrpg-rebuilt-sheet` / `.uesrpg-rebuilt-actor-sheet` classes and use existing `--uesrpg-rebuilt-*` tokens.
+  - [x] Preserve narrow-window behavior: core identity, notes, and empty states must collapse without horizontal scrolling.
+- [x] Assess persisted data and migration impact. (AC: 3)
+  - [x] If adding schema-backed fields such as GM/private notes, add them through `foundry.data.fields` in `BaseActorData` or `CharacterData` with safe initial values.
+  - [x] If persisted data shape changes, explicitly decide whether a migration is required for existing world actors and embedded data; add migration only for a concrete persisted-world need.
+  - [x] Use path-based actor updates through Foundry sheet submission; do not introduce separate client-side state or raw JSON editing workflows.
+- [x] Verify the story with existing project gates and Foundry runtime evidence. (AC: 1-6)
+  - [x] Run `npm run typecheck`.
+  - [x] Run `npm run lint`.
+  - [x] Run `npm run build`.
+  - [x] In Foundry VTT 14, open a character actor with default data, partial/missing identity data, filled identity/notes data, editable permissions, and observer/limited or non-owner permissions where feasible.
+  - [x] Resize the sheet to a narrow window and check light/dark theme readability, focus states, and absence of horizontal scrolling for core shell fields.
+  - [x] Record validation evidence in the Dev Agent Record using the required format from Story 1.4.
+
+### Review Findings
+
+- [x] [Review][Patch] GM-private notes are not actually private — Resolved by removing the `system.prose.gmNotes` field, sheet context, template card, localization keys, and private-card styling from Story 2.1. True private notes are deferred until a Foundry-safe private storage/update pattern is defined.
+- [x] [Review][Patch] Missing actor image can still render as broken output [`templates/actor/character-sheet.hbs:9`] — Resolved by preparing a default portrait fallback in `CharacterSheet._prepareContext` and rendering `identity.image`.
 
 ## Dev Notes
 
@@ -178,6 +187,72 @@ gpt-5.5
 
 ### Debug Log References
 
+- 2026-08-04: Captured baseline commit `1aecc5332674ca695bacf24479e682e3c02c2b89`; sprint status and story status moved to `in-progress`.
+- 2026-08-04: Audited `BaseActorSheet`, `CharacterSheet`, character template, actor data schemas, localization, and actor-sheet styles before editing.
+- 2026-08-04: Verified `BaseActorSheet.DEFAULT_OPTIONS` still provides Foundry V2 Handlebars/ActorSheetV2 foundation, `[SYSTEM_ID, 'sheet', 'actor']`, 720x640 dimensions, resizable window, submit-on-change, and close-on-submit false.
+- 2026-08-04: Ran `npm run typecheck` - passed.
+- 2026-08-04: Ran `npm run lint` - passed.
+- 2026-08-04: Ran `npm run build` - passed; Vite copied runtime assets and pack compilation completed.
+- 2026-08-04: Fixed Handlebars template syntax to avoid block helpers in HTML attributes and parent-context lookups; re-ran `npm run typecheck`, `npm run lint`, and `npm run build` - passed.
+- 2026-08-04: Checked `http://localhost:30001` - server responded `302 /join`; interactive sheet validation remains blocked because this environment has no browser/session automation.
+- 2026-08-04: User-performed runtime validation found excessive blank height inside the Identity card; initial scoped override was insufficient, so removed the shared `.uesrpg-rebuilt-card` `min-height: 100%` rule for retest; re-ran `npm run lint` and `npm run typecheck` - passed.
+- 2026-08-04: User-performed runtime validation found Overview and Characteristics cards were uneven after removing the global card minimum height; added a dedicated `uesrpg-rebuilt-character-sheet__grid` class with scoped stretch behavior; re-ran `npm run lint`, `npm run typecheck`, and `npm run build` - passed; user confirmed alignment fixed.
+- 2026-08-04: User-performed runtime validation found clearing actor name caused Foundry document validation error `name: may not be undefined`; moved blank-name normalization into `_processFormData` before Foundry validation; re-ran `npm run lint`, `npm run typecheck`, and `npm run build` - passed; user confirmed blank-name submit now saves with fallback.
+- 2026-08-04: User review rejected obvious empty Notes/GM Notes copy and duplicate main Notes field label; removed visible main notes field label, restored section header to `Notes`, changed placeholder to `Add character notes.`, and kept accessible `aria-label`; re-ran `npm run lint`, `npm run typecheck`, and `npm run build` - passed.
+- 2026-08-04: Final validation run completed: `npm run typecheck`, `npm run lint`, and `npm run build` passed; user-performed Foundry VTT 14 runtime prompts passed for shell rendering, identity fallback, notes persistence, permission behavior, and responsive/theme behavior.
+- 2026-08-04: Code review found that sheet-hidden `system.prose.gmNotes` was not a reliable privacy boundary and that blank actor images still rendered through `actor.img`; removed the GM/private notes field/surface from this story, deferred true private notes, and added a default portrait fallback for missing actor images.
+- 2026-08-04: Post-review automated validation passed: `npm run typecheck`, `npm run lint`, and `npm run build`.
+
+### Implementation Plan
+
+- Preserve the existing actor sheet foundation in `BaseActorSheet` and keep registration untouched.
+- Prepare character-specific identity, portrait fallback, notes, and editability state in `CharacterSheet._prepareContext`.
+- Carry per-resource and per-characteristic editability from `BaseActorSheet._prepareContext` so the Handlebars template stays parser-compatible without parent-context lookups.
+- Reframe the template into identity, overview, characteristics preview, and notes sections while preserving existing resource, characteristic, experience, and notes paths.
+- Defer true private notes until a Foundry-safe private storage/update pattern is defined; do not persist private data in ordinary actor system data for this story.
+- Extend localization and scoped CSS only; do not add roll, inventory, magic, combat, builder, or compendium surfaces.
+
 ### Completion Notes List
 
+- Implemented the character sheet shell with localized identity, overview, characteristics preview, and notes sections.
+- Added safe identity fallback display for unnamed characters, a default portrait fallback for missing actor images, and missing image/name warnings prepared in `_prepareContext`.
+- Made editable controls permission-aware: actor image editing is only exposed when editable, and form fields are disabled for non-editable views.
+- Added per-field editability to prepared resource and characteristic fields so preserved current mechanical fields remain read-only in non-editable views.
+- Adjusted card sizing after manual runtime validation found the Identity card inherited excessive blank height from the shared card minimum-height rule.
+- Added direct character grid stretch styling so Overview and Characteristics align without restoring global card minimum-height behavior.
+- Fixed blank actor-name submission by normalizing empty submitted names to the localized `Unnamed Character` fallback before Foundry validates document update data.
+- Refined Notes presentation based on runtime review: section header remains `Notes`, the main notes textarea has no visible duplicate field label, obvious empty-state prose was removed, and the placeholder now reads `Add character notes.`.
+- Preserved existing resource, characteristic, experience, and player notes persisted paths without adding new private actor system data.
+- Added scoped character-shell styles for identity summaries, empty states, missing-data messages, and narrow-window identity collapse.
+- Automated validation passed: `npm run typecheck`, `npm run lint`, and `npm run build`.
+- Foundry runtime validation completed through user-performed interactive prompts against the local Foundry VTT 14 dev server.
+
+#### Validation Evidence
+
+```text
+Foundry version/build: Foundry VTT 14 local dev server, exact build not inspectable from this environment
+World/test data: User-opened local world with a character actor; tested default, partial/missing identity, filled notes, editable, and non-editable/permission states where feasible
+Action performed: Opened character sheet, inspected shell sections, edited and cleared actor name, edited Notes, closed/reopened sheet, checked observer/limited or non-owner behavior, resized narrow, and checked light/dark readability/focus behavior
+Expected result: Sheet renders with Foundry V2 shell, safe identity fallback, persisted identity/notes fields, permission-aware controls, readable responsive layout, and no shell rendering/localization/persistence errors
+Actual result: Initial runtime findings were fixed during validation: Identity excessive height, uneven Overview/Characteristics card heights, blank-name validation error, and Notes copy/label wording. Final user retests passed for layout, blank-name fallback, Notes presentation, Notes persistence, permissions, and responsive/theme behavior. Code review then removed the GM/private notes surface because ordinary actor system data is not a reliable private-data boundary.
+Status: Pass
+Limitations: Exact Foundry build number was not captured; validation was human-in-the-loop via local browser rather than automated browser recording. The post-review removal of GM/private notes and portrait fallback change still require manual Foundry retest.
+Follow-up defect/story: Define a Foundry-safe private notes pattern before adding true GM/private character notes.
+```
+
 ### File List
+
+- `_bmad-output/implementation-artifacts/2-1-build-character-sheet-shell-identity-permissions-and-empty-states.md`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+- `lang/en.json`
+- `src/module/applications/actor/BaseActorSheet.ts`
+- `src/module/applications/actor/CharacterSheet.ts`
+- `src/module/data/actor/BaseActorData.ts`
+- `styles/uesrpg-rebuilt.css`
+- `templates/actor/character-sheet.hbs`
+
+## Change Log
+
+- 2026-08-04: Implemented character sheet shell source changes, localization, scoped styles, and recorded blocked runtime validation.
+- 2026-08-04: Completed interactive Foundry runtime validation, fixed discovered shell defects, and moved story to review.
+- 2026-08-04: Addressed code review findings by removing non-private GM notes and adding a missing-image portrait fallback.
