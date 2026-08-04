@@ -800,14 +800,14 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 }
 
 .uesrpg-rebuilt-character-sheet__header-resources {
-  grid-template-columns: repeat(3, minmax(8rem, 1fr));
-  gap: var(--uesrpg-rebuilt-space-3);
-  margin-top: var(--uesrpg-rebuilt-space-2);
+  grid-template-columns: repeat(3, minmax(7rem, 1fr));
+  gap: var(--uesrpg-rebuilt-space-2);
+  margin-top: var(--uesrpg-rebuilt-space-1);
 }
 
 .uesrpg-rebuilt-character-sheet__header-resources
   .uesrpg-rebuilt-actor-sheet__resource {
-  padding: var(--uesrpg-rebuilt-space-2) 0.25rem;
+  padding: 0;
 }
 
 .uesrpg-rebuilt-character-sheet__tabs {
@@ -1377,20 +1377,14 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 .uesrpg-rebuilt-actor-sheet__resource {
   --uesrpg-rebuilt-resource-accent: var(--uesrpg-rebuilt-accent);
   display: grid;
-  gap: var(--uesrpg-rebuilt-space-2);
+  gap: var(--uesrpg-rebuilt-space-1);
   min-width: 0;
-  padding: var(--uesrpg-rebuilt-space-2) 0.35rem var(--uesrpg-rebuilt-space-3);
+  padding: var(--uesrpg-rebuilt-space-2) 0.35rem;
   border-top: 0;
   border-right: 0;
   border-bottom: 1px solid var(--uesrpg-rebuilt-divider);
-  border-left: 3px solid
-    color-mix(in srgb, var(--uesrpg-rebuilt-resource-accent) 72%, transparent);
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--uesrpg-rebuilt-resource-accent) 10%, transparent)
-      0%,
-    transparent 34%
-  );
+  border-left: 0;
+  background: transparent;
 }
 
 .uesrpg-rebuilt-actor-sheet__resource[data-resource='health'] {
@@ -1416,12 +1410,12 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 .uesrpg-rebuilt-actor-sheet__resource-bar {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(3.5rem, 4.5rem) auto auto;
-  gap: var(--uesrpg-rebuilt-space-2);
+  grid-template-columns: minmax(0, 1fr) minmax(2.4rem, 3.2rem) auto auto;
+  gap: var(--uesrpg-rebuilt-space-1);
   align-items: center;
-  justify-content: center;
   min-width: 0;
-  padding: var(--uesrpg-rebuilt-space-2);
+  min-height: 1.8rem;
+  padding: 0.16rem 0.45rem;
   border: 1px solid
     color-mix(in srgb, var(--uesrpg-rebuilt-resource-accent) 42%, transparent);
   border-radius: 1.5em;
@@ -1446,36 +1440,72 @@ body.theme-light .uesrpg-rebuilt-card__heading::after {
 }
 
 .uesrpg-rebuilt-actor-sheet__resource-current,
+.uesrpg-rebuilt-actor-sheet__resource-label,
 .uesrpg-rebuilt-actor-sheet__resource-slash,
 .uesrpg-rebuilt-actor-sheet__resource-max {
   position: relative;
   z-index: 1;
 }
 
+.uesrpg-rebuilt-actor-sheet__resource-label {
+  min-width: 0;
+  color: color-mix(in srgb, var(--uesrpg-rebuilt-text-heading) 88%, white 12%);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.18);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .uesrpg-rebuilt-actor-sheet__resource-current {
   min-width: 0;
 }
 
-.uesrpg-rebuilt-actor-sheet__resource-current input {
+.uesrpg-rebuilt-actor-sheet__resource-current.uesrpg-rebuilt-field
+  input:not([type='checkbox']):not([type='radio']) {
   width: 100%;
+  min-height: 1.35rem;
+  height: 1.35rem;
+  border: 0;
+  background: transparent;
+  color: var(--uesrpg-rebuilt-text-heading);
+  padding: 0;
   text-align: center;
+  box-shadow: none;
+}
+
+.uesrpg-rebuilt-actor-sheet__resource-bar
+  .uesrpg-rebuilt-actor-sheet__resource-current.uesrpg-rebuilt-field
+  input:not([type='checkbox']):not([type='radio']):hover,
+.uesrpg-rebuilt-actor-sheet__resource-bar
+  .uesrpg-rebuilt-actor-sheet__resource-current.uesrpg-rebuilt-field
+  input:not([type='checkbox']):not([type='radio']):focus,
+.uesrpg-rebuilt-actor-sheet__resource-bar
+  .uesrpg-rebuilt-actor-sheet__resource-current.uesrpg-rebuilt-field
+  input:not([type='checkbox']):not([type='radio']):focus-visible {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .uesrpg-rebuilt-actor-sheet__resource-slash {
   color: var(--uesrpg-rebuilt-text-muted);
   font-family: var(--uesrpg-rebuilt-font-role-numeric);
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
 .uesrpg-rebuilt-actor-sheet__resource-max {
-  min-width: 2.5rem;
+  min-width: 1.8rem;
 }
 
 .uesrpg-rebuilt-actor-sheet__resource-current input,
 .uesrpg-rebuilt-actor-sheet__resource-max strong {
   font-family: var(--uesrpg-rebuilt-font-role-numeric);
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 

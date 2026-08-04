@@ -104,11 +104,11 @@
             class='uesrpg-rebuilt-actor-sheet__resource'
             data-resource='{{resource.key}}'
           >
-            <span class='uesrpg-rebuilt-field__label'>{{resource.label}}</span>
             <div
               class='uesrpg-rebuilt-actor-sheet__resource-bar'
               style='--uesrpg-rebuilt-resource-fill: {{resource.fillPercent}}%;'
             >
+              <span class='uesrpg-rebuilt-actor-sheet__resource-label'>{{resource.label}}</span>
               {{#if resource.editable}}
                 <label
                   class='uesrpg-rebuilt-field uesrpg-rebuilt-actor-sheet__resource-current'
