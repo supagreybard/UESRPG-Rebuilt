@@ -6,3 +6,7 @@
 ## Deferred from: code review of 2-1-build-character-sheet-shell-identity-permissions-and-empty-states (2026-08-04)
 
 - Define a Foundry-safe private storage/update pattern before adding true GM/private character notes; ordinary actor system data plus sheet-level hiding is not a reliable privacy boundary.
+
+## Deferred from: code review of 2-5-validate-complete-character-sheet-for-core-play-readiness (2026-08-05)
+
+- GM/private area acceptance is not satisfied by the recorded validation evidence: AC1 requires GM/private areas rendering with the complete character sheet, but Story 2.5 records "GM/private absence" and true private notes remain deferred from Story 2.1. Deferred because the project will likely make use of or suggest use of the GM Notes module from the Foundry repo.

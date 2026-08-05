@@ -246,6 +246,10 @@ export class CharacterSheet extends BaseActorSheet {
   }
 
   protected async _onAddSkill(): Promise<void> {
+    if (!this.isEditable) {
+      return;
+    }
+
     await this.#preserveScrollPosition(async () => {
       await this.submit();
 
@@ -268,9 +272,13 @@ export class CharacterSheet extends BaseActorSheet {
     event: PointerEvent,
     target: HTMLElement,
   ): Promise<void> {
+    if (!this.isEditable) {
+      return;
+    }
+
     const index = Number(target.dataset.index ?? -1);
 
-    if (index < 0) {
+    if (!Number.isInteger(index) || index < 0) {
       return;
     }
 
